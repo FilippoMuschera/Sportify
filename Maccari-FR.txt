@@ -1,0 +1,6 @@
+Functional Requirements
+
+
+1. The system shall provide a counter of players for joinable matches.
+2. The system shall provide a fillable form with the sports center’s information3.
+3. The system shall lock a sports center’s match slot4.
