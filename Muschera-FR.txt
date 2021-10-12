@@ -1,0 +1,5 @@
+Functional Requirements
+
+1. The system shall provide push notifications when a player creates a joinable match1.
+2. The system shall provide push notifications when a player joins a match.
+3. The system shall provide a list of joinable matches in the selected radius2.

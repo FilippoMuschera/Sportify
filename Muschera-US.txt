@@ -1,0 +1,7 @@
+User Stories
+
+
+1.	As a single-player, I want to join matches, so that I can play with other people.
+2.	As a sports center manager, I want to add my sports center’s information to the app, so that they can be found by players.
+3.	As a player, I want to create a joinable match, so that other players can fill my team. 
+

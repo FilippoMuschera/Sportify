@@ -1,0 +1,6 @@
+User Stories
+
+
+1.	As a player, I want to see information about my match, so that I know at what time it will start.
+2.	As a player, I want to select a radius of interest, so that I can see only the sports centers near me.
+3.	As a single-player, I want to see joinable matches in my radius, so that I can find a match to play.
