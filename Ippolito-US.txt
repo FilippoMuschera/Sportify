@@ -1,0 +1,3 @@
+1) As a player, i want notifications of new joinable matches in my radius, so that i can join them.
+2) As a player, i want a notification when my joinable match is full, so that i know i have enough people to play.
+3) As a player, i want to leave the match i joined, so that the other players know i am no longer available.
