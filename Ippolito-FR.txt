@@ -1,3 +1,3 @@
-1) The system shall provide a list of sports centers in the selected radius sorted by distance.
-2) The system shall provide a list of matches of the selected sports.
-3) The system shall create a joinable match slot in the joinable matches list.
+1. The system shall provide a list of sports centers in the selected radius sorted by distance.
+2. The system shall provide a list of matches of the selected sports.
+3. The system shall create a joinable match slot in the joinable matches list.
