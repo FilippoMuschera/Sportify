@@ -2,30 +2,26 @@
     src: url(fonts/Playball-Regular.ttf);
 }
 
+
+
 .label {
     -fx-font-family: "Playball";
+    /*-fx-text-fill: F5F5F5; */
+    -fx-text-fill: rgba(208, 213, 214, 0.4);
 
 }
 
-#sportifyLabel{
-    -fx-text-fill: white;
-}
 
 
 .button{
-    -fx-background-color: #474747;
-    -fx-text-fill: #E0C3FC;
+    -fx-background-color: #FAF9F9;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
+    -fx-border-color: #212529;
 
 }
 
 .button:hover{
-    /*-fx-border-radius: 50;
-    -fx-border-color: #474747;
-    -fx-background-color: #E0C3FC;
-    -fx-text-fill: #474747;
-    -fx-background-radius: 50;*/
     -fx-cursor: hand;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
@@ -40,65 +36,9 @@
 
 #homeButton{
     -fx-border-radius: 50;
-    -fx-border-color: #474747;
-    -fx-background-color: #E0C3FC;
-    -fx-text-fill: #474747;
+    -fx-border-color: #212529;
+    -fx-background-color: #212529;
     -fx-background-radius: 50;
     -fx-cursor: hand;
 }
 
-/*
-
-#homeButton:hover{
-    -fx-border-radius: 50;
-    -fx-border-color: #474747;
-    -fx-background-color: #e7d7ff;
-    -fx-background-radius: 50;
-    -fx-cursor: hand;
-}
-
-
-#homeButton:pressed {
-
-    -fx-rotate: 5;
-}
-
-
-#addCourtButton:hover{
-    -fx-border-radius: 50;
-    -fx-border-color: #494747;
-    -fx-background-color: #494747;
-    -fx-background-radius: 50;
-    -fx-cursor: hand;
-}
-
-#addCourtButton:pressed{
-    -fx-background-color: #474747;
-    -fx-background-radius: 50;
-    -fx-border-radius: 50;
-    -fx-border-color: #474747;
-    -fx-cursor: hand;
-    -fx-rotate: 5;
-
-
-}
-
-#joinMatchButton:hover{
-    -fx-border-radius: 50;
-    -fx-border-color: #494747;
-    -fx-background-color: #494747;
-    -fx-background-radius: 50;
-    -fx-cursor: hand;
-}
-
-#joinMatchButton:pressed{
-    -fx-background-color: #474747;
-    -fx-background-radius: 50;
-    -fx-border-radius: 50;
-    -fx-border-color: #474747;
-    -fx-cursor: hand;
-    -fx-rotate: 5;
-
-
-}
-*/
