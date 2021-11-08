@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #E0C3FC;" stylesheets="@HomeScreenStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.sportifyui.HomeScreenController">
+    <children>
+        <Label fx:id="sportifyLabel" layoutX="135.0" layoutY="-14.0" prefHeight="517.0" prefWidth="754.0" text="Sportify" textAlignment="CENTER" AnchorPane.topAnchor="-14.0">
+            <font>
+                <Font size="250.0" />
+            </font>
+        </Label>
+        <Button fx:id="yourMatchesButton" layoutX="382.0" layoutY="329.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="261.0" text="YOUR MATCHES">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Button>
+        <Button fx:id="settingsButton" layoutX="426.0" layoutY="410.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="173.0" text="SETTINGS">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Button>
+        <Button fx:id="faqsButton" layoutX="431.0" layoutY="489.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="162.0" text="FAQS">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Button>
+        <Button fx:id="homeButton" layoutX="472.0" layoutY="652.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
+            <font>
+                <Font size="30.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@homeBlack.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="joinMatchButton" layoutX="602.0" layoutY="652.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
+            <font>
+                <Font size="30.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <image>
+                        <Image url="@team.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="addCourtButton" layoutX="342.0" layoutY="652.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
+            <font>
+                <Font size="30.0" />
+            </font>
+         <graphic>
+                <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@court.png" />
+                    </image>
+                </ImageView>
+         </graphic>
+        </Button>
+        <Pane layoutY="4.0" prefHeight="40.0" prefWidth="1024.0" style="-fx-background-color: #474747;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="homeLabel" layoutX="14.0" layoutY="-1.0" style="-fx-text-fill: #E0C3FC;" text="Sportify">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+
+    </children>
+</AnchorPane>
