@@ -1,0 +1,46 @@
+package com.sportify.sportifyui;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
+
+public class UIController extends Application{
+
+    public void showHomeScreen(ActionEvent actionEvent) throws IOException {
+        Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Second stage");
+        stage.setScene(new Scene(root1));
+        root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource("HomeScreenStyle.css")).toExternalForm());
+        oldStage.hide(); //chiude la finestra principale prima di aprire quella secondaria
+        stage.show();
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("LogIn.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Sportify");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("LogInStyle.css")).toExternalForm());
+
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+

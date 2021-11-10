@@ -1,0 +1,46 @@
+@font-face {
+    src: url(fonts/Playball-Regular.ttf);
+}
+
+
+
+.label {
+    -fx-font-family: "Playball";
+    /*-fx-text-fill: F5F5F5; */
+    -fx-text-fill: rgba(208, 213, 214, 0.4);
+
+}
+
+
+
+.button{
+    -fx-background-color: #FAF9F9;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #212529;
+    -fx-font-family: "PLayball";
+    -fx-font-size: 24;
+
+}
+
+.button:hover{
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
+.button:pressed{
+
+    -fx-rotate: 5;
+
+}
+
+#homeButton{
+    -fx-border-radius: 50;
+    -fx-border-color: #212529;
+    -fx-background-color: #212529;
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+}
+

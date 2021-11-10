@@ -42,7 +42,7 @@
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\src\main\resources\com\sportify\sportifyui\fonts" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.UIController">
     <configuration name="HomeScreenApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.HomeScreenApplication" />
       <module name="SportifyUI" />
@@ -56,8 +56,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LogInApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.LogInApplication" />
+      <module name="SportifyUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sportify.sportifyui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UIController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.UIController" />
+      <module name="SportifyUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sportify.sportifyui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UIController" />
+        <item itemvalue="Application.LogInApplication" />
         <item itemvalue="Application.HomeScreenApplication" />
       </list>
     </recent_temporary>
@@ -75,6 +103,9 @@
       <workItem from="1636362690125" duration="2605000" />
       <workItem from="1636392074863" duration="7094000" />
       <workItem from="1636401114833" duration="98000" />
+      <workItem from="1636454826533" duration="273000" />
+      <workItem from="1636472547078" duration="2734000" />
+      <workItem from="1636536321652" duration="5764000" />
     </task>
     <servers />
   </component>

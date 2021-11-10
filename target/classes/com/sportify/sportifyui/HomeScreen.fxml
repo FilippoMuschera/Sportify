@@ -11,18 +11,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@HomeScreenStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.sportifyui.HomeScreenController">
     <children>
-        <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="48.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
+        <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
          <children>
-                <Label fx:id="toolbarLabel" layoutX="14.0" layoutY="4.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Sportify">
+                <Label fx:id="toolbarLabel" layoutX="14.0" layoutY="11.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Sportify">
                     <font>
                         <Font size="28.0" />
                     </font>
                 </Label>
-            <Label layoutX="628.0" layoutY="5.0" style="-fx-text-fill: #212529;" text="Home">
+            <Label layoutX="628.0" layoutY="12.0" style="-fx-text-fill: #212529;" text="Home">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
+             <Button fx:id="faqButton" layoutX="1239.0" layoutY="6.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="22.0" style="-fx-border-color: #FAF9F9;">
+                 <graphic>
+                     <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@question.png" />
+                         </image>
+                     </ImageView>
+                 </graphic>
+             </Button>
          </children>
         </Pane>
         <Label fx:id="sportifyLabel" layoutX="6.0" layoutY="32.0" prefHeight="551.0" prefWidth="1289.0" text="Sportify" textAlignment="CENTER" AnchorPane.bottomAnchor="148.0" AnchorPane.topAnchor="32.0">
@@ -30,16 +39,6 @@
                 <Font size="430.0" />
             </font>
         </Label>
-        <Button fx:id="settingsButton" layoutX="1797.0" layoutY="-231.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="173.0" text="SETTINGS">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Button>
-        <Button fx:id="faqsButton" layoutX="1411.0" layoutY="-232.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="162.0" text="FAQS">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Button>
         <Button fx:id="homeButton" layoutX="609.0" layoutY="630.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
             <font>
                 <Font size="30.0" />
