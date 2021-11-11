@@ -1,5 +1,11 @@
 package com.sportify.sportifyui;
 
+/*!! NON salvate il progetto in una cartella che ha nel suo nome (o nel suo path) uno spazio !!
+es.: "C:\User\Nome\Sportify" è ok, "C:\User\Nome\Repository Sportify" non è ok. 
+Poi risolverò quessto bug perchè so già cosa devo cambiare ma per ora è così ahaha 
+*/
+
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +31,8 @@ public class UIController extends Application{
         root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource("HomeScreenStyle.css")).toExternalForm());
         oldStage.hide(); //chiude la finestra principale prima di aprire quella secondaria
         stage.show();
+
+        //TODO not resizable
     }
 
     @Override
