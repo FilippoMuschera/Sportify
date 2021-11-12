@@ -27,7 +27,7 @@
                  <graphic>
                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                          <image>
-                             <Image url="@question.png" />
+                             <Image url="@icons/question.png" />
                          </image>
                      </ImageView>
                  </graphic>
@@ -46,7 +46,7 @@
             <graphic>
                 <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@home.png" />
+                        <Image url="@icons/home.png" />
                     </image>
                     <cursor>
                         <Cursor fx:constant="HAND" />
@@ -64,7 +64,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                     <image>
-                        <Image url="@teamBlack.png" />
+                        <Image url="@icons/teamBlack.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -76,7 +76,7 @@
          <graphic>
                 <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@courtBlack.png" />
+                        <Image url="@icons/courtBlack.png" />
                     </image>
                 </ImageView>
          </graphic>

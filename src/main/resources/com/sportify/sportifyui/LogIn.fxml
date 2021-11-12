@@ -25,7 +25,7 @@
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@question.png" />
+                        <Image url="@icons/question.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -40,7 +40,7 @@
         <Pane layoutX="357.0" layoutY="102.0" prefHeight="528.0" prefWidth="587.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;">
             <children>
                 <Line endX="351.0" layoutX="234.0" layoutY="46.0" startX="-232.0" strokeWidth="2.0" />
-                <Label layoutX="229.0" layoutY="2.0" style="-fx-text-fill: #212529;" text="Notifications">
+                <Label layoutX="259.0" layoutY="2.0" style="-fx-text-fill: #212529;" text="Log In">
                     <font>
                         <Font size="28.0" />
                     </font>
@@ -62,7 +62,7 @@
                   <Font name="Playball Regular" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="signUpButton" layoutX="387.0" layoutY="439.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="130.0" text="Sign Up">
+            <Button fx:id="signUpButton" layoutX="387.0" layoutY="439.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="33.0" prefWidth="130.0" text="Sign Up">
                <font>
                   <Font name="Playball Regular" size="18.0" />
                </font>

@@ -35,6 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sportify/sportifyui" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -108,6 +109,9 @@
       <workItem from="1636536321652" duration="5764000" />
       <workItem from="1636646737473" duration="1306000" />
       <workItem from="1636665204611" duration="52000" />
+      <workItem from="1636714689223" duration="937000" />
+      <workItem from="1636716257495" duration="3889000" />
+      <workItem from="1636720375089" duration="1605000" />
     </task>
     <servers />
   </component>

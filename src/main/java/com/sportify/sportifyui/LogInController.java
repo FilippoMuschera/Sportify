@@ -25,4 +25,9 @@ public class LogInController {
             //TODO raise error
         }
     }
+
+    public void goToSignUp(ActionEvent actionEvent) throws IOException {
+        UIController controller = new UIController();
+        controller.showSignUp(actionEvent);
+    }
 }

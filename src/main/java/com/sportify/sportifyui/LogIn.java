@@ -6,4 +6,7 @@ public class LogIn {
         return true;
     }
 
+    public boolean registerNewUser(String email, String psw1, String psw2) {
+            return true;
+    }
 }
