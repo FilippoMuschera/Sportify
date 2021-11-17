@@ -32,6 +32,15 @@
                      </ImageView>
                  </graphic>
              </Button>
+            <Button fx:id="settingsButton" layoutX="1199.0" layoutY="6.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="49.0" prefWidth="22.0" style="-fx-border-color: #FAF9F9;">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
         </Pane>
         <Label fx:id="sportifyLabel" layoutX="6.0" layoutY="32.0" prefHeight="551.0" prefWidth="1289.0" text="Sportify" textAlignment="CENTER" AnchorPane.bottomAnchor="148.0" AnchorPane.topAnchor="32.0">

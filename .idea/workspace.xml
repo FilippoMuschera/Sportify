@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -34,12 +34,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sportify/sportifyui" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Workspace/test-clash-interfaces" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\java\com\sportify\sportifyui" />
+      <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\resources\com\sportify\sportifyui\icons" />
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\src\main\resources\com\sportify\sportifyui\fonts" />
     </key>
   </component>
@@ -111,11 +115,25 @@
       <workItem from="1636665204611" duration="52000" />
       <workItem from="1636714689223" duration="937000" />
       <workItem from="1636716257495" duration="3889000" />
-      <workItem from="1636720375089" duration="1605000" />
+      <workItem from="1636720375089" duration="13228000" />
+      <workItem from="1636893315338" duration="68000" />
+      <workItem from="1636965280600" duration="82000" />
+      <workItem from="1636967174895" duration="2357000" />
+      <workItem from="1636970960667" duration="188000" />
+      <workItem from="1637001552447" duration="2054000" />
+      <workItem from="1637054715445" duration="410000" />
+      <workItem from="1637055164651" duration="775000" />
+      <workItem from="1637147648264" duration="405000" />
+      <workItem from="1637161754013" duration="3621000" />
+      <workItem from="1637172125402" duration="32000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

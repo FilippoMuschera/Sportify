@@ -7,6 +7,8 @@ Poi risolverò questo bug perchè so già cosa devo cambiare ma per ora è così
 */
 
 
+import javafx.animation.FadeTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,18 +16,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class UIController extends Application{
 
-    private static Stage previousStage; //tiene traccia della schermata precedente, in modo da sapere a quale si deve tornare
-                                        //in caso ci sia un pulsante "back" nella schermata corrente
+
     private static String[] previousStageStyles; //tiene traccia del file .fxml (previousStageStyle[0]) e di quello .css (previousStageStyle[1])
                                                  //della schermata precedente, per poterli usare in caso di pulsante back
+
 
     public void showHomeScreen(ActionEvent actionEvent) throws IOException { //Mostra a schermo la home screen
         Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
@@ -36,7 +40,13 @@ public class UIController extends Application{
     public void showSignUp(ActionEvent actionEvent) throws IOException { //Mostra la schermata per il sign up di un nuovo utente
         Stage logInScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
         this.loadStage("SignUp.fxml", "SignUpStyle.css", logInScreen);
-        setPreviousStageInfo(logInScreen, "LogIn.fxml", "LogInStyle.css");
+        setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
+
+    }
+
+    public void showSettings(ActionEvent actionEvent) throws IOException {
+        Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
+        this.loadStage("Settings.fxml", "SettingsStyle.CSS", oldStage);
 
     }
 
@@ -45,14 +55,9 @@ public class UIController extends Application{
         this.loadStage(getPreviousFxml(), getPreviousCss(), actualStage);
     }
 
-    public void setPreviousStageInfo(Stage oldStage, String fxml, String css){
-        previousStage = oldStage;
+    public void setPreviousStageInfo(String fxml, String css){
         previousStageStyles = new String[]{fxml, css};
     } //scrive le variabili che conservano lo stage precedente
-
-    public Stage getPreviousStage(){ //POTREBBE NON SERVIRE, DA CONTROLLARE
-        return previousStage;
-    }
 
     public String getPreviousFxml(){
         return  previousStageStyles[0];
@@ -62,18 +67,34 @@ public class UIController extends Application{
         return  previousStageStyles[1];
     }
 
-    public void loadStage(String stageFXML, String StageCSS, Stage stageToHide) throws IOException { //mostra a schermo lo stage passato con i parametri
+
+    // loadStage(...) carica la nuova schermata nello stesso stage
+    // se si vuole aprire un pop-up NON va bene!
+
+    public void loadStage(String stageFXML, String StageCSS, Stage oldStage) throws IOException { //mostra a schermo la schermata passato con i parametri
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(stageFXML));
         Parent root1 = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Sportify");
-        stage.setScene(new Scene(root1));
         root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource(StageCSS)).toExternalForm());
-        if (stageToHide != null) {
-            stageToHide.hide(); //chiude la finestra principale prima di aprire quella secondaria
-        }
-        stage.setResizable(false);
-        stage.show();
+
+
+        SequentialTransition st = new SequentialTransition(this.fadeOut(oldStage.getScene().getRoot()), this.fadeIn(root1));
+        st.play();
+
+        oldStage.setScene(new Scene(root1));
+    }
+
+    public FadeTransition fadeOut(Parent root){
+        FadeTransition ft = new FadeTransition(Duration.millis(300), root);
+        ft.setFromValue(1.0);
+        ft.setToValue(0);
+        return ft;
+    }
+
+    public FadeTransition fadeIn(Parent root){
+        FadeTransition ft = new FadeTransition(Duration.millis(300), root);
+        ft.setFromValue(0);
+        ft.setToValue(1.0);
+        return ft;
     }
 
     @Override
@@ -91,5 +112,7 @@ public class UIController extends Application{
     public static void main(String[] args) {
         launch();
     }
+
+
 }
 
