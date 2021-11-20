@@ -3,21 +3,17 @@ package com.sportify.sportifyui;
 /*
 !! NON salvate il progetto in una cartella che ha nel suo nome (o nel suo path) uno spazio !!
 es.: "C:\User\Nome\Sportify" è ok, "C:\User\Nome\Repository Sportify" non è ok. 
-Poi risolverò questo bug perchè so già cosa devo cambiare ma per ora è così ahaha
+Poi risolverò questo bug perché so già cosa devo cambiare ma per ora è così haha
 */
 
 
 import javafx.animation.FadeTransition;
-import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -55,7 +51,7 @@ public class UIController extends Application{
         this.loadStage(getPreviousFxml(), getPreviousCss(), actualStage);
     }
 
-    public void setPreviousStageInfo(String fxml, String css){
+    public static void setPreviousStageInfo(String fxml, String css){
         previousStageStyles = new String[]{fxml, css};
     } //scrive le variabili che conservano lo stage precedente
 
@@ -71,30 +67,33 @@ public class UIController extends Application{
     // loadStage(...) carica la nuova schermata nello stesso stage
     // se si vuole aprire un pop-up NON va bene!
 
-    public void loadStage(String stageFXML, String StageCSS, Stage oldStage) throws IOException { //mostra a schermo la schermata passato con i parametri
+    public void loadStage(String stageFXML, String stageCSS, Stage oldStage) throws IOException { //mostra a schermo la schermata passato con i parametri
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(stageFXML));
         Parent root1 = fxmlLoader.load();
-        root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource(StageCSS)).toExternalForm());
+        root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource(stageCSS)).toExternalForm());
 
-
-        SequentialTransition st = new SequentialTransition(this.fadeOut(oldStage.getScene().getRoot()), this.fadeIn(root1));
-        st.play();
+        this.fadeAnimation(root1, oldStage.getScene().getRoot());
 
         oldStage.setScene(new Scene(root1));
     }
 
-    public FadeTransition fadeOut(Parent root){
+    public void fadeAnimation(Parent screenToFadeIn, Parent screenToFadeOut){
+        this.fadeOut(screenToFadeOut);
+        this.fadeIn(screenToFadeIn);
+    }
+
+    private void fadeOut(Parent root){
         FadeTransition ft = new FadeTransition(Duration.millis(300), root);
         ft.setFromValue(1.0);
         ft.setToValue(0);
-        return ft;
+        ft.play();
     }
 
-    public FadeTransition fadeIn(Parent root){
+    private void fadeIn(Parent root){
         FadeTransition ft = new FadeTransition(Duration.millis(300), root);
         ft.setFromValue(0);
         ft.setToValue(1.0);
-        return ft;
+        ft.play();
     }
 
     @Override

@@ -78,11 +78,11 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="addCourtButton" layoutX="377.0" layoutY="630.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
+        <Button fx:id="toBeRenamedButton" layoutX="377.0" layoutY="630.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
             <font>
                 <Font size="30.0" />
             </font>
-         <graphic>
+            <graphic>
                 <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icons/courtBlack.png" />
@@ -110,6 +110,16 @@
             </Label>
          </children>
       </Pane>
+      <Button fx:id="addCourt" layoutX="22.0" layoutY="630.0" mnemonicParsing="false" onAction="#showAddCourt" onMouseEntered="#showInfoPopUp" onMouseExited="#hideInfoPopUp" prefHeight="80.0" prefWidth="80.0">
+          <graphic>
+            <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="addCourtPopupLabel" layoutX="102.0" layoutY="630.0" text="Add your sport center to the app" textAlignment="CENTER" />
 
     </children>
 </AnchorPane>

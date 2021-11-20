@@ -2,15 +2,11 @@
     src: url(fonts/Playball-Regular.ttf);
 }
 
-
-
 .label {
     -fx-font-family: "Playball";
     -fx-text-fill: rgba(208, 213, 214, 0.4);
 
 }
-
-
 
 .button{
     -fx-background-color: #FAF9F9;
@@ -35,11 +31,7 @@
 
 }
 
-#homeButton{
-    -fx-border-radius: 50;
-    -fx-border-color: #212529;
-    -fx-background-color: #212529;
-    -fx-background-radius: 50;
-    -fx-cursor: hand;
+.check-box{
+    -fx-font-family: "Playball";
+    -fx-font-size: 20;
 }
-
