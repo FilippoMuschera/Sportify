@@ -39,6 +39,12 @@ public class UIController extends Application{
         setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
 
     }
+    //public void showSignUp(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
+    //      Stage logInScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
+    //      this.loadStage("CreateMatch.fxml", "CreateMatchStyle.css", logInScreen);
+    //      setPreviousStageInfo("HomeScreen.fxml", "HomeScreenStyle.css");
+    //
+    //}
 
     public void showSettings(ActionEvent actionEvent) throws IOException {
         Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());

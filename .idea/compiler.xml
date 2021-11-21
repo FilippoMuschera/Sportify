@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SportifyUI" options="--add-exports javafx.graphics/com.sun.javafx.menu=com.sportify.sportifyui" />
+      <module name="SportifyUI" options="" />
     </option>
   </component>
 </project>
