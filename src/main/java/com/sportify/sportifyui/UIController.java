@@ -39,12 +39,19 @@ public class UIController extends Application{
         setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
 
     }
-    //public void showSignUp(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
-    //      Stage logInScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-    //      this.loadStage("CreateMatch.fxml", "CreateMatchStyle.css", logInScreen);
-    //      setPreviousStageInfo("HomeScreen.fxml", "HomeScreenStyle.css");
-    //
-    //}
+    public void showCreateMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
+         Stage CreateMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
+         this.loadStage("CreateMatch.fxml", "CreateMatchStyle.css", CreateMatchScreen);
+         setPreviousStageInfo("HomeScreen.fxml", "HomeScreenStyle.css");
+
+    }
+
+    public void showJoinMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
+        Stage JoinMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
+        this.loadStage("JoinMatch.fxml", "JoinMatchStyle.css", JoinMatchScreen);
+        setPreviousStageInfo("HomeScreen.fxml", "HomeScreenStyle.css");
+
+    }
 
     public void showSettings(ActionEvent actionEvent) throws IOException {
         Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());

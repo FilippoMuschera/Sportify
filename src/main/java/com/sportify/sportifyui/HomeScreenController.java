@@ -17,6 +17,16 @@ public class HomeScreenController {
         c.showSettings(actionEvent);
     }
 
+    public void showCreateMatch(ActionEvent actionEvent) throws IOException {
+        UIController c = new UIController();
+        c.showCreateMatch(actionEvent);
+    }
+
+    public void showJoinMatch(ActionEvent actionEvent) throws IOException {
+        UIController c = new UIController();
+        c.showJoinMatch(actionEvent);
+    }
+
     public void showAddCourt(ActionEvent actionEvent) { //TODO aggiungere schermata "aggiungi centro sportivo"
     }
 

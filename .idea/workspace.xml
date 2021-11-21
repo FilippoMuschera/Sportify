@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,10 +37,13 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Workspace/test-clash-interfaces" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Norma\Desktop\Sportify\trunk\src\main\resources\com\sportify\sportifyui" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\java\com\sportify\sportifyui" />
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\resources\com\sportify\sportifyui\icons" />
