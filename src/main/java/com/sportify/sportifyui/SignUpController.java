@@ -12,7 +12,9 @@ public class SignUpController {
     @FXML
     private TextField emailTextField;
     @FXML
-    private PasswordField passwordField1, passwordField2;
+    private PasswordField passwordField1;
+    @FXML
+    private PasswordField passwordField2;
 
 
     public void goToLogIn(ActionEvent actionEvent) throws IOException {
@@ -24,7 +26,6 @@ public class SignUpController {
 
         LogIn signUp = new LogIn();
         if(signUp.registerNewUser(emailTextField.getText(), passwordField1.getText(), passwordField2.getText())){
-            System.out.println("User registered successfully");
             UIController controller = new UIController();
             controller.showHomeScreen(actionEvent);
         }

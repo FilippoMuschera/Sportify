@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@JoinMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.sportifyui.HomeScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@JoinMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.sportifyui.JoinMatchController">
     <children>
         <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
          <children>
@@ -48,7 +48,7 @@
                 <Font size="430.0" />
             </font>
         </Label>
-        <Button fx:id="homeButton" layoutX="609.0" layoutY="630.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="80.0">
+        <Button fx:id="homeButton" layoutX="609.0" layoutY="630.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="79.0" prefWidth="80.0">
             <font>
                 <Font size="30.0" />
             </font>
@@ -100,16 +100,6 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="addCourt" layoutX="22.0" layoutY="630.0" mnemonicParsing="false" onAction="#showAddCourt" onMouseEntered="#showInfoPopUp" onMouseExited="#hideInfoPopUp" prefHeight="80.0" prefWidth="80.0">
-          <graphic>
-            <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/add.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label fx:id="addCourtPopupLabel" layoutX="102.0" layoutY="630.0" text="Add your sport center to the app" textAlignment="CENTER" />
 
     </children>
 </AnchorPane>

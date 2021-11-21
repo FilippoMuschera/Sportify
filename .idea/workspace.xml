@@ -36,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sportify/sportifyui" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
@@ -135,6 +135,7 @@
       <workItem from="1637321122542" duration="1364000" />
       <workItem from="1637403863579" duration="441000" />
       <workItem from="1637404348914" duration="6489000" />
+      <workItem from="1637517815110" duration="1190000" />
     </task>
     <servers />
   </component>

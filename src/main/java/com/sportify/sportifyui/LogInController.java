@@ -17,7 +17,6 @@ public class LogInController {
     public void handleLogIn(ActionEvent actionEvent) throws IOException {
         LogIn log = new LogIn();
         if (log.authLogIn(emailTextField.getText(), passwordField.getText())){
-            System.out.println("Succesfull login!");
             UIController controller = new UIController();
             controller.showHomeScreen(actionEvent);
         }

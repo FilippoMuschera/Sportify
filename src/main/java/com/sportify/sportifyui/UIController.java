@@ -40,16 +40,14 @@ public class UIController extends Application{
 
     }
     public void showCreateMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
-         Stage CreateMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-         this.loadStage("CreateMatch.fxml", "CreateMatchStyle.css", CreateMatchScreen);
-         setPreviousStageInfo("HomeScreen.fxml", "HomeScreenStyle.css");
+         Stage createMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
+         this.loadStage("CreateMatch.fxml", "CreateMatchStyle.css", createMatchScreen);
 
     }
 
     public void showJoinMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
-        Stage JoinMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-        this.loadStage("JoinMatch.fxml", "JoinMatchStyle.css", JoinMatchScreen);
-        setPreviousStageInfo("HomeScreen.fxml", "HomeScreenStyle.css");
+        Stage joinMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
+        this.loadStage("JoinMatch.fxml", "JoinMatchStyle.css", joinMatchScreen);
 
     }
 
@@ -90,7 +88,7 @@ public class UIController extends Application{
         oldStage.setScene(new Scene(root1));
     }
 
-    public void fadeAnimation(Parent screenToFadeIn, Parent screenToFadeOut){
+    private void fadeAnimation(Parent screenToFadeIn, Parent screenToFadeOut){
         this.fadeOut(screenToFadeOut);
         this.fadeIn(screenToFadeIn);
     }
