@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
-
 public class AddSportCenterController {
 
     @FXML
     private Label addCourtPopupLabel;
+
+    @FXML
+    private Label outputStateLabel;
 
 
     public void showInfoPopUp() {
@@ -36,5 +38,12 @@ public class AddSportCenterController {
     public void goToCreateMatch(ActionEvent actionEvent) throws IOException {
         UIController c = new UIController();
         c.showCreateMatch(actionEvent);
+    }
+
+    public void addSportCenterToDB() {
+        //qui ci sarà l'aggiunta effettiva del centro sportivo al DB
+
+      outputStateLabel.setOpacity(1);
+
     }
 }

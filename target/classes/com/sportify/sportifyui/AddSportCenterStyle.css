@@ -7,6 +7,7 @@
 #sportifyLabel {
     -fx-font-family: "Playball";
     -fx-text-fill: rgba(208, 213, 214, 0.4);
+    -fx-font-size: 430;
 
 }
 
@@ -32,6 +33,8 @@
     -fx-background-radius: 50;
     -fx-border-radius: 50;
     -fx-border-color: #212529;
+    -fx-font-family: "Playball";
+    -fx-font-size: 24;
 
 }
 
@@ -70,3 +73,9 @@
     -fx-background-radius: 50;
     -fx-cursor: hand;
 }
+
+#outputStateLabel{
+    -fx-text-fill: green;
+    -fx-opacity: 0;
+}
+

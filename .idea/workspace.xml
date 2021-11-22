@@ -38,7 +38,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sportify/sportifyui" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -137,6 +137,9 @@
       <workItem from="1637404348914" duration="6489000" />
       <workItem from="1637517815110" duration="2694000" />
       <workItem from="1637574147859" duration="2814000" />
+      <workItem from="1637593238542" duration="1053000" />
+      <workItem from="1637594323193" duration="52000" />
+      <workItem from="1637594541961" duration="4356000" />
     </task>
     <servers />
   </component>
