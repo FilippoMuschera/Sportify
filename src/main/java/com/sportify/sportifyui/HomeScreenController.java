@@ -27,15 +27,16 @@ public class HomeScreenController {
         c.showJoinMatch(actionEvent);
     }
 
-    public void showAddCourt(ActionEvent actionEvent) { //TODO aggiungere schermata "aggiungi centro sportivo"
+    public void showAddCourt(ActionEvent actionEvent) throws IOException {
+        UIController c = new UIController();
+        c.showAddSportCenter(actionEvent);
     }
 
     public void showInfoPopUp() {
         addCourtPopupLabel.setOpacity(1);
     }
 
-    public void hideInfoPopUp() {
-        addCourtPopupLabel.setOpacity(0);
+    public void hideInfoPopUp() {addCourtPopupLabel.setOpacity(0);
 
     }
 }

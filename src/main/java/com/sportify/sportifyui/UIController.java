@@ -74,6 +74,11 @@ public class UIController extends Application{
         return  previousStageStyles[1];
     }
 
+    public void showAddSportCenter(ActionEvent actionEvent) throws IOException {
+        Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
+        this.loadStage("AddSportCenter.fxml", "AddSportCenterStyle.CSS", oldStage);
+    }
+
 
     // loadStage(...) carica la nuova schermata nello stesso stage
     // se si vuole aprire un pop-up NON va bene!
@@ -122,6 +127,7 @@ public class UIController extends Application{
     public static void main(String[] args) {
         launch();
     }
+
 
 
 }
