@@ -37,7 +37,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sportify/sportifyui" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/sportify/sportifyui" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
@@ -50,7 +50,7 @@
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\src\main\resources\com\sportify\sportifyui\fonts" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UIController">
+  <component name="RunManager" selected="Application.StartUI">
     <configuration name="HomeScreenApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.HomeScreenApplication" />
       <module name="SportifyUI" />
@@ -77,6 +77,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StartUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.StartUI" />
+      <module name="SportifyUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sportify.sportifyui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UIController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.UIController" />
       <module name="SportifyUI" />
@@ -92,6 +105,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StartUI" />
         <item itemvalue="Application.UIController" />
         <item itemvalue="Application.LogInApplication" />
         <item itemvalue="Application.HomeScreenApplication" />
@@ -139,7 +153,17 @@
       <workItem from="1637574147859" duration="2814000" />
       <workItem from="1637593238542" duration="1053000" />
       <workItem from="1637594323193" duration="52000" />
-      <workItem from="1637594541961" duration="4356000" />
+      <workItem from="1637594541961" duration="7590000" />
+      <workItem from="1637605243425" duration="497000" />
+      <workItem from="1637658814943" duration="26000" />
+      <workItem from="1637660908346" duration="363000" />
+      <workItem from="1637937732130" duration="4707000" />
+      <workItem from="1637945355932" duration="404000" />
+      <workItem from="1637955954341" duration="112000" />
+      <workItem from="1637956455177" duration="63000" />
+      <workItem from="1638263356498" duration="315000" />
+      <workItem from="1638296194958" duration="81000" />
+      <workItem from="1638296427153" duration="263000" />
     </task>
     <servers />
   </component>

@@ -1,30 +1,36 @@
 package com.sportify.sportifyui;
 
-/*
-!! NON salvate il progetto in una cartella che ha nel suo nome (o nel suo path) uno spazio !!
-es.: "C:\User\Nome\Sportify" è ok, "C:\User\Nome\Repository Sportify" non è ok. 
-Poi risolverò questo bug perché so già cosa devo cambiare ma per ora è così haha
-*/
-
-
 import javafx.animation.FadeTransition;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.util.Objects;
 
-public class UIController extends Application{
+public class UIController{
 
 
     private static String[] previousStageStyles; //tiene traccia del file .fxml (previousStageStyle[0]) e di quello .css (previousStageStyle[1])
                                                  //della schermata precedente, per poterli usare in caso di pulsante back
+
+    private static UIController singleUIControllerInstance = null;
+
+
+     protected UIController(){ //Singleton GoF Pattern applied to UIController
+
+    }
+
+    public static UIController getUIControllerInstance(){
+        if (UIController.singleUIControllerInstance == null){
+            UIController.singleUIControllerInstance = new UIController();
+        }
+        return UIController.singleUIControllerInstance;
+    }
 
 
     public void showHomeScreen(ActionEvent actionEvent) throws IOException { //Mostra a schermo la home screen
@@ -39,13 +45,13 @@ public class UIController extends Application{
         setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
 
     }
-    public void showCreateMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
+    public void showCreateMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata create match
          Stage createMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
          this.loadStage("CreateMatch.fxml", "CreateMatchStyle.css", createMatchScreen);
 
     }
 
-    public void showJoinMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata  create match
+    public void showJoinMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata join match
         Stage joinMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
         this.loadStage("JoinMatch.fxml", "JoinMatchStyle.css", joinMatchScreen);
 
@@ -83,7 +89,7 @@ public class UIController extends Application{
     // loadStage(...) carica la nuova schermata nello stesso stage
     // se si vuole aprire un pop-up NON va bene!
 
-    public void loadStage(String stageFXML, String stageCSS, Stage oldStage) throws IOException { //mostra a schermo la schermata passato con i parametri
+    protected void loadStage(String stageFXML, String stageCSS, Stage oldStage) throws IOException { //mostra a schermo la schermata passato con i parametri
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(stageFXML));
         Parent root1 = fxmlLoader.load();
         root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource(stageCSS)).toExternalForm());
@@ -112,23 +118,18 @@ public class UIController extends Application{
         ft.play();
     }
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("LogIn.fxml"));
+
+    public void showFaqs() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("Faq.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Sportify");
+        Stage stage = new Stage();
+        stage.setTitle("Sportify - FAQs");
+        stage.initStyle(StageStyle.UTILITY);
         stage.setScene(scene);
         stage.setResizable(false);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("LogInStyle.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("FaqStyle.css")).toExternalForm());
 
         stage.show();
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
-
-
 }
 

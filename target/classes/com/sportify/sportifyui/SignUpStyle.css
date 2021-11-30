@@ -1,6 +1,4 @@
-@font-face {
-    src: url(fonts/Playball-Regular.ttf);
-}
+
 
 .label {
     -fx-font-family: "Playball";

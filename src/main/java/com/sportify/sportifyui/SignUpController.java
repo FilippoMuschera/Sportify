@@ -18,7 +18,7 @@ public class SignUpController {
 
 
     public void goToLogIn(ActionEvent actionEvent) throws IOException {
-       UIController controller = new UIController();
+       UIController controller = UIController.getUIControllerInstance();
        controller.goToPreviousStage(actionEvent);
     }
 
@@ -26,7 +26,7 @@ public class SignUpController {
 
         LogIn signUp = new LogIn();
         if(signUp.registerNewUser(emailTextField.getText(), passwordField1.getText(), passwordField2.getText())){
-            UIController controller = new UIController();
+            UIController controller = UIController.getUIControllerInstance();
             controller.showHomeScreen(actionEvent);
         }
 

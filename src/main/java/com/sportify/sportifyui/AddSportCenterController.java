@@ -21,22 +21,22 @@ public class AddSportCenterController {
     public void hideInfoPopUp() {addCourtPopupLabel.setOpacity(0); }
 
     public void goToSettings(ActionEvent actionEvent) throws IOException {
-        UIController c = new UIController();
+        UIController c = UIController.getUIControllerInstance();
         c.showSettings(actionEvent);
     }
 
     public void goToHome(ActionEvent actionEvent) throws IOException {
-        UIController c = new UIController();
+        UIController c = UIController.getUIControllerInstance();
         c.showHomeScreen(actionEvent);
     }
 
     public void goToJoinMatch(ActionEvent actionEvent) throws IOException {
-        UIController c = new UIController();
+        UIController c = UIController.getUIControllerInstance();
         c.showJoinMatch(actionEvent);
     }
 
     public void goToCreateMatch(ActionEvent actionEvent) throws IOException {
-        UIController c = new UIController();
+        UIController c = UIController.getUIControllerInstance();
         c.showCreateMatch(actionEvent);
     }
 
@@ -45,5 +45,10 @@ public class AddSportCenterController {
 
       outputStateLabel.setOpacity(1);
 
+    }
+
+    public void launchFaq() throws IOException {
+        UIController c = UIController.getUIControllerInstance();
+        c.showFaqs();
     }
 }

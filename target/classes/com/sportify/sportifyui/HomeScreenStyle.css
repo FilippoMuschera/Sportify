@@ -1,7 +1,3 @@
-@font-face {
-    src: url(fonts/Playball-Regular.ttf);
-}
-
 
 
 .label {
@@ -19,8 +15,6 @@
     -fx-border-radius: 25;
     -fx-opacity: 0;
 }
-
-
 
 .button{
     -fx-background-color: #FAF9F9;

@@ -1,8 +1,3 @@
-@font-face {
-    src: url(fonts/Playball-Regular.ttf);
-}
-
-
 
 #sportifyLabel {
     -fx-font-family: "Playball";
@@ -10,24 +5,10 @@
     -fx-font-size: 430;
 
 }
-
 .label{
     -fx-font-family: "Playball";
     -fx-font-size: 22;
 }
-
-#addCourtPopupLabel {
-    -fx-font-family: "Playball";
-    -fx-font-size: 18;
-    -fx-text-fill: #212529;
-    -fx-background-color: rgba(208, 213, 214, 0.4);
-    -fx-background-radius: 25;
-    -fx-border-radius: 25;
-    -fx-opacity: 0;
-}
-
-
-
 .button{
     -fx-background-color: #FAF9F9;
     -fx-background-radius: 50;
