@@ -57,7 +57,7 @@ public class UIController{
 
     }
 
-    public void showSettings(ActionEvent actionEvent) throws IOException {
+    public void showSettings(ActionEvent actionEvent) throws IOException { //Mostra la schermata delle impostazioni
         Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
         this.loadStage("Settings.fxml", "SettingsStyle.CSS", oldStage);
 
@@ -80,7 +80,7 @@ public class UIController{
         return  previousStageStyles[1];
     }
 
-    public void showAddSportCenter(ActionEvent actionEvent) throws IOException {
+    public void showAddSportCenter(ActionEvent actionEvent) throws IOException { //Mostra schermata aggiunta sport center
         Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
         this.loadStage("AddSportCenter.fxml", "AddSportCenterStyle.CSS", oldStage);
     }
@@ -99,27 +99,27 @@ public class UIController{
         oldStage.setScene(new Scene(root1));
     }
 
-    private void fadeAnimation(Parent screenToFadeIn, Parent screenToFadeOut){
-        this.fadeOut(screenToFadeOut);
+    private void fadeAnimation(Parent screenToFadeIn, Parent screenToFadeOut){//Metodo privato perchè deve essere utilizzato
+        this.fadeOut(screenToFadeOut);                                        // solo in loadStage   
         this.fadeIn(screenToFadeIn);
     }
 
     private void fadeOut(Parent root){
-        FadeTransition ft = new FadeTransition(Duration.millis(300), root);
-        ft.setFromValue(1.0);
+        FadeTransition ft = new FadeTransition(Duration.millis(300), root); //Metodo privato perchè deve essere utilizzato
+        ft.setFromValue(1.0);                                               // solo in fadeAnimation
         ft.setToValue(0);
         ft.play();
     }
 
     private void fadeIn(Parent root){
-        FadeTransition ft = new FadeTransition(Duration.millis(300), root);
-        ft.setFromValue(0);
-        ft.setToValue(1.0);
+        FadeTransition ft = new FadeTransition(Duration.millis(300), root); //Metodo privato perchè deve essere utilizzato
+        ft.setFromValue(0);                                                 // solo in fadeAnimation
+        ft.setToValue(1.0); 
         ft.play();
     }
 
 
-    public void showFaqs() throws IOException {
+    public void showFaqs() throws IOException { //Mostra le faq. Non usa loadStage perchè le faq appaiono in una nuova finestra
         FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("Faq.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
