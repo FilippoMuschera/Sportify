@@ -32,4 +32,8 @@
 
 }
 
+#errorLabel {
+    -fx-font-size: 24;
+}
+
 

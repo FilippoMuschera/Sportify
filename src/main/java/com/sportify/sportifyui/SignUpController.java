@@ -24,11 +24,7 @@ public class SignUpController {
 
     public void signUserUp(ActionEvent actionEvent) throws IOException {
 
-        LogIn signUp = new LogIn();
-        if(signUp.registerNewUser(emailTextField.getText(), passwordField1.getText(), passwordField2.getText())){
             UIController controller = UIController.getUIControllerInstance();
             controller.showHomeScreen(actionEvent);
         }
-
-     }
 }

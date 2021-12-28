@@ -26,18 +26,29 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="20b3KHwkeCYX2MNF3anCo8PHZlT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sportify/sportifyui" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
@@ -45,44 +56,19 @@
       <recent name="C:\Users\Norma\Desktop\Sportify\trunk\src\main\resources\com\sportify\sportifyui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\resources\com.sportify.login" />
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\java\com\sportify\sportifyui" />
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\Sportify.git\trunk\src\main\resources\com\sportify\sportifyui\icons" />
       <recent name="C:\Users\filip\Desktop\Filippo\Università\ISPW\Sportify\src\main\resources\com\sportify\sportifyui\fonts" />
     </key>
   </component>
   <component name="RunManager" selected="Application.StartUI">
-    <configuration name="HomeScreenApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.HomeScreenApplication" />
-      <module name="SportifyUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sportify.sportifyui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogInApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.LogInApplication" />
-      <module name="SportifyUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sportify.sportifyui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="StartUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.StartUI" />
       <module name="SportifyUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sportify.sportifyui.*" />
+          <option name="PATTERN" value="login.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,7 +81,7 @@
       <module name="SportifyUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sportify.sportifyui.*" />
+          <option name="PATTERN" value="login.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,12 +89,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestLogInController.testEncrypt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SportifyUI" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestLogInController" />
+      <option name="METHOD_NAME" value="testEncrypt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestLogInDAO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SportifyUI" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestLogInDAO" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestLogInDAO.testGetConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SportifyUI" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestLogInDAO" />
+      <option name="METHOD_NAME" value="testGetConnection" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.TestLogInDAO.testGetConnection" />
+        <item itemvalue="JUnit.TestLogInController.testEncrypt" />
+        <item itemvalue="JUnit.TestLogInDAO" />
         <item itemvalue="Application.UIController" />
-        <item itemvalue="Application.LogInApplication" />
-        <item itemvalue="Application.HomeScreenApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +180,9 @@
       <workItem from="1638263356498" duration="315000" />
       <workItem from="1638296194958" duration="81000" />
       <workItem from="1638296427153" duration="263000" />
+      <workItem from="1640082218876" duration="98000" />
+      <workItem from="1640082402075" duration="35000" />
+      <workItem from="1640692096521" duration="19480000" />
     </task>
     <servers />
   </component>
