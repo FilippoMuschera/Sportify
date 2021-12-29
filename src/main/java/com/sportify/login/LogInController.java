@@ -14,7 +14,7 @@ public class LogInController {
     public void logInUser(LogInBean bean) throws UserNotFoundException, IncorrectPasswordException {
 
 
-        LogInDAO dao = LogInDAO.getInstance();
+        LogInDAOSafe dao = LogInDAOSafe.getInstance();
 
         UserLogInEntity user = dao.getUser(bean.getEmail());
 
