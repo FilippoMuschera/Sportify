@@ -6,11 +6,6 @@ public class UserLogInEntity {
     private String password;
     private String type;
 
-    public UserLogInEntity(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
     public UserLogInEntity(String email, String password, String type) {
         this.email = email;
         this.password = password;
