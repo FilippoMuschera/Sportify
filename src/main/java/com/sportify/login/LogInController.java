@@ -2,6 +2,7 @@ package com.sportify.login;
 
 import com.sportify.login.exceptions.IncorrectPasswordException;
 import com.sportify.login.exceptions.UserNotFoundException;
+import com.sportify.sportifyui.UIController;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.salt.ZeroSaltGenerator;
 
@@ -22,6 +23,8 @@ public class LogInController {
 
         if (!Objects.equals(decryptedPassword, bean.getPassword()))
             throw new IncorrectPasswordException();
+        UIController viewController = UIController.getUIControllerInstance();
+        viewController.setUser(user);
 
     }
 

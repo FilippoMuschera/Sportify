@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SportifyUI.iml" filepath="$PROJECT_DIR$/SportifyUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sportify.iml" filepath="$PROJECT_DIR$/Sportify.iml" />
     </modules>
   </component>
 </project>

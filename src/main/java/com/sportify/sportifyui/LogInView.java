@@ -29,8 +29,8 @@ public class LogInView {
 
         try {
             bean.executeLogIn();
-            UIController controller = UIController.getUIControllerInstance();
-            controller.showHomeScreen(actionEvent);
+            UIController viewController = UIController.getUIControllerInstance();
+            viewController.showHomeScreen(actionEvent);
         } catch (EmailNotValidException ee) {
             errorLabel.setText("Invalid email! Try again!");
             errorLabel.setOpacity(1);

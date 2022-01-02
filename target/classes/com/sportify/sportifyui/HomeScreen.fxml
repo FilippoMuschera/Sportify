@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0"
+<AnchorPane fx:id="anchorPaneHomeScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0"
             prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@HomeScreenStyle.css"
             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.sportify.sportifyui.HomeScreenController">
+            fx:controller="com.sportify.sportifyui.HomeScreenView">
     <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0"
           style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;"
           AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">

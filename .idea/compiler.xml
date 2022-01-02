@@ -6,16 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SportifyUI" />
+        <module name="Sportify" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SportifyUI" target="17" />
+      <module name="Sportify" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SportifyUI" options="" />
+      <module name="Sportify" options="" />
     </option>
   </component>
 </project>

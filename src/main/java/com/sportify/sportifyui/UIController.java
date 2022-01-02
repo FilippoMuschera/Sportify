@@ -1,5 +1,6 @@
 package com.sportify.sportifyui;
 
+import com.sportify.login.UserLogInEntity;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,8 @@ public class UIController{
                                                  //della schermata precedente, per poterli usare in caso di pulsante back
 
     private static UIController singleUIControllerInstance = null;
+
+    private UserLogInEntity user;
 
 
      protected UIController(){ //Singleton GoF Pattern applied to UIController
@@ -130,6 +133,14 @@ public class UIController{
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("FaqStyle.css")).toExternalForm());
 
         stage.show();
+    }
+
+    public void setUser(UserLogInEntity user) {
+        this.user = user;
+    }
+
+    public UserLogInEntity getUser() {
+         return this.user;
     }
 }
 
