@@ -1,12 +1,12 @@
-package com.sportify.login;
+package com.sportify.user;
 
-public class UserLogInEntity {
+public class UserEntity {
 
     private String email;
     private String password;
     private String type;
 
-    public UserLogInEntity(String email, String password, String type) {
+    public UserEntity(String email, String password, String type) {
         this.email = email;
         this.password = password;
         this.type = type;

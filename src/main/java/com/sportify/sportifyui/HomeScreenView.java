@@ -1,7 +1,7 @@
 package com.sportify.sportifyui;
 
 
-import com.sportify.login.UserLogInEntity;
+import com.sportify.user.UserEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,7 +21,7 @@ public class HomeScreenView {
     private Label addCourtPopupLabel;
 
 
-    private UserLogInEntity user;
+    private UserEntity user;
 
 
 

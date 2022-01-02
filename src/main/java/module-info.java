@@ -18,4 +18,6 @@ module com.sportify.sportifyui {
     exports com.sportify.login;
     exports com.sportify.login.exceptions;
     opens com.sportify.login to javafx.fxml;
+    exports com.sportify.user;
+    opens com.sportify.user to javafx.fxml;
 }

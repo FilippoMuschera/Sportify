@@ -1,4 +1,4 @@
-package com.sportify.login;
+package com.sportify.user;
 
 import com.sportify.login.exceptions.UserNotFoundException;
 
@@ -11,22 +11,22 @@ import java.util.Properties;
 
 
 
-public class LogInDAOSafe {
+public class UserDAO {
 
-    private static LogInDAOSafe instance = null;
+    private static UserDAO instance = null;
 
-    public static LogInDAOSafe getInstance(){
-        if (LogInDAOSafe.instance == null)
-            return new LogInDAOSafe();
+    public static UserDAO getInstance(){
+        if (UserDAO.instance == null)
+            return new UserDAO();
         else {
-            LogInDAOSafe.instance = new LogInDAOSafe();
-            return LogInDAOSafe.instance;
+            UserDAO.instance = new UserDAO();
+            return UserDAO.instance;
         }
     }
 
-    private LogInDAOSafe(){}
+    private UserDAO(){}
 
-    public UserLogInEntity getUser(String email) throws UserNotFoundException { //AGGIUNGERE CASO IN CUI IL RESULT SET è VUOTO
+    public UserEntity getUser(String email) throws UserNotFoundException {
 
         try (Connection con = getConnector()) {
             if (con == null)
@@ -37,7 +37,7 @@ public class LogInDAOSafe {
                 ResultSet rs = preparedStatement.executeQuery();
                 if (!rs.next())
                     throw new UserNotFoundException();
-                UserLogInEntity user = new UserLogInEntity(rs.getString("Email"), rs.getString("Password"), rs.getString("Type"));
+                UserEntity user = new UserEntity(rs.getString("Email"), rs.getString("Password"), rs.getString("Type"));
                 rs.close();
                 return user;
             }

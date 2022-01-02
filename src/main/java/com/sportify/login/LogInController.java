@@ -3,6 +3,8 @@ package com.sportify.login;
 import com.sportify.login.exceptions.IncorrectPasswordException;
 import com.sportify.login.exceptions.UserNotFoundException;
 import com.sportify.sportifyui.UIController;
+import com.sportify.user.UserDAO;
+import com.sportify.user.UserEntity;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.salt.ZeroSaltGenerator;
 
@@ -15,9 +17,9 @@ public class LogInController {
     public void logInUser(LogInBean bean) throws UserNotFoundException, IncorrectPasswordException {
 
 
-        LogInDAOSafe dao = LogInDAOSafe.getInstance();
+        UserDAO dao = UserDAO.getInstance();
 
-        UserLogInEntity user = dao.getUser(bean.getEmail());
+        UserEntity user = dao.getUser(bean.getEmail());
 
         String decryptedPassword = this.decryptPassword(user.getPassword());
 

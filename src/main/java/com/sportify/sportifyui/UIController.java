@@ -1,6 +1,6 @@
 package com.sportify.sportifyui;
 
-import com.sportify.login.UserLogInEntity;
+import com.sportify.user.UserEntity;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +21,7 @@ public class UIController{
 
     private static UIController singleUIControllerInstance = null;
 
-    private UserLogInEntity user;
+    private UserEntity user;
 
 
      protected UIController(){ //Singleton GoF Pattern applied to UIController
@@ -135,11 +135,11 @@ public class UIController{
         stage.show();
     }
 
-    public void setUser(UserLogInEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
-    public UserLogInEntity getUser() {
+    public UserEntity getUser() {
          return this.user;
     }
 }
