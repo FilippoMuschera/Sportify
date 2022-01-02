@@ -9,8 +9,8 @@ import com.sportify.login.exceptions.UserNotFoundException;
 
 public class LogInBean {
 
-    private String email = null;
-    private String password = null;
+    protected String email = null;
+    protected String password = null;
 
     //Regex di una email valida, da usare per confrontarla con quella dell'utente
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
@@ -45,7 +45,7 @@ public class LogInBean {
 
     }
 
-    private void validateInput() throws IllegalArgumentException, EmailNotValidException{
+    protected void validateInput() throws IllegalArgumentException, EmailNotValidException{
 
         if (this.email == null || this.password == null ) //controlla se i suoi attributi sono stati correttamente
                                                           //inizializzati dalla LogInView

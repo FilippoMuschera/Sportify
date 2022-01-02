@@ -5,6 +5,11 @@
     -fx-text-fill: rgba(208, 213, 214, 0.4);
 
 }
+#statusLabel {
+    -fx-font-size: 24;
+    -fx-text-fill: red;
+    -fx-opacity: 0;
+}
 
 .button{
     -fx-background-color: #FAF9F9;

@@ -54,15 +54,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="TestUserDAO.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sportify" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Sportify" />
-      <option name="filePath" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestUserDAO" />
+      <option name="METHOD_NAME" value="testAddUser" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -70,6 +67,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.TestUserDAO.testAddUser" />
         <item itemvalue="JUnit.EncryptTest.encrypt" />
       </list>
     </recent_temporary>
@@ -83,7 +81,8 @@
       <option name="presentableId" value="Default" />
       <updated>1640778509121</updated>
       <workItem from="1640778512940" duration="192000" />
-      <workItem from="1641124859726" duration="8290000" />
+      <workItem from="1641124859726" duration="10732000" />
+      <workItem from="1641149899790" duration="2478000" />
     </task>
     <servers />
   </component>

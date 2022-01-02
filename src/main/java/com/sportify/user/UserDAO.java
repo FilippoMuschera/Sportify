@@ -1,6 +1,7 @@
 package com.sportify.user;
 
 import com.sportify.login.exceptions.UserNotFoundException;
+import com.sportify.signup.exceptions.UserAlreadyExistsException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -47,6 +48,30 @@ public class UserDAO {
         }
 
         return null;
+    }
+
+    public UserEntity addUser(String email, String password, String type) throws UserAlreadyExistsException {
+        try (Connection con = getConnector()) {
+            if (con == null)
+                throw new SQLException();
+            String query = "INSERT INTO `sql11460748`.`Users` (`Email`, `Password`, `Type`) VALUES (?, ?, ?);";
+            try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
+                preparedStatement.setString(3, type);
+                preparedStatement.executeUpdate();
+                return new UserEntity(email, password, type);
+
+            }
+
+        } catch (SQLIntegrityConstraintViolationException e) {
+            throw new UserAlreadyExistsException();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 
     private Connection getConnector() throws SQLException {
