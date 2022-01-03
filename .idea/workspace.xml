@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -44,7 +45,7 @@
       <module name="Sportify" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sportify.sportifyui.*" />
+          <option name="PATTERN" value="com.sportify.CreateMatch.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

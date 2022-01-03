@@ -21,4 +21,6 @@ module com.sportify.sportifyui {
     opens com.sportify.login to javafx.fxml;
     exports com.sportify.user;
     opens com.sportify.user to javafx.fxml;
+    exports com.sportify.CreateMatch;
+    opens com.sportify.CreateMatch to javafx.fxml;
 }
