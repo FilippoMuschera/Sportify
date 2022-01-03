@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
-public class AddSportCenterController {
+public class AddSportCenterView {
 
     @FXML
     private Label addCourtPopupLabel;
@@ -41,7 +41,7 @@ public class AddSportCenterController {
     }
 
     public void addSportCenterToDB() {
-        //qui ci sarà l'aggiunta effettiva del centro sportivo al DB
+        //TODO chiamata alla Bean per iniziare il caso d'uso
 
       outputStateLabel.setOpacity(1);
 

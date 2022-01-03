@@ -17,6 +17,14 @@
       </list>
     </option>
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,6 +62,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IntTest.IntTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Sportify" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntTest" />
+      <option name="METHOD_NAME" value="IntTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestUserDAO.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sportify" />
       <option name="PACKAGE_NAME" value="" />
@@ -84,7 +102,7 @@
       <workItem from="1641124859726" duration="10732000" />
       <workItem from="1641149899790" duration="2478000" />
       <workItem from="1641152564496" duration="627000" />
-      <workItem from="1641204059191" duration="1075000" />
+      <workItem from="1641204059191" duration="8842000" />
     </task>
     <servers />
   </component>
