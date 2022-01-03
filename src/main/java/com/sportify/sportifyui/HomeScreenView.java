@@ -21,10 +21,6 @@ public class HomeScreenView {
     private Label addCourtPopupLabel;
 
 
-    private UserEntity user;
-
-
-
     public void showSettings(ActionEvent actionEvent) throws IOException {
         UIController c = UIController.getUIControllerInstance();
         c.showSettings(actionEvent);
@@ -59,8 +55,8 @@ public class HomeScreenView {
     }
     @FXML
     public void initialize(){ //Metodo chiamato dal fxmlloader quando viene caricata questa schermata
-        this.user = UIController.getUIControllerInstance().getUser();
-        if (Objects.equals(this.user.getType(), "Player")) {
+        UserEntity user = UIController.getUIControllerInstance().getUser();
+        if (Objects.equals(user.getType(), "Player")) {
             /*
             * Se l'utente non è un owner, rimuove il bottone (e la relativa label) "addCourt, poichè la funzionalità
             * non è utilizzabile dal tipo di utente "Player"
