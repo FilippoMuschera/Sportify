@@ -28,8 +28,20 @@ public class UserPreferences {
         return notifications;
     }
 
-    public Map<String, Boolean> getSports() {
-        return this.sportsMap;
+    public boolean getBasket() {
+        return this.sportsMap.get("Basket");
+    }
+
+    public boolean getFootball() {
+        return this.sportsMap.get("Football");
+    }
+
+    public boolean getTennis() {
+        return this.sportsMap.get("Tennis");
+    }
+
+    public boolean getPadel() {
+        return this.sportsMap.get("Padel");
     }
 
 }

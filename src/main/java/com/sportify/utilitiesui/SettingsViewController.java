@@ -67,10 +67,10 @@ public class SettingsViewController {
         boolean notifications = user.getPreferences().isNotifications();
         notificationsSwitch.setSelected(notifications);
 
-       footballCB.setSelected(user.getPreferences().getSports().get("Football"));
-       padelCB.setSelected(user.getPreferences().getSports().get("Padel"));
-       basketCB.setSelected(user.getPreferences().getSports().get("Basket"));
-       tennisCB.setSelected(user.getPreferences().getSports().get("Tennis"));
+       footballCB.setSelected(user.getPreferences().getFootball());
+       padelCB.setSelected(user.getPreferences().getPadel());
+       basketCB.setSelected(user.getPreferences().getBasket());
+       tennisCB.setSelected(user.getPreferences().getTennis());
 
 
 
