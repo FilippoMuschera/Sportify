@@ -13,14 +13,18 @@ module com.sportify.sportifyui {
     requires java.sql;
 
 
-    opens com.sportify.sportifyui to javafx.fxml;
-    exports com.sportify.sportifyui;
+    opens com.sportify.utilitiesui to javafx.fxml;
+    exports com.sportify.utilitiesui;
     exports com.sportify.login;
     exports com.sportify.login.exceptions;
     exports com.sportify.signup.exceptions;
     opens com.sportify.login to javafx.fxml;
     exports com.sportify.user;
     opens com.sportify.user to javafx.fxml;
-    exports com.sportify.CreateMatch;
-    opens com.sportify.CreateMatch to javafx.fxml;
+    exports com.sportify.bookmatch;
+    opens com.sportify.bookmatch to javafx.fxml;
+    exports com.sportify.addsportcenter;
+    opens com.sportify.addsportcenter to javafx.fxml;
+    exports com.sportify.signup;
+    opens com.sportify.signup to javafx.fxml;
 }

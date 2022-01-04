@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@SignUpStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.signup.SignUpView">
+   <children>
+       <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
+          <children>
+              <Label layoutX="14.0" layoutY="11.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Sportify">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <Label layoutX="628.0" layoutY="12.0" style="-fx-text-fill: #212529;" text="Home">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+          </children>
+   
+       </Pane>
+       <Label fx:id="sportifyLabel" layoutX="6.0" layoutY="32.0" prefHeight="551.0" prefWidth="1289.0" text="Sportify" textAlignment="CENTER" AnchorPane.bottomAnchor="148.0" AnchorPane.topAnchor="32.0">
+           <font>
+               <Font size="430.0" />
+           </font>
+       </Label>
+       <Pane layoutX="357.0" layoutY="102.0" prefHeight="583.0" prefWidth="587.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;">
+          <children>
+              <Line endX="351.0" layoutX="234.0" layoutY="46.0" startX="-232.0" strokeWidth="2.0" />
+              <Label layoutX="251.0" layoutY="2.0" style="-fx-text-fill: #212529;" text="Sign Up">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <Label layoutX="71.0" layoutY="77.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Email">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <TextField fx:id="emailTextField" layoutX="71.0" layoutY="127.0" prefHeight="31.0" prefWidth="446.0" promptText="email@example.com" />
+              <Label layoutX="71.0" layoutY="175.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Password">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <PasswordField fx:id="passwordField1" layoutX="71.0" layoutY="225.0" prefHeight="31.0" prefWidth="446.0" promptText="********" />
+              <Button fx:id="signUpButton" layoutX="229.0" layoutY="453.0" mnemonicParsing="false" onAction="#signUserUp" prefHeight="33.0" prefWidth="130.0" text="Sign Up">
+                  <font>
+                      <Font name="Playball Regular" size="18.0" />
+                  </font>
+              </Button>
+              <Label layoutX="71.0" layoutY="273.0" prefHeight="40.0" prefWidth="226.0" style="-fx-text-fill: #212529;" text="Confirm password">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <PasswordField fx:id="passwordField2" layoutX="71.0" layoutY="323.0" prefHeight="31.0" prefWidth="446.0" promptText="********" />
+              <Button fx:id="goBackButton" layoutX="255.0" layoutY="512.0" mnemonicParsing="false" onAction="#goToLogIn" prefHeight="49.0" prefWidth="79.0" text="Back">
+                  <font>
+                      <Font name="Playball Regular" size="18.0" />
+                  </font>
+              </Button>
+              <CheckBox fx:id="isOwnerCheckBox" layoutX="195.0" layoutY="366.0" mnemonicParsing="false" text="Sport Center owner" />
+            <Label fx:id="statusLabel" layoutX="71.0" layoutY="412.0" text="Label" />
+          </children>
+       </Pane>
+   </children>
+
+</AnchorPane>

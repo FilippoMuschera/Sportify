@@ -38,14 +38,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sportify.login" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.StartUI">
     <configuration name="StartUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sportify.sportifyui.StartUI" />
+      <option name="MAIN_CLASS_NAME" value="com.sportify.utilitiesui.StartUI" />
       <module name="Sportify" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sportify.CreateMatch.*" />
+          <option name="PATTERN" value="com.sportify.bookmatch.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,7 +109,9 @@
       <workItem from="1641124859726" duration="10732000" />
       <workItem from="1641149899790" duration="2478000" />
       <workItem from="1641152564496" duration="627000" />
-      <workItem from="1641204059191" duration="8842000" />
+      <workItem from="1641204059191" duration="11625000" />
+      <workItem from="1641291424545" duration="2632000" />
+      <workItem from="1641295460208" duration="7838000" />
     </task>
     <servers />
   </component>

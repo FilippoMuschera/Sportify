@@ -1,7 +1,7 @@
 package com.sportify.addsportcenter;
 
 import com.sportify.sportcenter.AddSportCenterDAO;
-import com.sportify.sportifyui.UIController;
+import com.sportify.utilitiesui.UIController;
 import com.sportify.user.UserEntity;
 
 public class AddSportCenterController {

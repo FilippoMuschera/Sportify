@@ -2,7 +2,9 @@ package com.sportify.login;
 
 import com.sportify.login.exceptions.IncorrectPasswordException;
 import com.sportify.login.exceptions.UserNotFoundException;
-import com.sportify.sportifyui.UIController;
+import com.sportify.user.UserPreferences;
+import com.sportify.user.UserPreferencesDAO;
+import com.sportify.utilitiesui.UIController;
 import com.sportify.user.UserDAO;
 import com.sportify.user.UserEntity;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
@@ -20,6 +22,9 @@ public class LogInController {
         UserDAO dao = UserDAO.getInstance();
 
         UserEntity user = dao.getUser(bean.getEmail());
+        UserPreferencesDAO preferencesDAO = UserPreferencesDAO.getInstance();
+        UserPreferences preferences = preferencesDAO.getUserPreferencesFromDB(bean.getEmail());
+        user.setPreferences(preferences);
 
         String decryptedPassword = this.decryptPassword(user.getPassword());
 

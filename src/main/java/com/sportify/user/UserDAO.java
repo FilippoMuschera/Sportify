@@ -3,13 +3,9 @@ package com.sportify.user;
 import com.sportify.login.exceptions.UserNotFoundException;
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.Properties;
 
-
+import static com.sportify.utilitydb.DBConnector.getConnector;
 
 
 public class UserDAO {
@@ -29,7 +25,8 @@ public class UserDAO {
 
     public UserEntity getUser(String email) throws UserNotFoundException {
 
-        try (Connection con = getConnector()) {
+        try  {
+            Connection con = getConnector();
             if (con == null)
                 throw new SQLException();
             String query = "SELECT Email, Password, Type FROM Users WHERE Email = ?;";
@@ -74,24 +71,6 @@ public class UserDAO {
 
     }
 
-    private Connection getConnector() throws SQLException {
-        Connection con = null;
 
-        try (InputStream input = new FileInputStream("src/main/resources/com.sportify.login/DBOnline.properties")) {
-
-            Properties prop = new Properties();
-
-            // carica il file properties
-            prop.load(input);
-            //ritorna la connessione al DB specificato nel file DB.properties
-            con = DriverManager.getConnection(prop.getProperty("db.url"), prop.getProperty("db.user"), prop.getProperty("db.psw"));
-
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return con;
-    }
 
 }

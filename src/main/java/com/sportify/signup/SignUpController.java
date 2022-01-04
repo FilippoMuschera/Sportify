@@ -1,7 +1,7 @@
 package com.sportify.signup;
 
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
-import com.sportify.sportifyui.UIController;
+import com.sportify.utilitiesui.UIController;
 import com.sportify.user.UserDAO;
 import com.sportify.user.UserEntity;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;

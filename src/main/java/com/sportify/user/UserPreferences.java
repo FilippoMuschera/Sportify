@@ -5,23 +5,31 @@ import java.util.Map;
 
 public class UserPreferences {
 
-    private Integer sortingDistance;        //TODO cambiare con le coordinate?
-    private Map<String, Integer> map = new HashMap<String, Integer>();
+    private int radiusOfInterest;        
+    private Map<String, Boolean> sportsMap = new HashMap<String, Boolean>();
+    private boolean notifications;
 
-    public UserPreferences() {
-        this.sortingDistance = 0;
-        this.map.put("Basket",0);
-        this.map.put("Calcio",0);
-        this.map.put("Padel",0);
-        this.map.put("Tennis",0);
+    public UserPreferences(int radiusOfInterest, boolean b, boolean f, boolean p, boolean t, boolean n) {
+        this.radiusOfInterest = radiusOfInterest;
+        this.sportsMap.put("Basket",b);
+        this.sportsMap.put("Football",f);
+        this.sportsMap.put("Padel",p);
+        this.sportsMap.put("Tennis",t);
+        this.notifications = n;
+
+
     }
 
     public Integer getSortingDistance() {
-        return sortingDistance;
+        return this.radiusOfInterest;
     }
 
-    public Map<String, Integer> getSports() {
-        return map;
+    public boolean isNotifications() {
+        return notifications;
+    }
+
+    public Map<String, Boolean> getSports() {
+        return this.sportsMap;
     }
 
 }
