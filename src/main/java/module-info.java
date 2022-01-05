@@ -27,4 +27,6 @@ module com.sportify.sportifyui {
     opens com.sportify.addsportcenter to javafx.fxml;
     exports com.sportify.signup;
     opens com.sportify.signup to javafx.fxml;
+    exports com.sportify.settings;
+    opens com.sportify.settings to javafx.fxml;
 }

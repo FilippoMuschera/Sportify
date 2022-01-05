@@ -6,21 +6,62 @@ import java.util.Map;
 public class UserPreferences {
 
     private int radiusOfInterest;        
-    private Map<String, Boolean> sportsMap = new HashMap<String, Boolean>();
+    private Map<String, Boolean> sportsMap = new HashMap<>();
     private boolean notifications;
+    private String userAddress;
+    private static final  String BASKET = "Basket";
+    private static final String FOOTBALL = "Football";
+    private static final String PADEL = "Padel";
+    private static final String TENNIS = "Tennis";
 
-    public UserPreferences(int radiusOfInterest, boolean b, boolean f, boolean p, boolean t, boolean n) {
+    public UserPreferences(int radiusOfInterest, boolean b, boolean f, boolean p, boolean t, boolean n, String addr) {
         this.radiusOfInterest = radiusOfInterest;
-        this.sportsMap.put("Basket",b);
-        this.sportsMap.put("Football",f);
-        this.sportsMap.put("Padel",p);
-        this.sportsMap.put("Tennis",t);
+        this.sportsMap.put(BASKET,b);
+        this.sportsMap.put(FOOTBALL,f);
+        this.sportsMap.put(PADEL,p);
+        this.sportsMap.put(TENNIS,t);
         this.notifications = n;
+        this.userAddress = addr;
 
 
     }
 
-    public Integer getSortingDistance() {
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public void setRadiusOfInterest(int radiusOfInterest) {
+        this.radiusOfInterest = radiusOfInterest;
+    }
+
+    public void setNotifications(boolean notifications) {
+        this.notifications = notifications;
+    }
+
+    public void setBasket(boolean b){
+        this.sportsMap.put(BASKET, b);
+    }
+    
+    public void setFootball(boolean f){
+        this.sportsMap.put(FOOTBALL,f);
+
+    }
+    
+    public void setPadel(boolean p){
+        this.sportsMap.put(PADEL,p);
+
+    }
+    
+    public void setTennis(boolean t){
+        this.sportsMap.put(TENNIS,t);
+
+    }
+    
+    public int getSortingDistance() {
         return this.radiusOfInterest;
     }
 
@@ -29,19 +70,19 @@ public class UserPreferences {
     }
 
     public boolean getBasket() {
-        return this.sportsMap.get("Basket");
+        return this.sportsMap.get(BASKET);
     }
 
     public boolean getFootball() {
-        return this.sportsMap.get("Football");
+        return this.sportsMap.get(FOOTBALL);
     }
 
     public boolean getTennis() {
-        return this.sportsMap.get("Tennis");
+        return this.sportsMap.get(TENNIS);
     }
 
     public boolean getPadel() {
-        return this.sportsMap.get("Padel");
+        return this.sportsMap.get(PADEL);
     }
 
 }

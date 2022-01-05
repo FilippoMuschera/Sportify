@@ -1,10 +1,14 @@
-package com.sportify.utilitiesui;
+package com.sportify.settings;
 
 import com.sportify.user.UserEntity;
+import com.sportify.utilitiesui.UIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.paint.Color;
 import org.controlsfx.control.ToggleSwitch;
 
 import java.io.IOException;
@@ -12,6 +16,14 @@ import java.io.IOException;
 
 public class SettingsViewController {
 
+    @FXML
+    private TextField addrText;
+    @FXML
+    private TextField cityText;
+    @FXML
+    private TextField capText;
+    @FXML
+    private Label saveLabel;
     @FXML
     private ToggleButton radius3;
     @FXML
@@ -72,6 +84,43 @@ public class SettingsViewController {
        basketCB.setSelected(user.getPreferences().getBasket());
        tennisCB.setSelected(user.getPreferences().getTennis());
 
+       String[] addressArray = user.getPreferences().getUserAddress().split(", ");
+       addrText.setText(addressArray[0]);
+       cityText.setText(addressArray[1]);
+       capText.setText(addressArray[2]);
+
+       saveLabel.setTextFill(Color.rgb(33,37,41));
+       saveLabel.setText("Your current address is: " + user.getPreferences().getUserAddress());
+
+
+
+    }
+
+    public void saveSettings() {
+        SettingsBean bean = new SettingsBean();
+        int radius = 0;
+        if (radius3.isSelected())
+            radius = 3;
+        else if (radius5.isSelected())
+            radius = 5;
+        else if (radius10.isSelected())
+            radius = 10;
+        bean.setRadius(radius);
+        bean.setNotifications(notificationsSwitch.isSelected());
+        bean.setBasket(basketCB.isSelected());
+        bean.setFootball(footballCB.isSelected());
+        bean.setTennis(tennisCB.isSelected());
+        bean.setPadel(padelCB.isSelected());
+        bean.setAddress(addrText.getText());
+        bean.setCity(cityText.getText());
+        bean.setCap(capText.getText());
+        try {
+            bean.saveSettings();
+            this.initialize();
+        } catch (IllegalArgumentException e){
+            saveLabel.setTextFill(Color.RED);
+            saveLabel.setText("Invalid CAP, try again!");
+        }
 
 
     }

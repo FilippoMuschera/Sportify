@@ -43,7 +43,7 @@ public class SignUpView {
                 bean.setOwner(isOwnerCheckBox.isSelected());
                 bean.executeSignUp();
                 UIController controller = UIController.getUIControllerInstance();
-                controller.showHomeScreen(actionEvent);
+                controller.showHomeScreen(actionEvent); //TODO VALUTARE SETTINGS + etichetta "Success"
             } catch (DifferentPasswordException e) {
                 statusLabel.setText("Passwords are not the same, check them and try again");
             } catch (EmailNotValidException e) {

@@ -31,7 +31,7 @@ public class UserPreferencesDAO {
                 rs.next(); //apro il risultato della query
                 UserPreferences preferences = new UserPreferences(rs.getInt("InterestRadius"), rs.getBoolean("Basket"),
                         rs.getBoolean("Football"), rs.getBoolean("Padel"), rs.getBoolean("Tennis"),
-                        rs.getBoolean("Notifications"));
+                        rs.getBoolean("Notifications"), rs.getString("Address"));
                 rs.close();
                 return preferences;
             }
@@ -41,6 +41,40 @@ public class UserPreferencesDAO {
         }
 
         return null;
+
+
+    }
+
+    public void saveUserPreferencesToDB(String email, UserPreferences preferences, boolean isAnUpdate){
+        try  {
+            Connection con = getConnector();
+            if (con == null)
+                throw new SQLException();
+            String queryBody = "`sql11460748`.`UsersPreferences` SET `InterestRadius` = ?, `Notifications` = ?, `Football` = ?, `Padel` = ?, `Basket` = ?, `Tennis` = ?, `Address` = ? WHERE (`Email` = ?);";
+            String query;
+            if (isAnUpdate)
+                query = "UPDATE " + queryBody;
+            else
+                query = "INSERT " + queryBody;
+            try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+                preparedStatement.setInt(1, preferences.getSortingDistance());
+                preparedStatement.setBoolean(2, preferences.isNotifications());
+                preparedStatement.setBoolean(3, preferences.getFootball());
+                preparedStatement.setBoolean(4, preferences.getPadel());
+                preparedStatement.setBoolean(5, preferences.getBasket());
+                preparedStatement.setBoolean(6, preferences.getTennis());
+                preparedStatement.setString(7, preferences.getUserAddress());
+                preparedStatement.setString(8, email);
+
+                preparedStatement.executeUpdate();
+
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
 
     }
