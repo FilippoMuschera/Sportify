@@ -78,7 +78,7 @@
     </Button>
     <Pane layoutX="149.0" layoutY="76.0" prefHeight="528.0" prefWidth="1003.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: rgba(250, 249, 249, 0.8);">
         <Line endX="900.0" layoutX="101.0" layoutY="46.0" startX="-100.0" strokeWidth="2.0" />
-        <Label layoutX="471.0" layoutY="7.0" style="-fx-text-fill: #212529;" text="Your Preferences">
+        <Label layoutX="397.0" layoutY="7.0" style="-fx-text-fill: #212529;" text="Your Preferences">
             <font>
                 <Font size="28.0" />
             </font>
@@ -132,6 +132,7 @@
             </graphic>
         </Button>
       <Label fx:id="saveLabel" layoutX="56.0" layoutY="469.0" prefHeight="35.0" prefWidth="772.0" text="Label" />
+      <Label fx:id="successSaveLabel" layoutX="939.0" layoutY="460.0" prefHeight="50.0" prefWidth="50.0" text="✓" />
     </Pane>
 
 </AnchorPane>

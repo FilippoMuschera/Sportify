@@ -1,7 +1,6 @@
 package com.sportify.utilitiesui;
 
 import com.sportify.user.UserEntity;
-import com.sportify.user.UserPreferences;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +23,6 @@ public class UIController{
 
     private UserEntity user;
 
-    private UserPreferences preferences;
 
 
      protected UIController(){ //Singleton GoF Pattern applied to UIController
@@ -145,15 +143,6 @@ public class UIController{
     public UserEntity getUser() {
          return this.user;
     }
-    //TODO fare in modo che da qualche parte questi 2 metodi sotto siano usati
-    //e che creino una UserPreferences class
 
-    /*public void setUserPreferences(UserPreferences preferences) {
-        this.preferences = preferences;
-    }*/
-
-    /*public UserPreferences getUserPreferences() {
-        return this.preferences;
-    }*/
 }
 

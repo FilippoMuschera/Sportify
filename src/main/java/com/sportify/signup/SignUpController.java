@@ -28,10 +28,6 @@ public class SignUpController {
 
         user.setPreferences(preferences);
 
-
-
-        //TODO completare sign up
-
         //Se non vengono generate eccezioni allora viene eseguito il codice sottostante
         UIController viewController = UIController.getUIControllerInstance();
         viewController.setUser(user);

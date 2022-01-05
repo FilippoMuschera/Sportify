@@ -40,6 +40,8 @@ public class SettingsViewController {
     private CheckBox tennisCB;
     @FXML
     private CheckBox basketCB;
+    @FXML
+    private Label successSaveLabel;
 
 
 
@@ -91,6 +93,7 @@ public class SettingsViewController {
 
        saveLabel.setTextFill(Color.rgb(33,37,41));
        saveLabel.setText("Your current address is: " + user.getPreferences().getUserAddress());
+       successSaveLabel.setOpacity(0);
 
 
 
@@ -117,6 +120,7 @@ public class SettingsViewController {
         try {
             bean.saveSettings();
             this.initialize();
+            successSaveLabel.setOpacity(1);
         } catch (IllegalArgumentException e){
             saveLabel.setTextFill(Color.RED);
             saveLabel.setText("Invalid CAP, try again!");

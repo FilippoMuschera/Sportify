@@ -13,7 +13,7 @@ public class DBConnector {
     private static Connection con = null;
 
     public static Connection getConnector() throws SQLException {
-        if (con != null)
+        if (con != null && !DBConnector.con.isClosed())
             return DBConnector.con;
 
         try (InputStream input = new FileInputStream("src/main/resources/com.sportify.login/DBOnline.properties")) {

@@ -48,14 +48,10 @@ public class UserPreferencesDAO {
     public void saveUserPreferencesToDB(String email, UserPreferences preferences, boolean isAnUpdate){
         try  {
             Connection con = getConnector();
-            if (con == null)
-                throw new SQLException();
-            String queryBody = "`sql11460748`.`UsersPreferences` SET `InterestRadius` = ?, `Notifications` = ?, `Football` = ?, `Padel` = ?, `Basket` = ?, `Tennis` = ?, `Address` = ? WHERE (`Email` = ?);";
-            String query;
-            if (isAnUpdate)
-                query = "UPDATE " + queryBody;
-            else
-                query = "INSERT " + queryBody;
+
+            String queryUpdate = "UPDATE `sql11460748`.`UsersPreferences` SET `InterestRadius` = ?, `Notifications` = ?, `Football` = ?, `Padel` = ?, `Basket` = ?, `Tennis` = ?, `Address` = ? WHERE (`Email` = ?);";
+            String queryInsert = "INSERT INTO `sql11460748`.`UsersPreferences` (`InterestRadius`, `Notifications`, `Football`, `Padel`, `Basket`, `Tennis`, `Address`, `Email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            String query = (isAnUpdate ? queryUpdate : queryInsert);
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
                 preparedStatement.setInt(1, preferences.getSortingDistance());
                 preparedStatement.setBoolean(2, preferences.isNotifications());

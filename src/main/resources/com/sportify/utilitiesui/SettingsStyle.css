@@ -13,6 +13,12 @@
     -fx-text-fill: #212529
 }
 
+#successSaveLabel{
+    -fx-font-size: 24;
+    -fx-opacity: 0;
+    -fx-text-fill: green;
+}
+
 .button{
     -fx-background-color: #FAF9F9;
     -fx-background-radius: 50;
