@@ -4,6 +4,7 @@ import com.sportify.user.UserPreferences;
 import com.sportify.utilitiesui.UIController;
 import javafx.event.ActionEvent;
 import com.sportify.user.UserEntity;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -19,8 +20,9 @@ public class BookMatchViewController {
 
     @FXML
     public void initialize() {
-        UIController control = UIController.getUIControllerInstance();
-        UserEntity user = control.getUser();
+        UIController generalController = UIController.getUIControllerInstance();
+        BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
+        UserEntity user = generalController.getUser();
         Integer numOfSports = 0;
         FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("BookMatch.fxml"));
 
@@ -31,6 +33,12 @@ public class BookMatchViewController {
             basketButton.setPrefSize(150,75);
             basketButton.setLayoutY(300);
             basketButton.setLayoutX(200);
+            basketButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    bookMatchController.displaySportCenters("Basket");
+                }
+            });
             anchorPaneBookMatch.getChildren().add(basketButton);
 
         }
@@ -44,6 +52,12 @@ public class BookMatchViewController {
             footballButton.setPrefSize(150,75);
             footballButton.setLayoutY(300);
             footballButton.setLayoutX(position);
+            footballButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    bookMatchController.displaySportCenters("Football");
+                }
+            });
             anchorPaneBookMatch.getChildren().add(footballButton);
 
         }
@@ -56,6 +70,12 @@ public class BookMatchViewController {
             tennisButton.setPrefSize(150,75);
             tennisButton.setLayoutY(300);
             tennisButton.setLayoutX(position);
+            tennisButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    bookMatchController.displaySportCenters("Tennis");
+                }
+            });
             anchorPaneBookMatch.getChildren().add(tennisButton);
 
         }
@@ -68,6 +88,12 @@ public class BookMatchViewController {
             padelButton.setPrefSize(150,75);
             padelButton.setLayoutY(300);
             padelButton.setLayoutX(position);
+            padelButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    bookMatchController.displaySportCenters("Padel");
+                }
+            });
             anchorPaneBookMatch.getChildren().add(padelButton);
 
         }
