@@ -1,5 +1,6 @@
 package com.sportify.settings;
 
+import com.sportify.settings.exceptions.AddressNotValidException;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 import javafx.event.ActionEvent;
@@ -121,6 +122,9 @@ public class SettingsViewController {
             bean.saveSettings();
             this.initialize();
             successSaveLabel.setOpacity(1);
+        } catch (AddressNotValidException e) {
+            saveLabel.setTextFill(Color.RED);
+            saveLabel.setText("Invalid address, try again");
         } catch (IllegalArgumentException e){
             saveLabel.setTextFill(Color.RED);
             saveLabel.setText("Invalid CAP, try again!");

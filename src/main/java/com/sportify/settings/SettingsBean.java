@@ -1,5 +1,8 @@
 package com.sportify.settings;
 
+import com.sportify.settings.exceptions.AddressNotValidException;
+
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,7 +18,7 @@ public class SettingsBean {
     private String cap;
 
 
-    public void saveSettings(){
+    public void saveSettings() throws AddressNotValidException {
         Pattern validCAP = Pattern.compile("^[0-9]{5}$"); //valida sintatticamente il CAP
         Matcher m = validCAP.matcher(this.cap);
         if (!m.find()){
