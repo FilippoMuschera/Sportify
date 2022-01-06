@@ -1,5 +1,8 @@
 package com.sportify.addsportcenter;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class AddSportCenterBean {
 
     private String firstName;
@@ -11,9 +14,7 @@ public class AddSportCenterBean {
     private int numOfBasketCourts;
     private int numOfTennisCourts;
     private int openingHour;
-    private int openingMinutes;
     private int closingHour;
-    private int closingMinutes;
 
 
     public void addSportCenter(){
@@ -30,9 +31,27 @@ public class AddSportCenterBean {
         if (this.validFields(numOfFootballFields, numOfTennisCourts, numOfPadelCourts, numOfBasketCourts)){
             throw new IllegalArgumentException("Number of fields/courts can't be lower than 0!");
         }
-        if (!this.validTime(openingHour, openingMinutes, closingHour, closingMinutes)){
+        if (!this.validTime(openingHour, closingHour)){
             throw new IllegalArgumentException("Invalid time field");
         }
+        if (!this.validateAddress())
+            throw new IllegalArgumentException("Malformed address");
+        if(!this.validateCAP())
+            throw new IllegalArgumentException("Invalid CAP");
+    }
+
+    private boolean validateCAP() {
+        Pattern validCAP = Pattern.compile("^[0-9]{5}$"); //valida sintatticamente il CAP
+        //Analizza il 3o pezzo dell'address (è già stato controllato che ce ne siano esattamente tre), rimuove gli spazi
+        //in eccesso con "trim()" e lo confronta con la regex
+        Matcher m = validCAP.matcher(this.sportCenterAddress.split(",")[2].trim());
+        return m.find();
+    }
+
+    private boolean validateAddress() {
+        String[] arrayString = this.sportCenterAddress.split(",");
+        return arrayString.length == 3;
+
     }
 
     private boolean validFields(int... fields){
@@ -43,10 +62,8 @@ public class AddSportCenterBean {
         return true;
     }
 
-    private boolean validTime(int openH, int openM, int closingH, int closingM){
+    private boolean validTime(int openH, int closingH){
         if (openH < 0 || openH > 23 || closingH < 0 || closingH > 23)
-            return false;
-        if (openM < 0 || openM > 59 || closingM < 0 || closingM > 59)
             return false;
         if (openH < closingH)
             return false;
@@ -98,17 +115,11 @@ public class AddSportCenterBean {
         this.openingHour = openingHour;
     }
 
-    public void setOpeningMinutes(int openingMinutes) {
-        this.openingMinutes = openingMinutes;
-    }
 
     public void setClosingHour(int closingHour) {
         this.closingHour = closingHour;
     }
 
-    public void setClosingMinutes(int closingMinutes) {
-        this.closingMinutes = closingMinutes;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -146,15 +157,10 @@ public class AddSportCenterBean {
         return openingHour;
     }
 
-    public int getOpeningMinutes() {
-        return openingMinutes;
-    }
 
     public int getClosingHour() {
         return closingHour;
     }
 
-    public int getClosingMinutes() {
-        return closingMinutes;
-    }
+
 }

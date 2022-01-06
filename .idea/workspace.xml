@@ -59,16 +59,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EncryptTest.encrypt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Sportify" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="EncryptTest" />
-      <option name="METHOD_NAME" value="encrypt" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IntTest.IntTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="Sportify" />
       <option name="PACKAGE_NAME" value="" />
@@ -89,6 +79,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IntTest.testAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sportify" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntTest" />
+      <option name="METHOD_NAME" value="testAddress" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntTest.timeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sportify" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntTest" />
+      <option name="METHOD_NAME" value="timeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestUserDAO.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sportify" />
       <option name="PACKAGE_NAME" value="" />
@@ -102,9 +112,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.IntTest.timeTest" />
+        <item itemvalue="JUnit.IntTest.testAddress" />
         <item itemvalue="JUnit.IntTest.capCheck" />
         <item itemvalue="JUnit.TestUserDAO.testAddUser" />
-        <item itemvalue="JUnit.EncryptTest.encrypt" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +141,7 @@
       <workItem from="1641410609935" duration="1878000" />
       <workItem from="1641412658030" duration="655000" />
       <workItem from="1641464073607" duration="3752000" />
-      <workItem from="1641469193009" duration="908000" />
+      <workItem from="1641469193009" duration="14984000" />
     </task>
     <servers />
   </component>

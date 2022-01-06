@@ -21,7 +21,7 @@ public class Geolocator {
     private static final String GEOCODING_RESOURCE = "https://geocode.search.hereapi.com/v1/geocode";
     private static final String API_KEY = Geolocator.getApiKey();
 
-    public static String getCoordinates(String address) {
+    public static double[] getCoordinates(String address) {
 
         HttpClient httpClient = HttpClient.newHttpClient();
 
@@ -42,10 +42,10 @@ public class Geolocator {
         }
 
 
-        return null;
+        return new double[0];
     }
 
-    private static String parseResponse(String response) throws JsonProcessingException {
+    private static double[] parseResponse(String response) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode responseJsonNode = mapper.readTree(response);
 
@@ -55,11 +55,11 @@ public class Geolocator {
 
         JsonNode item = items.get(0);
         if (item == null)
-            return null;
+            return new double[0];
         JsonNode position = item.get("position");
-        String lat = position.get("lat").asText();
-        String lng = position.get("lng").asText();
-        return (lat + ", " + lng);
+        double lat = position.get("lat").asDouble();
+        double lng = position.get("lng").asDouble();
+        return new double[]{lat, lng};
 
     }
 

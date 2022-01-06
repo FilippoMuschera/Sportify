@@ -13,7 +13,7 @@ public class SettingsController {
 
         String userAddress = bean.getAddress() + ", " + bean.getCity() + ", " + bean.getCap();
 
-        if (Geolocator.getCoordinates(userAddress) == null)
+        if (Geolocator.getCoordinates(userAddress).length == 0)
             throw new AddressNotValidException();
 
         UserEntity user = UIController.getUIControllerInstance().getUser();

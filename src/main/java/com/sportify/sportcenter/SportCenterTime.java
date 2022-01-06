@@ -7,9 +7,9 @@ public class SportCenterTime {
     private final LocalTime openingTime;
     private final LocalTime closingTime;
 
-    SportCenterTime (int openH, int openM, int closingH, int closingM){
-        this.openingTime = LocalTime.of(openH, openM);
-        this.closingTime = LocalTime.of(closingH, closingM);
+    public SportCenterTime(int openH, int closingH){
+        this.openingTime = LocalTime.of(openH, 0); //tutti gli orari sono interi (es.: 10:00)
+        this.closingTime = LocalTime.of(closingH, 0); //tutti gli orari sono interi (es.: 10:00)
     }
 
     public LocalTime getOpeningTime() {

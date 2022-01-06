@@ -1,14 +1,29 @@
 package com.sportify.sportcenter.courts;
 
-import com.sportify.sportcenter.SportCenterEntity;
+
+import java.util.List;
 
 public abstract class SportCourt {
+
+    int courtID;
     String sport;
-    SportCenterEntity sportCenter;
-   //TODO dichiarare qui il tipo di dato che rappresenterà le prenotazioni per il singolo campo
+    List<TimeSlot> bookingTable;
+
+    public int getCourtID() {
+        return courtID;
+    }
+
+    public String getSport() {
+        return sport;
+    }
+
+    public List<TimeSlot> getBookingTable() {
+        return bookingTable;
+    }
+
+    public abstract void bookTimeSlot();
 
 
-   /*TODO dichiarare metodi astratti che ogni tipo di campo dovrà implementare + metodi per gestire la creazione e
-    * gestione delle prenotazioni
-   */
+
+
 }

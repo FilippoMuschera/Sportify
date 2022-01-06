@@ -7,6 +7,15 @@ public class SportCenterInfo {
     private String sportCenterName;
     private String sportCenterAddress;
 
+
+    public SportCenterInfo(String ownerEmail, String ownerFirstName, String ownerLastName, String sportCenterName, String sportCenterAddress) {
+        this.ownerEmail = ownerEmail;
+        this.ownerFirstName = ownerFirstName;
+        this.ownerLastName = ownerLastName;
+        this.sportCenterName = sportCenterName;
+        this.sportCenterAddress = sportCenterAddress;
+    }
+
     public String getOwnerEmail() {
         return ownerEmail;
     }
@@ -27,23 +36,5 @@ public class SportCenterInfo {
         return sportCenterAddress;
     }
 
-    public void setOwnerEmail(String ownerEmail) {
-        this.ownerEmail = ownerEmail;
-    }
 
-    public void setOwnerFirstName(String ownerFirstName) {
-        this.ownerFirstName = ownerFirstName;
-    }
-
-    public void setOwnerLastName(String ownerLastName) {
-        this.ownerLastName = ownerLastName;
-    }
-
-    public void setSportCenterName(String sportCenterName) {
-        this.sportCenterName = sportCenterName;
-    }
-
-    public void setSportCenterAddress(String sportCenterAddress) {
-        this.sportCenterAddress = sportCenterAddress;
-    }
 }
