@@ -1,24 +1,19 @@
 package com.sportify.bookmatch.statemachine;
 
 import com.sportify.bookmatch.BookMatchController;
+import javafx.collections.ObservableList;
+
 
 public class HourSlotState implements BMStateInterface {
 
-    //array di HourSlot
-
-    private static HourSlotState singleHSSInstance = null;
-
-    protected HourSlotState(){
-        //inizializza array HourSlot con le DAO
-    }
-
-    public static HourSlotState getHSSInstance(){
-        if (HourSlotState.singleHSSInstance == null){
-            HourSlotState.singleHSSInstance = new HourSlotState();
-        }
-        return HourSlotState.singleHSSInstance;
-    }
+    ObservableList hourSlotList;
 
     @Override
-    public void displayView(){}
+    public ObservableList displayView(){
+        return hourSlotList;
+    }
+    @Override
+    public void entry(String court){
+        //recupera gli hour slot con le DAO
+    }
 }

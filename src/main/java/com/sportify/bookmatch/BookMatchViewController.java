@@ -1,27 +1,33 @@
 package com.sportify.bookmatch;
 
+import com.sportify.bookmatch.cells.CourtCell;
+import com.sportify.bookmatch.cells.HourSlotCell;
 import com.sportify.utilitiesui.UIController;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import com.sportify.user.UserEntity;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
+import com.sportify.bookmatch.cells.CourtCell;
+import com.sportify.bookmatch.cells.SportCenterCell;
 
 //UIController non carica la schermata SportCentersView.fxml non so perche
 
 public class BookMatchViewController {
 
     @FXML
-    public AnchorPane anchorPaneBookMatch;
+    static AnchorPane anchorPaneBookMatch;
 
     @FXML
     public void initialize() {
         UIController generalController = UIController.getUIControllerInstance();
         BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
         UserEntity user = generalController.getUser();
-        Integer numOfSports = 0;
+        int numOfSports = 0;
 
         if (user.getPreferences().getBasket()) {
 
@@ -42,7 +48,7 @@ public class BookMatchViewController {
 
         if (user.getPreferences().getFootball()) {
 
-            Integer position = 200 + numOfSports*150 + numOfSports*100;
+            int position = 200 + numOfSports*150 + numOfSports*100;
             numOfSports++;
             Button footballButton = new Button("Football");
             footballButton.setPrefSize(150,75);
@@ -59,7 +65,7 @@ public class BookMatchViewController {
         }
         if (user.getPreferences().getTennis()) {
 
-            Integer position = 200 + numOfSports*150 + numOfSports*100;
+            int position = 200 + numOfSports*150 + numOfSports*100;
             numOfSports++;
             Button tennisButton = new Button("Tennis");
             tennisButton.setPrefSize(150,75);
@@ -76,7 +82,7 @@ public class BookMatchViewController {
         }
         if (user.getPreferences().getPadel()) {
 
-            Integer position = 200 + numOfSports*150 + numOfSports*100;
+            int position = 200 + numOfSports*150 + numOfSports*100;
             numOfSports++;
             Button padelButton = new Button("Padel");
             padelButton.setPrefSize(150,75);
@@ -85,6 +91,7 @@ public class BookMatchViewController {
             padelButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
+
                     bookMatchController.startStateMachine("Padel");
                 }
             });
@@ -93,14 +100,23 @@ public class BookMatchViewController {
         }
     }
 
-    public static void displaySportCenters(ActionEvent actionEvent) throws IOException {
-        UIController c = UIController.getUIControllerInstance();
-        //c.showSportCenters(actionEvent);
+    public static void displaySportCenters(ObservableList list) {
+        ListView<String> sportCentersListView = new ListView<>(list);
+        sportCentersListView.setCellFactory(param -> new SportCenterCell());
+        anchorPaneBookMatch.getChildren().add(sportCentersListView);
     }
 
-    public void displayCourts(){};
+    public void displayCourts(ObservableList list){
+        ListView courtList = new ListView(list);
+        courtList.setCellFactory(param -> new CourtCell());
+        anchorPaneBookMatch.getChildren().add(courtList);
+    }
 
-    public void displayHourSlots(){};
+    public void displayHourSlots(ObservableList list){
+        ListView hourSlotList = new ListView(list);
+        hourSlotList.setCellFactory(param -> new HourSlotCell());
+        anchorPaneBookMatch.getChildren().add(hourSlotList);
+    }
 
     public void showSettings(ActionEvent actionEvent) throws IOException {
         UIController c = UIController.getUIControllerInstance();

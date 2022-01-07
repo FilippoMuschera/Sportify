@@ -1,10 +1,22 @@
 package com.sportify.bookmatch.statemachine;
 
+import javafx.collections.ObservableList;
+
+
 public class CourtState implements BMStateInterface {
 
-    //array di Courts
+    ObservableList courtList;
 
     @Override
-    public void displayView(){}
+    public ObservableList displayView(){
+        //modifica la schermata
+        return courtList;
+    }
+
+    @Override
+    public void entry(String sportCenter){
+        //recupera i court con le DAO
+    }
+
 
 }

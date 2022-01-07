@@ -42,6 +42,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sportify.bookmatch.cells" />
       <recent name="com.sportify.login" />
     </key>
   </component>
@@ -51,7 +52,7 @@
       <module name="Sportify" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sportify.bookmatch.*" />
+          <option name="PATTERN" value="com.sportify.bookmatch.cells.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
