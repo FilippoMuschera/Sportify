@@ -1,12 +1,11 @@
 package com.sportify.addsportcenter;
 
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AddSportCenterBean {
 
-    private String firstName;
-    private String lastName;
     private String sportCenterName;
     private String sportCenterAddress;
     private int numOfFootballFields;
@@ -17,18 +16,11 @@ public class AddSportCenterBean {
     private int closingHour;
 
 
-    public void addSportCenter(){
-        this.validateInput();
-        AddSportCenterController controller = new AddSportCenterController();
-        controller.addSportCenter(this);
-    }
-
-    private void validateInput(){
-        if (this.firstName.isEmpty() || this.lastName.isEmpty() || this.sportCenterAddress.isEmpty()
-        || this.sportCenterName.isEmpty()) {
+    public void validateInput() throws IllegalArgumentException{
+        if (this.sportCenterAddress.isEmpty() || this.sportCenterName.isEmpty()) {
             throw new IllegalArgumentException("There is an empty field!");
         }
-        if (this.validFields(numOfFootballFields, numOfTennisCourts, numOfPadelCourts, numOfBasketCourts)){
+        if (!this.validFields(numOfFootballFields, numOfTennisCourts, numOfPadelCourts, numOfBasketCourts)){
             throw new IllegalArgumentException("Number of fields/courts can't be lower than 0!");
         }
         if (!this.validTime(openingHour, closingHour)){
@@ -65,9 +57,6 @@ public class AddSportCenterBean {
     private boolean validTime(int openH, int closingH){
         if (openH < 0 || openH > 23 || closingH < 0 || closingH > 23)
             return false;
-        if (openH < closingH)
-            return false;
-
         //Si presume che un centro sportivo rimanga aperto più di un'ora, ma possa rimanere aperto 24h
 
         return openH != closingH || openH == 0; //se si raggiunge la seconda condizione dell'or, sicuramente
@@ -78,14 +67,6 @@ public class AddSportCenterBean {
 
 
     //All the setters and getters for this POJO
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public void setSportCenterName(String sportCenterName) {
         this.sportCenterName = sportCenterName;
@@ -120,14 +101,6 @@ public class AddSportCenterBean {
         this.closingHour = closingHour;
     }
 
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
 
     public String getSportCenterName() {
         return sportCenterName;

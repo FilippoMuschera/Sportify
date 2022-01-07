@@ -1,5 +1,6 @@
 package com.sportify.utilitiesui;
 
+import com.sportify.utilitydb.DBConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,6 +21,12 @@ public class StartUI extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("LogInStyle.css")).toExternalForm());
+        UIController viewController = UIController.getUIControllerInstance();
+        viewController.setStage(stage);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            DBConnector.closeConnection();
+        }));
 
         stage.show();
     }

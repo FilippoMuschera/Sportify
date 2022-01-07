@@ -19,7 +19,7 @@ public class LogInView {
     @FXML private Label errorLabel;
 
 
-    public void handleLogIn(ActionEvent actionEvent) throws IOException {
+    public void handleLogIn() throws IOException {
         errorLabel.setOpacity(0);
         errorLabel.setTextFill(Color.RED);
 
@@ -30,7 +30,7 @@ public class LogInView {
         try {
             bean.executeLogIn();
             UIController viewController = UIController.getUIControllerInstance();
-            viewController.showHomeScreen(actionEvent);
+            viewController.showHomeScreen();
         } catch (EmailNotValidException ee) {
             errorLabel.setText("Invalid email! Try again!");
             errorLabel.setOpacity(1);
@@ -44,8 +44,8 @@ public class LogInView {
 
     }
 
-    public void goToSignUp(ActionEvent actionEvent) throws IOException {
+    public void goToSignUp() throws IOException {
         UIController controller = UIController.getUIControllerInstance();
-        controller.showSignUp(actionEvent);
+        controller.showSignUp();
     }
 }

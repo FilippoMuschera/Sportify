@@ -12,8 +12,12 @@ public class SportCenterEntity {
         this.coordinates = coordinates;
     }
 
-    public double[] getCoordinates() {
-        return coordinates;
+    public double getLat() {
+        return this.coordinates[0];
+    }
+
+    public double getLong() {
+        return this.coordinates[1];
     }
 
     public void setInfo(SportCenterInfo info) {

@@ -80,6 +80,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IntTest.parseIntTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sportify" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntTest" />
+      <option name="METHOD_NAME" value="parseIntTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="IntTest.testAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sportify" />
       <option name="PACKAGE_NAME" value="" />
@@ -100,23 +110,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestUserDAO.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Sportify" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestUserDAO" />
-      <option name="METHOD_NAME" value="testAddUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.IntTest.parseIntTest" />
         <item itemvalue="JUnit.IntTest.timeTest" />
         <item itemvalue="JUnit.IntTest.testAddress" />
         <item itemvalue="JUnit.IntTest.capCheck" />
-        <item itemvalue="JUnit.TestUserDAO.testAddUser" />
       </list>
     </recent_temporary>
   </component>
@@ -142,7 +142,11 @@
       <workItem from="1641410609935" duration="1878000" />
       <workItem from="1641412658030" duration="655000" />
       <workItem from="1641464073607" duration="3752000" />
-      <workItem from="1641469193009" duration="14984000" />
+      <workItem from="1641469193009" duration="16257000" />
+      <workItem from="1641552022646" duration="11952000" />
+      <workItem from="1641572625983" duration="655000" />
+      <workItem from="1641573314367" duration="329000" />
+      <workItem from="1641573801090" duration="7669000" />
     </task>
     <servers />
   </component>

@@ -21,24 +21,24 @@ public class HomeScreenView {
     private Label addCourtPopupLabel;
 
 
-    public void showSettings(ActionEvent actionEvent) throws IOException {
+    public void showSettings() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showSettings(actionEvent);
+        c.showSettings();
     }
 
-    public void showCreateMatch(ActionEvent actionEvent) throws IOException {
+    public void showCreateMatch() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showCreateMatch(actionEvent);
+        c.showCreateMatch();
     }
 
-    public void showJoinMatch(ActionEvent actionEvent) throws IOException {
+    public void showJoinMatch() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showJoinMatch(actionEvent);
+        c.showJoinMatch();
     }
 
-    public void showAddCourt(ActionEvent actionEvent) throws IOException {
+    public void showAddCourt() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showAddSportCenter(actionEvent);
+        c.showAddSportCenter();
     }
 
     public void showInfoPopUp() {

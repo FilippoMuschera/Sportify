@@ -48,19 +48,19 @@ public class SettingsViewController {
 
 
 
-    public void showHome(ActionEvent actionEvent) throws IOException {
+    public void showHome() throws IOException {
         UIController uic = UIController.getUIControllerInstance();
-        uic.showHomeScreen(actionEvent);
+        uic.showHomeScreen();
     }
 
-    public void goToJoinScreen(ActionEvent actionEvent) throws IOException {
+    public void goToJoinScreen() throws IOException {
         UIController uic = UIController.getUIControllerInstance();
-        uic.showJoinMatch(actionEvent);
+        uic.showJoinMatch();
     }
 
-    public void goToCreateScreen(ActionEvent actionEvent) throws IOException {
+    public void goToCreateScreen() throws IOException {
         UIController uic = UIController.getUIControllerInstance();
-        uic.showCreateMatch(actionEvent);
+        uic.showCreateMatch();
     }
 
     public void launchFaq() throws IOException {

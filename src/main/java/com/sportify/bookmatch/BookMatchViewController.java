@@ -118,20 +118,20 @@ public class BookMatchViewController {
         anchorPaneBookMatch.getChildren().add(hourSlotList);
     }
 
-    public void showSettings(ActionEvent actionEvent) throws IOException {
+    public void showSettings() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showSettings(actionEvent);
+        c.showSettings();
     }
 
-    public void goToHomeScreen(ActionEvent actionEvent) throws IOException {
+    public void goToHomeScreen() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showHomeScreen(actionEvent);
+        c.showHomeScreen();
     }
 
 
-    public void showJoinMatch(ActionEvent actionEvent) throws IOException {
+    public void showJoinMatch() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showJoinMatch(actionEvent);
+        c.showJoinMatch();
 
     }
 

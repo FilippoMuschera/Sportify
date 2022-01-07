@@ -27,12 +27,12 @@ public class SignUpView {
     private Label statusLabel;
 
 
-    public void goToLogIn(ActionEvent actionEvent) throws IOException {
+    public void goToLogIn() throws IOException {
        UIController controller = UIController.getUIControllerInstance();
-       controller.goToPreviousStage(actionEvent);
+       controller.goToPreviousStage();
     }
 
-    public void signUserUp(ActionEvent actionEvent) throws IOException {
+    public void signUserUp() throws IOException {
 
             try{
                 statusLabel.setOpacity(0);
@@ -43,7 +43,7 @@ public class SignUpView {
                 bean.setOwner(isOwnerCheckBox.isSelected());
                 bean.executeSignUp();
                 UIController controller = UIController.getUIControllerInstance();
-                controller.showSettings(actionEvent);
+                controller.showSettings();
             } catch (DifferentPasswordException e) {
                 statusLabel.setText("Passwords are not the same, check them and try again");
             } catch (EmailNotValidException e) {

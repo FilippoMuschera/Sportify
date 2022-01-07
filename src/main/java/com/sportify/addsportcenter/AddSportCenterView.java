@@ -1,13 +1,31 @@
 package com.sportify.addsportcenter;
 
+import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.utilitiesui.UIController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 public class AddSportCenterView {
 
+    @FXML
+    private TextField sportCenterAddress;
+    @FXML
+    private TextField sportCenterName;
+    @FXML
+    private TextField openingH;
+    @FXML
+    private TextField closingH;
+    @FXML
+    private TextField nFootball;
+    @FXML
+    private TextField nPadel;
+    @FXML
+    private TextField nBasket;
+    @FXML
+    private TextField nTennis;
     @FXML
     private Label addCourtPopupLabel;
 
@@ -21,30 +39,60 @@ public class AddSportCenterView {
 
     public void hideInfoPopUp() {addCourtPopupLabel.setOpacity(0); }
 
-    public void goToSettings(ActionEvent actionEvent) throws IOException {
+    public void goToSettings() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showSettings(actionEvent);
+        c.showSettings();
     }
 
-    public void goToHome(ActionEvent actionEvent) throws IOException {
+    public void goToHome() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showHomeScreen(actionEvent);
+        c.showHomeScreen();
     }
 
-    public void goToJoinMatch(ActionEvent actionEvent) throws IOException {
+    public void goToJoinMatch() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showJoinMatch(actionEvent);
+        c.showJoinMatch();
     }
 
-    public void goToCreateMatch(ActionEvent actionEvent) throws IOException {
+    public void goToCreateMatch() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showCreateMatch(actionEvent);
+        c.showCreateMatch();
     }
 
     public void addSportCenterToDB() {
-        //TODO chiamata alla Bean per iniziare il caso d'uso
 
-      outputStateLabel.setOpacity(1);
+        try {
+            AddSportCenterBean bean = new AddSportCenterBean();
+            bean.setSportCenterName(sportCenterName.getText());
+            bean.setSportCenterAddress(sportCenterAddress.getText());
+            bean.setOpeningHour(Integer.parseInt(openingH.getText()));
+            bean.setClosingHour(Integer.parseInt(closingH.getText()));
+            bean.setNumOfFootballFields(Integer.parseInt(nFootball.getText()));
+            bean.setNumOfPadelCourts(Integer.parseInt(nPadel.getText()));
+            bean.setNumOfBasketCourts(Integer.parseInt(nBasket.getText()));
+            bean.setNumOfTennisCourts(Integer.parseInt(nTennis.getText()));
+
+
+            UIController viewController = UIController.getUIControllerInstance();
+            viewController.addSportCenter(bean);
+
+            //Se non vengono generate eccezioni, printo sulla label l'outcome positivo del salvataggio dello sport center
+
+            outputStateLabel.setText("Sport Center added successfully!");
+            outputStateLabel.setTextFill(Color.GREEN);
+            outputStateLabel.setOpacity(1);
+
+
+        } catch (NumberFormatException e){
+            outputStateLabel.setText("One of the fields that requires a number is empty or wrong");
+            outputStateLabel.setTextFill(Color.RED);
+            outputStateLabel.setOpacity(1);
+        } catch (IllegalArgumentException | SportCenterException e){
+            outputStateLabel.setText(e.getMessage());
+            outputStateLabel.setTextFill(Color.RED);
+            outputStateLabel.setOpacity(1);
+        }
+
 
     }
 

@@ -5,19 +5,19 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class JoinMatchController {
-    public void showSettings(ActionEvent actionEvent) throws IOException {
+    public void showSettings() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showSettings(actionEvent);
+        c.showSettings();
     }
 
-    public void goToHome(ActionEvent actionEvent) throws IOException {
+    public void goToHome() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showHomeScreen(actionEvent);
+        c.showHomeScreen();
     }
 
-    public void showCreateMatch(ActionEvent actionEvent) throws IOException {
+    public void showCreateMatch() throws IOException {
         UIController c = UIController.getUIControllerInstance();
-        c.showCreateMatch(actionEvent);
+        c.showCreateMatch();
     }
 
     public void launchFaq() throws IOException {

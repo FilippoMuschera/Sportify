@@ -2,34 +2,35 @@ package com.sportify.sportcenter;
 
 import com.sportify.sportcenter.courts.*;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SportCenterCourts {
 
-    private ArrayList<FootballField> footballFields;
-    private ArrayList<PadelCourt> padelCourts;
-    private ArrayList<BasketCourt> basketCourts;
-    private ArrayList<TennisCourt> tennisCourts;
+    private ArrayList<SportCourt> footballFields;
+    private ArrayList<SportCourt> padelCourts;
+    private ArrayList<SportCourt> basketCourts;
+    private ArrayList<SportCourt> tennisCourts;
 
-    public List<FootballField> getFootballFields() {
+    public List<SportCourt> getFootballFields() {
         return footballFields;
     }
 
-    public List<PadelCourt> getPadelCourts() {
+    public List<SportCourt> getPadelCourts() {
         return padelCourts;
     }
 
-    public List<BasketCourt> getBasketCourts() {
+    public List<SportCourt> getBasketCourts() {
         return basketCourts;
     }
 
-    public List<TennisCourt> getTennisCourts() {
+    public List<SportCourt> getTennisCourts() {
         return tennisCourts;
     }
 
     public SportCenterCourts(int numOfFootballFields, int numOfPadelCourts, int numOfBasketCourts, int numOfTennisCourts,
-                             List<TimeSlot> timeSlots) {
+                             List<LocalTime> timeSlots) {
         this.footballFields = new ArrayList<>();
         for (int i = 0; i < numOfFootballFields; i++) {
             footballFields.add(new FootballField(i, timeSlots));

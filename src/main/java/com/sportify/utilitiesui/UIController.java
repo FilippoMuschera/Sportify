@@ -1,10 +1,11 @@
 package com.sportify.utilitiesui;
 
+import com.sportify.addsportcenter.AddSportCenterBean;
+import com.sportify.addsportcenter.AddSportCenterController;
+import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.user.UserEntity;
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,6 +24,8 @@ public class UIController{
 
     private UserEntity user;
 
+    private Stage stage;
+
 
 
      protected UIController(){ //Singleton GoF Pattern applied to UIController
@@ -37,41 +40,33 @@ public class UIController{
     }
 
 
-    public void showHomeScreen(ActionEvent actionEvent) throws IOException { //Mostra a schermo la home screen
-        Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
-        this.loadStage("HomeScreen.fxml", "HomeScreenStyle.CSS", oldStage);
+    public void showHomeScreen() throws IOException { //Mostra a schermo la home screen
+        this.loadStage("HomeScreen.fxml", "HomeScreenStyle.CSS");
 
     }
 
-    public void showSignUp(ActionEvent actionEvent) throws IOException { //Mostra la schermata per il sign up di un nuovo utente
-        Stage logInScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-        this.loadStage("SignUp.fxml", "SignUpStyle.css", logInScreen);
+    public void showSignUp() throws IOException { //Mostra la schermata per il sign up di un nuovo utente
+        this.loadStage("SignUp.fxml", "SignUpStyle.css");
         setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
 
     }
-
-    public void showCreateMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata create match
-         Stage createMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-         this.loadStage("BookMatch.fxml", "BookMatchStyle.css", createMatchScreen);
+    public void showCreateMatch() throws IOException { //Mostra la schermata create match
+         this.loadStage("BookMatch.fxml", "BookMatchStyle.css");
 
     }
 
-
-    public void showJoinMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata join match
-        Stage joinMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
-        this.loadStage("JoinMatch.fxml", "JoinMatchStyle.css", joinMatchScreen);
+    public void showJoinMatch() throws IOException { //Mostra la schermata join match
+        this.loadStage("JoinMatch.fxml", "JoinMatchStyle.css");
 
     }
 
-    public void showSettings(ActionEvent actionEvent) throws IOException { //Mostra la schermata delle impostazioni
-        Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
-        this.loadStage("Settings.fxml", "SettingsStyle.CSS", oldStage);
+    public void showSettings() throws IOException { //Mostra la schermata delle impostazioni
+        this.loadStage("Settings.fxml", "SettingsStyle.CSS");
 
     }
 
-    public void goToPreviousStage(ActionEvent actionEvent) throws IOException { //torna alla schermata conservata in previousStage e previousStageStyle
-        Stage actualStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
-        this.loadStage(getPreviousFxml(), getPreviousCss(), actualStage);
+    public void goToPreviousStage() throws IOException { //torna alla schermata conservata in previousStage e previousStageStyle
+        this.loadStage(getPreviousFxml(), getPreviousCss());
     }
 
     public static void setPreviousStageInfo(String fxml, String css){
@@ -86,23 +81,22 @@ public class UIController{
         return  previousStageStyles[1];
     }
 
-    public void showAddSportCenter(ActionEvent actionEvent) throws IOException { //Mostra schermata aggiunta sport center
-        Stage oldStage = (Stage)(((Node)actionEvent.getSource()).getScene().getWindow());
-        this.loadStage("AddSportCenter.fxml", "AddSportCenterStyle.CSS", oldStage);
+    public void showAddSportCenter() throws IOException { //Mostra schermata aggiunta sport center
+        this.loadStage("AddSportCenter.fxml", "AddSportCenterStyle.CSS");
     }
 
 
     // loadStage(...) carica la nuova schermata nello stesso stage
     // se si vuole aprire un pop-up NON va bene!
 
-    protected void loadStage(String stageFXML, String stageCSS, Stage oldStage) throws IOException { //mostra a schermo la schermata passato con i parametri
+    private void loadStage(String stageFXML, String stageCSS) throws IOException { //mostra a schermo la schermata passato con i parametri
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(stageFXML));
         Parent root1 = fxmlLoader.load();
         root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource(stageCSS)).toExternalForm());
 
-        this.fadeAnimation(root1, oldStage.getScene().getRoot());
+        this.fadeAnimation(root1, this.stage.getScene().getRoot());
 
-        oldStage.setScene(new Scene(root1));
+        this.stage.setScene(new Scene(root1));
     }
 
     private void fadeAnimation(Parent screenToFadeIn, Parent screenToFadeOut){//Metodo privato perchè deve essere utilizzato
@@ -128,14 +122,14 @@ public class UIController{
     public void showFaqs() throws IOException { //Mostra le faq. Non usa loadStage perchè le faq appaiono in una nuova finestra
         FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("Faq.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setTitle("Sportify - FAQs");
-        stage.initStyle(StageStyle.UTILITY);
-        stage.setScene(scene);
-        stage.setResizable(false);
+        Stage newStage = new Stage();
+        newStage.setTitle("Sportify - FAQs");
+        newStage.initStyle(StageStyle.UTILITY);
+        newStage.setScene(scene);
+        newStage.setResizable(false);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("FaqStyle.css")).toExternalForm());
 
-        stage.show();
+        newStage.show();
     }
 
     public void setUser(UserEntity user) {
@@ -146,5 +140,17 @@ public class UIController{
          return this.user;
     }
 
+    public void setStage(Stage stage){
+         this.stage = stage;
+    }
+
+    public void addSportCenter(AddSportCenterBean bean) throws IllegalArgumentException, SportCenterException {
+
+         bean.validateInput();
+        AddSportCenterController controller = new AddSportCenterController();
+        controller.addSportCenter(bean);
+        //Se non vengono generate eccezioni non c'è bisogno di cambiare schermata, quindi il controllo torna alla
+        // view che informa l'utente del completamento dell'operazione
+    }
 }
 

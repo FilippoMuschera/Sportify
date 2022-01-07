@@ -51,7 +51,7 @@ public class UserDAO {
         try (Connection con = getConnector()) {
             if (con == null)
                 throw new SQLException();
-            String query = "INSERT INTO `sql11460748`.`Users` (`Email`, `Password`, `Type`) VALUES (?, ?, ?);";
+            String query = "INSERT INTO `sportify`.`Users` (`Email`, `Password`, `Type`) VALUES (?, ?, ?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, password);
