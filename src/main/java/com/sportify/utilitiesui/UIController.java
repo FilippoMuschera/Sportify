@@ -49,11 +49,13 @@ public class UIController{
         setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
 
     }
+
     public void showCreateMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata create match
          Stage createMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());
          this.loadStage("BookMatch.fxml", "BookMatchStyle.css", createMatchScreen);
 
     }
+
 
     public void showJoinMatch(ActionEvent actionEvent) throws IOException { //Mostra la schermata join match
         Stage joinMatchScreen = (Stage) (((Node) actionEvent.getSource()).getScene().getWindow());

@@ -1,17 +1,15 @@
 package com.sportify.bookmatch;
 
-import com.sportify.user.UserPreferences;
 import com.sportify.utilitiesui.UIController;
 import javafx.event.ActionEvent;
 import com.sportify.user.UserEntity;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 
+//UIController non carica la schermata SportCentersView.fxml non so perche
 
 public class BookMatchViewController {
 
@@ -24,10 +22,9 @@ public class BookMatchViewController {
         BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
         UserEntity user = generalController.getUser();
         Integer numOfSports = 0;
-        FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("BookMatch.fxml"));
 
-        //if (user.getPreferences().getBasket()) {
-        if (true) {
+        if (user.getPreferences().getBasket()) {
+
             numOfSports++;
             Button basketButton = new Button("Basket");
             basketButton.setPrefSize(150,75);
@@ -36,15 +33,14 @@ public class BookMatchViewController {
             basketButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    bookMatchController.displaySportCenters("Basket");
+                    bookMatchController.startStateMachine("Basket");
                 }
             });
             anchorPaneBookMatch.getChildren().add(basketButton);
 
         }
 
-        //if (user.getPreferences().getFootball()) {
-        if (true) {
+        if (user.getPreferences().getFootball()) {
 
             Integer position = 200 + numOfSports*150 + numOfSports*100;
             numOfSports++;
@@ -55,14 +51,13 @@ public class BookMatchViewController {
             footballButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    bookMatchController.displaySportCenters("Football");
+                    bookMatchController.startStateMachine("Football");
                 }
             });
             anchorPaneBookMatch.getChildren().add(footballButton);
 
         }
-        //if (user.getPreferences().getTennis()) {
-        if (true) {
+        if (user.getPreferences().getTennis()) {
 
             Integer position = 200 + numOfSports*150 + numOfSports*100;
             numOfSports++;
@@ -73,14 +68,13 @@ public class BookMatchViewController {
             tennisButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    bookMatchController.displaySportCenters("Tennis");
+                    bookMatchController.startStateMachine("Tennis");
                 }
             });
             anchorPaneBookMatch.getChildren().add(tennisButton);
 
         }
-        //if (user.getPreferences().getPadel()) {
-        if (true) {
+        if (user.getPreferences().getPadel()) {
 
             Integer position = 200 + numOfSports*150 + numOfSports*100;
             numOfSports++;
@@ -91,7 +85,7 @@ public class BookMatchViewController {
             padelButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    bookMatchController.displaySportCenters("Padel");
+                    bookMatchController.startStateMachine("Padel");
                 }
             });
             anchorPaneBookMatch.getChildren().add(padelButton);
@@ -99,12 +93,10 @@ public class BookMatchViewController {
         }
     }
 
-    public void pressedSportCenterButton(){
-        FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("SportCentersView.fxml"));
-
-    };
-
-    public void displaySportCenters(){};
+    public static void displaySportCenters(ActionEvent actionEvent) throws IOException {
+        UIController c = UIController.getUIControllerInstance();
+        //c.showSportCenters(actionEvent);
+    }
 
     public void displayCourts(){};
 

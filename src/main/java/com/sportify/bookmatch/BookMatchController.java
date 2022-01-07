@@ -1,6 +1,7 @@
 package com.sportify.bookmatch;
 
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
+import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.utilitiesui.UIController;
 
 public class BookMatchController {
@@ -9,6 +10,7 @@ public class BookMatchController {
     String userType = controller.getUser().getType();
     String userSelectedSport;
     Integer userSortingDistance = controller.getUser().getPreferences().getSortingDistance();
+    BMStateMachineImplementation stateMachine;
 
     //"rendo" singleton BookMatchController, copiato da te fili :)
     private static BookMatchController singleBookMatchControllerInstance = null;
@@ -27,16 +29,19 @@ public class BookMatchController {
         this.userSelectedSport = sport;
     }
 
-    private void startStateMachine(){
-        BMStateMachineImplementation stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
-    }
-
-    public void displaySportCenters(String sport){
+    public void startStateMachine(String sport){
         this.userSelectedSport = sport;
+        stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
+        stateMachine.initializeState();
     }
 
-    public void displayCourts(){}
+    public void pressedSportCenter(){
+        stateMachine.setState(new CourtState());
 
-    public void displayHourSlots(){}
+    }
+
+    public void pressedCourt(){}
+
+    public void pressedHourSlot(){}
 
 }

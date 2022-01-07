@@ -1,6 +1,11 @@
 package com.sportify.bookmatch.statemachine;
 
+import com.sportify.bookmatch.statemachine.BMStateInterface;
+
 public class BMStateMachineImplementation implements BMStateMachineInterface {
+
+    BMStateInterface currentState;
+    BMStateInterface prevState;
 
     //"rendo" singleton BMStateMachineImpl, copiato sempre da te fili :) <3
     private static BMStateMachineImplementation singleBMSMInstance = null;
@@ -14,9 +19,24 @@ public class BMStateMachineImplementation implements BMStateMachineInterface {
         return BMStateMachineImplementation.singleBMSMInstance;
     }
 
-    public void initializeState(){}
+    @Override
+    public void initializeState(){
+        currentState = new SportCenterState();
+    }
 
-    public void getState(){}
+    @Override
+    public BMStateInterface getState(){
+        return this.currentState;
+    }
 
-    public void setState(){}
+    @Override
+    public void setState(BMStateInterface state){
+        this.prevState = currentState;
+        this.currentState = state;
+    }
+
+    @Override
+    public void goPrevState(BMStateInterface state){
+        this.currentState = prevState;
+    }
 }

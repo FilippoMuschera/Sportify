@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@SportCentersStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
    <children>
        <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
           <children>
@@ -82,13 +82,14 @@
                <Font size="30.0" />
            </font>
            <graphic>
-               <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="createMatchButton" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                       <Image url="@icons/court.png" />
                   </image>
                </ImageView>
            </graphic>
        </Button>
+      <ComboBox fx:id="comboBox" layoutX="250.0" layoutY="100.0" prefHeight="500.0" prefWidth="800.0" />
    </children>
 
 </AnchorPane>

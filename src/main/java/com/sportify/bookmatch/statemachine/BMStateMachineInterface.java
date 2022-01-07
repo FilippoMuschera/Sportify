@@ -4,7 +4,9 @@ public interface BMStateMachineInterface {
 
     public void initializeState();
 
-    public void getState();
+    public BMStateInterface getState();
 
-    public void setState();
+    public void setState(BMStateInterface state);
+
+    public void goPrevState(BMStateInterface state);
 }
