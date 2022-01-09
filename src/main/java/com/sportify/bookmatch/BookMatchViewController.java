@@ -86,6 +86,17 @@ public class BookMatchViewController {
         }
     }
 
+    private static BookMatchViewController singleBookMatchViewControllerInstance = null;
+
+    public BookMatchViewController(){}
+
+    public static BookMatchViewController getBookMatchViewControllerInstance(){
+        if (BookMatchViewController.singleBookMatchViewControllerInstance == null){
+            BookMatchViewController.singleBookMatchViewControllerInstance = new BookMatchViewController();
+        }
+        return BookMatchViewController.singleBookMatchViewControllerInstance;
+    }
+
     public void displaySportCenters(ObservableList list) {
         ListView<String> sportCentersListView = new ListView<>(list);
         sportCentersListView.setCellFactory(param -> new SportCenterCell());

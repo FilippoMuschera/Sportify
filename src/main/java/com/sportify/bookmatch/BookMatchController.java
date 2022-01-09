@@ -30,7 +30,7 @@ public class BookMatchController {
         this.userSelectedSport = sport;
         stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
         stateMachine.initializeState();
-        stateMachine.getState().entry(userSelectedSport);
+        //stateMachine.getState().entry(userSelectedSport);
         stateMachine.getState().displayView();
     }
 
