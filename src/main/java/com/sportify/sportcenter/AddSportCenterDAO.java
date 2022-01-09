@@ -36,8 +36,8 @@ public class AddSportCenterDAO {
         sportsList.add(sportCenter.getCourts().getBasketCourts());
         sportsList.add(sportCenter.getCourts().getTennisCourts());
 
-        String queryCourt = "INSERT INTO `sportify`.`SportCourt` (`id`, `NameSC`, `Sport`) VALUES (?, ?, ?);";
-        String queryTimeSlot = "INSERT INTO `sportify`.`TimeSlot` (`idCampo`, `NameSC`, `startH`, `finishH`, `availableSpots`, `Sport`) " +
+        String queryCourt = "INSERT INTO `sportify_db`.`SportCourt` (`id`, `NameSC`, `Sport`) VALUES (?, ?, ?);";
+        String queryTimeSlot = "INSERT INTO `sportify_db`.`TimeSlot` (`idCampo`, `NameSC`, `startH`, `finishH`, `availableSpots`, `Sport`) " +
                 "VALUES (?, ?, ?, ?, ? , ?);";
 
         try (Connection con = getConnector()) {
@@ -76,7 +76,7 @@ public class AddSportCenterDAO {
         try (Connection con = getConnector()) {
             if (con == null)
                 throw new SQLException();
-            String query = "INSERT INTO `sportify`.`SportCenterPosition` (`NameSC`, `Lat`, `Long`) VALUES (?, ?, ?);";
+            String query = "INSERT INTO `sportify_db`.`SportCenterPosition` (`NameSC`, `Lat`, `Long`) VALUES (?, ?, ?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
                 preparedStatement.setString(1, sportCenter.getInfo().getSportCenterName());
                 preparedStatement.setDouble(2, sportCenter.getLat());
@@ -96,7 +96,7 @@ public class AddSportCenterDAO {
         try (Connection con = getConnector()) {
             if (con == null)
                 throw new SQLException();
-            String query = "INSERT INTO `sportify`.`SportCenter` (`Name`, `Address`, `OwnerEmail`, `OpeningH`, `ClosingH`) " +
+            String query = "INSERT INTO `sportify_db`.`SportCenter` (`Name`, `Address`, `OwnerEmail`, `OpeningH`, `ClosingH`) " +
                     "VALUES (?, ?, ?, ?, ?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
                 preparedStatement.setString(1, sportCenter.getInfo().getSportCenterName());

@@ -49,8 +49,8 @@ public class UserPreferencesDAO {
         try  {
             Connection con = getConnector();
 
-            String queryUpdate = "UPDATE `sportify`.`UsersPreferences` SET `InterestRadius` = ?, `Notifications` = ?, `Football` = ?, `Padel` = ?, `Basket` = ?, `Tennis` = ?, `Address` = ? WHERE (`Email` = ?);";
-            String queryInsert = "INSERT INTO `sportify`.`UsersPreferences` (`InterestRadius`, `Notifications`, `Football`, `Padel`, `Basket`, `Tennis`, `Address`, `Email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            String queryUpdate = "UPDATE `sportify_db`.`UsersPreferences` SET `InterestRadius` = ?, `Notifications` = ?, `Football` = ?, `Padel` = ?, `Basket` = ?, `Tennis` = ?, `Address` = ? WHERE (`Email` = ?);";
+            String queryInsert = "INSERT INTO `sportify_db`.`UsersPreferences` (`InterestRadius`, `Notifications`, `Football`, `Padel`, `Basket`, `Tennis`, `Address`, `Email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             String query = (isAnUpdate ? queryUpdate : queryInsert);
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
                 preparedStatement.setInt(1, preferences.getSortingDistance());

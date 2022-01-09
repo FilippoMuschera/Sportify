@@ -14,9 +14,9 @@ import java.util.Objects;
 public class HomeScreenView {
 
     @FXML
-    public Button addCourt;
+    private Button addCourt;
     @FXML
-    public AnchorPane anchorPaneHomeScreen;
+    private AnchorPane anchorPaneHomeScreen;
     @FXML
     private Label addCourtPopupLabel;
 

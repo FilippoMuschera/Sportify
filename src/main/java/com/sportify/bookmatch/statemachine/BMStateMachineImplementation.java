@@ -1,13 +1,12 @@
 package com.sportify.bookmatch.statemachine;
 
-import com.sportify.bookmatch.statemachine.BMStateInterface;
 
 public class BMStateMachineImplementation implements BMStateMachineInterface {
 
     BMStateInterface currentState;
     BMStateInterface prevState;
 
-    //"rendo" singleton BMStateMachineImpl, copiato sempre da te fili :) <3
+    //"rendo" singleton BMStateMachineImpl, copiato sempre da te fili :) <3 io l'ho copiato dal De Angelis haha
     private static BMStateMachineImplementation singleBMSMInstance = null;
 
     protected BMStateMachineImplementation(){}
