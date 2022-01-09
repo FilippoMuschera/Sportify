@@ -32,6 +32,7 @@ public class BookMatchController {
         stateMachine.initializeState();
         //stateMachine.getState().entry(userSelectedSport);
         stateMachine.getState().displayView();
+        System.out.println("State machine inizializzata correttamente, I guess");
     }
 
     public void pressedSportCenter(){

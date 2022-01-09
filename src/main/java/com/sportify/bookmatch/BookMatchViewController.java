@@ -7,9 +7,13 @@ import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 
@@ -88,7 +92,9 @@ public class BookMatchViewController {
 
     private static BookMatchViewController singleBookMatchViewControllerInstance = null;
 
-    public BookMatchViewController(){}
+    public BookMatchViewController(){
+        singleBookMatchViewControllerInstance = this;
+    }
 
     public static BookMatchViewController getBookMatchViewControllerInstance(){
         if (BookMatchViewController.singleBookMatchViewControllerInstance == null){
@@ -97,10 +103,12 @@ public class BookMatchViewController {
         return BookMatchViewController.singleBookMatchViewControllerInstance;
     }
 
+    @FXML
     public void displaySportCenters(ObservableList list) {
         ListView<String> sportCentersListView = new ListView<>(list);
         sportCentersListView.setCellFactory(param -> new SportCenterCell());
         anchorPaneBookMatch.getChildren().add(sportCentersListView);
+        
     }
 
     public void displayCourts(ObservableList list){
@@ -114,6 +122,10 @@ public class BookMatchViewController {
         hourSlotList.setCellFactory(param -> new HourSlotCell());
         anchorPaneBookMatch.getChildren().add(hourSlotList);
     }
+
+
+
+    //Metodi per bottoni base della UI
 
     public void showSettings() throws IOException {
         UIController c = UIController.getUIControllerInstance();
