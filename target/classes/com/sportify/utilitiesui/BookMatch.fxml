@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPaneBookMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
+<AnchorPane fx:id="anchorPaneBookMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
    <children>
        <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
           <children>
@@ -89,11 +87,7 @@
                </ImageView>
            </graphic>
        </Button>
-      <Text layoutX="17.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you want to create your match? Choose your sport!">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
+      <Label fx:id="welcomeMsgLabel" layoutX="17.0" layoutY="128.0" text="Do you want to create your match? Choose your sport!" />
    </children>
 
 </AnchorPane>

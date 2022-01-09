@@ -7,6 +7,12 @@
 
 }
 
+#welcomeMsgLabel{
+    -fx-text-fill: #212529;
+    -fx-font-size: 26;
+}
+
+
 .button{
     -fx-background-color: #FAF9F9;
     -fx-background-radius: 50;

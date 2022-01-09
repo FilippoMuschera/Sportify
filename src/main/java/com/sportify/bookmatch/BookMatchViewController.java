@@ -39,6 +39,7 @@ public class BookMatchViewController {
             basketButton.setLayoutY(300);
             basketButton.setLayoutX(200);
             basketButton.setOnAction(actionEvent -> bookMatchController.startStateMachine("Basket"));
+            basketButton.setStyle("-fx-font-family: \"Playball\"; -fx-font-size: 24");
             anchorPaneBookMatch.getChildren().add(basketButton);
 
         }
@@ -52,6 +53,8 @@ public class BookMatchViewController {
             footballButton.setLayoutY(300);
             footballButton.setLayoutX(position);
             footballButton.setOnAction(actionEvent -> bookMatchController.startStateMachine("Football"));
+            footballButton.setStyle("-fx-font-family: \"Playball\"; -fx-font-size: 24");
+
             anchorPaneBookMatch.getChildren().add(footballButton);
 
         }
@@ -64,6 +67,7 @@ public class BookMatchViewController {
             tennisButton.setLayoutY(300);
             tennisButton.setLayoutX(position);
             tennisButton.setOnAction(actionEvent -> bookMatchController.startStateMachine("Tennis"));
+            tennisButton.setStyle("-fx-font-family: \"Playball\"; -fx-font-size: 24");
             anchorPaneBookMatch.getChildren().add(tennisButton);
 
         }
@@ -76,6 +80,7 @@ public class BookMatchViewController {
             padelButton.setLayoutY(300);
             padelButton.setLayoutX(position);
             padelButton.setOnAction(actionEvent -> bookMatchController.startStateMachine("Padel"));
+            padelButton.setStyle("-fx-font-family: \"Playball\"; -fx-font-size: 24");
             anchorPaneBookMatch.getChildren().add(padelButton);
 
         }
