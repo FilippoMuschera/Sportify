@@ -11,9 +11,20 @@ public class FootballField extends SportCourt{
 
     @Override
     public void bookTimeSlot() {
-        //TODO implementazione dei metodi della classe astratta
+        //TODO implementazione dei metodi della classe astratta, forse si può implementare direttamente nella abstract class!
 
     }
+
+    public FootballField(List<TimeSlot> timeSlots, int id) {
+        super.courtID = id;
+        super.sport = FOOTBALL;
+        super.bookingTable = new ArrayList<>();
+        for (TimeSlot timeSlot : timeSlots) {
+            TimeSlot t = new TimeSlot(timeSlot.getStartTime(), timeSlot.getEndTime(), timeSlot.getAvailableSpots());
+            super.bookingTable.add(t);
+        }
+
+        }
 
     public FootballField(int id, List<LocalTime> timeSlots) {
         super.courtID = id;

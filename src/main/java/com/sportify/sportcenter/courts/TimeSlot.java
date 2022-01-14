@@ -19,7 +19,7 @@ public class TimeSlot {
         this.startTime = startTime;
         this.endTime = endTime;
         this.availableSpots = availableSpots;
-        this.isBooked = false;
+        this.isBooked = availableSpots > 0;
     }
 
     public boolean isBooked() {

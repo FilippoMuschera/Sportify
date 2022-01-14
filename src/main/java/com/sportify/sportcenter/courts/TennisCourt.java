@@ -19,6 +19,17 @@ public class TennisCourt extends SportCourt{
         }
     }
 
+    public TennisCourt(List<TimeSlot> timeSlots, int id) {
+        super.courtID = id;
+        super.sport = TENNIS;
+        super.bookingTable = new ArrayList<>();
+        for (TimeSlot timeSlot : timeSlots) {
+            TimeSlot t = new TimeSlot(timeSlot.getStartTime(), timeSlot.getEndTime(), timeSlot.getAvailableSpots());
+            super.bookingTable.add(t);
+        }
+
+    }
+
     @Override
     public void bookTimeSlot() {
         //TODO implementazione dei metodi della classe astratta

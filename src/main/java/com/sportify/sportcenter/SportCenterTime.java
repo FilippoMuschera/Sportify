@@ -12,6 +12,8 @@ public class SportCenterTime {
         this.closingTime = LocalTime.of(closingH, 0); //tutti gli orari sono interi (es.: 10:00)
     }
 
+
+
     public LocalTime getOpeningTime() {
         return openingTime;
     }

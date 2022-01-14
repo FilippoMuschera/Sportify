@@ -3,19 +3,19 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.cells.CourtCell;
 import com.sportify.bookmatch.cells.HourSlotCell;
 import com.sportify.bookmatch.cells.SportCenterCell;
+import com.sportify.sportcenter.GetSportCenterDAO;
+import com.sportify.sportcenter.SportCenterEntity;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 //UIController non carica la schermata SportCentersView.fxml non so perche
 
@@ -93,7 +93,14 @@ public class BookMatchViewController {
     private static BookMatchViewController singleBookMatchViewControllerInstance = null;
 
     public BookMatchViewController(){
-        singleBookMatchViewControllerInstance = this;
+        BookMatchViewController.setSingletonInstance(this);
+    }
+
+    //Siccome settare la variabile singleton nel costruttore (che è anche un metodo non statico) genera code
+    //smell, viene invece invocato il metodo setSingletonInstance()
+
+    private static void setSingletonInstance(BookMatchViewController bookMatchViewController) {
+        singleBookMatchViewControllerInstance = bookMatchViewController;
     }
 
     public static BookMatchViewController getBookMatchViewControllerInstance(){
@@ -103,12 +110,12 @@ public class BookMatchViewController {
         return BookMatchViewController.singleBookMatchViewControllerInstance;
     }
 
-    @FXML
+
     public void displaySportCenters(ObservableList list) {
         ListView<String> sportCentersListView = new ListView<>(list);
         sportCentersListView.setCellFactory(param -> new SportCenterCell());
         anchorPaneBookMatch.getChildren().add(sportCentersListView);
-        
+
     }
 
     public void displayCourts(ObservableList list){
@@ -144,8 +151,10 @@ public class BookMatchViewController {
 
     }
 
-    public void launchFaq() throws IOException {
+    public void launchFaq() throws IOException, SQLException {
+
         UIController c = UIController.getUIControllerInstance();
         c.showFaqs();
+
     }
 }

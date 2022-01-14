@@ -1,9 +1,9 @@
 package com.sportify.sportcenter;
 
 public class SportCenterInfo {
-    private String ownerEmail;
-    private String sportCenterName;
-    private String sportCenterAddress;
+    private final String ownerEmail;
+    private final String sportCenterName;
+    private final String sportCenterAddress;
 
 
     public SportCenterInfo(String ownerEmail, String sportCenterName, String sportCenterAddress) {
@@ -11,6 +11,7 @@ public class SportCenterInfo {
         this.sportCenterName = sportCenterName;
         this.sportCenterAddress = sportCenterAddress;
     }
+
 
     public String getOwnerEmail() {
         return ownerEmail;

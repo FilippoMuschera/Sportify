@@ -29,6 +29,26 @@ public class SportCenterCourts {
         return tennisCourts;
     }
 
+    public SportCenterCourts(){
+        this.footballFields = new ArrayList<>();
+        this.padelCourts = new ArrayList<>();
+        this.basketCourts = new ArrayList<>();
+        this.tennisCourts = new ArrayList<>();
+    }
+
+    public void addField(String sport, SportCourt court){
+        switch (sport) {
+            case "Football" -> this.footballFields.add(court);
+            case "Padel" -> this.padelCourts.add(court);
+            case "Basket" -> this.basketCourts.add(court);
+            case "Tennis" -> this.tennisCourts.add(court);
+            default -> { /* se il campo sport è errato non si aggiunge nessun campo */} //Il default viene inserito per
+            //completezza del blocco switch, altrimenti genererebbe code smell
+        }
+    }
+
+
+   //Costruttore per l'addSportCenterController
     public SportCenterCourts(int numOfFootballFields, int numOfPadelCourts, int numOfBasketCourts, int numOfTennisCourts,
                              List<LocalTime> timeSlots) {
         this.footballFields = new ArrayList<>();

@@ -42,7 +42,7 @@ public class Geolocator {
         }
 
 
-        return new double[0];
+        return new double[0]; //array vuoto
     }
 
     private static double[] parseResponse(String response) throws JsonProcessingException {
