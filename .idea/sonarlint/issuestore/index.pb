@@ -23,8 +23,6 @@ Asrc/main/java/com/sportify/addsportcenter/AddSportCenterBean.java,7\8\7893631a
 Ksrc/main/java/com/sportify/sportcenter/exceptions/SportCenterException.java,6\c\6c5ccfd9a3259550353271b801b6d3432ffffc09
 g
 7src/main/java/com/sportify/user/UserPreferencesDAO.java,a\4\a44f114f0d856114d6f9e31be4818b4c311260ba
-e
-5src/main/java/com/sportify/utilitydb/DBConnector.java,c\c\cced02002006009047ca8ee7710c7758bea7625b
 ~
 Nsrc/main/java/com/sportify/bookmatch/statemachine/BMStateMachineInterface.java,b\7\b7343070fa9433a55136763f87f3b119a9a63c2a
 j
@@ -39,8 +37,6 @@ q
 Asrc/main/java/com/sportify/bookmatch/statemachine/CourtState.java,1\6\168de262c2205805a5ba9e0c3e5280fe0dbd5f71
 f
 6src/main/java/com/sportify/geolocation/Geolocator.java,b\f\bf8cb173d84931b26ffc52df04b7311388149466
-m
-=src/main/java/com/sportify/sportcenter/AddSportCenterDAO.java,0\6\0697f9d88f0f9ce30e3283d97e982afc9e9d6cb0
 i
 9src/main/java/com/sportify/bookmatch/cells/CourtCell.java,5\9\590041588d1aa41ced487df404731e3f905808d7
 o

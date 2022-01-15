@@ -76,7 +76,7 @@ public class AddSportCenterDAO {
         try (Connection con = getConnector()) {
             if (con == null)
                 throw new SQLException();
-            String query = "INSERT INTO `sportify_db`.`SportCenterPosition` (`NameSC`, `Lat`, `Long`) VALUES (?, ?, ?);";
+            String query = "INSERT INTO `sportify_db`.`SportCenterPosition` (`NameSC`, `Lat`, `Lng`) VALUES (?, ?, ?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
                 preparedStatement.setString(1, sportCenter.getInfo().getSportCenterName());
                 preparedStatement.setDouble(2, sportCenter.getLat());
