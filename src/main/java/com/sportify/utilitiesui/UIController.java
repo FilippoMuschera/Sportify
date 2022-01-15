@@ -144,13 +144,6 @@ public class UIController{
          this.stage = stage;
     }
 
-    public void addSportCenter(AddSportCenterBean bean) throws IllegalArgumentException, SportCenterException {
 
-         bean.validateInput();
-        AddSportCenterController controller = new AddSportCenterController();
-        controller.addSportCenter(bean);
-        //Se non vengono generate eccezioni non c'è bisogno di cambiare schermata, quindi il controllo torna alla
-        // view che informa l'utente del completamento dell'operazione
-    }
 }
 

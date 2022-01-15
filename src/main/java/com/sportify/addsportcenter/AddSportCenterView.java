@@ -73,8 +73,9 @@ public class AddSportCenterView {
             bean.setNumOfTennisCourts(Integer.parseInt(nTennis.getText()));
 
 
-            UIController viewController = UIController.getUIControllerInstance();
-            viewController.addSportCenter(bean);
+            bean.validateInput();
+            AddSportCenterController controller = new AddSportCenterController();
+            controller.addSportCenter(bean);
 
             //Se non vengono generate eccezioni, printo sulla label l'outcome positivo del salvataggio dello sport center
 

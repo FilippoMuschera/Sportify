@@ -34,18 +34,7 @@ public class LogInBean {
     }
 
 
-    public void executeLogIn() throws EmailNotValidException, UserNotFoundException, IncorrectPasswordException {
-
-        this.validateInput(); //Prima d'iniziare la procedura di login controlla la correttezza SINTATTICA dell'input
-
-        //Se l'input è valido la classe Bean chiama il controller, che avrà la responsabilità di eseguire il logIn
-        LogInController controller = new LogInController();
-        controller.logInUser(this);
-
-
-    }
-
-    protected void validateInput() throws IllegalArgumentException, EmailNotValidException{
+    public void validateInput() throws IllegalArgumentException, EmailNotValidException{
 
         if (this.email == null || this.password == null ) //controlla se i suoi attributi sono stati correttamente
                                                           //inizializzati dalla LogInView

@@ -18,14 +18,13 @@ public class SettingsBean {
     private String cap;
 
 
-    public void saveSettings() throws AddressNotValidException {
+    public void validateInput() throws AddressNotValidException {
         Pattern validCAP = Pattern.compile("^[0-9]{5}$"); //valida sintatticamente il CAP
         Matcher m = validCAP.matcher(this.cap);
         if (!m.find()){
             throw new IllegalArgumentException("CAP non valido!");
         }
-        SettingsController controller = new SettingsController();
-        controller.saveSettings(this);
+
     }
 
     public int getRadius() {

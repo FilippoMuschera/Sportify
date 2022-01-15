@@ -119,8 +119,10 @@ public class SettingsViewController {
         bean.setCity(cityText.getText());
         bean.setCap(capText.getText());
         try {
-            bean.saveSettings();
-            this.initialize();
+            bean.validateInput();
+            SettingsController controller = new SettingsController();
+            controller.saveSettings(bean);
+            this.initialize(); //TODO valutare observer
             successSaveLabel.setOpacity(1);
         } catch (AddressNotValidException e) {
             saveLabel.setTextFill(Color.RED);

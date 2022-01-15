@@ -123,7 +123,6 @@ public class GetSportCenterDAO {
                         psTimeSlot.setString(1, rs.getString("NameSC"));
                         psTimeSlot.setInt(2, rs.getInt("id"));
                         psTimeSlot.setString(3, selectedSport);
-                        System.out.println(psTimeSlot.toString());
                         ResultSet rsTimeSlot = psTimeSlot.executeQuery(); // questo rs contiene tutti gli hour slot di un campo
                         if (!rsTimeSlot.next())
                             throw new NullPointerException("TimeSlot(s) Not Found");

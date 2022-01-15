@@ -1,10 +1,8 @@
 package com.sportify.utilitiesui;
 
-import javafx.event.ActionEvent;
-
 import java.io.IOException;
 
-public class JoinMatchController {
+public class JoinMatchViewController {
     public void showSettings() throws IOException {
         UIController c = UIController.getUIControllerInstance();
         c.showSettings();
