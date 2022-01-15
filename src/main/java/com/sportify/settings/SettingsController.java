@@ -30,5 +30,7 @@ public class SettingsController {
         UserPreferencesDAO dao = UserPreferencesDAO.getInstance();
         dao.saveUserPreferencesToDB(user.getEmail(), preferences, true);
 
+        preferences.setState(true);
+
     }
 }

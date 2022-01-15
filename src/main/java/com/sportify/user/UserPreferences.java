@@ -2,8 +2,9 @@ package com.sportify.user;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.sportify.user.observer.Subject;
 
-public class UserPreferences {
+public class UserPreferences extends Subject{
 
     private int radiusOfInterest;        
     private Map<String, Boolean> sportsMap = new HashMap<>();

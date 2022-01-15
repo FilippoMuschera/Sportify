@@ -2,8 +2,8 @@ package com.sportify.settings;
 
 import com.sportify.settings.exceptions.AddressNotValidException;
 import com.sportify.user.UserEntity;
+import com.sportify.user.observer.Observer;
 import com.sportify.utilitiesui.UIController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -15,7 +15,7 @@ import org.controlsfx.control.ToggleSwitch;
 import java.io.IOException;
 
 
-public class SettingsViewController {
+public class SettingsViewController implements Observer {
 
     @FXML
     private TextField addrText;
@@ -71,6 +71,12 @@ public class SettingsViewController {
     @FXML
     public void initialize(){
 
+       this.updateGUI();
+       UIController.getUIControllerInstance().getUser().getPreferences().attach(this);
+
+    }
+
+    private void updateGUI() {
         UserEntity user = UIController.getUIControllerInstance().getUser();
         int radius = user.getPreferences().getSortingDistance();
         switch (radius) {
@@ -82,22 +88,19 @@ public class SettingsViewController {
         boolean notifications = user.getPreferences().isNotifications();
         notificationsSwitch.setSelected(notifications);
 
-       footballCB.setSelected(user.getPreferences().getFootball());
-       padelCB.setSelected(user.getPreferences().getPadel());
-       basketCB.setSelected(user.getPreferences().getBasket());
-       tennisCB.setSelected(user.getPreferences().getTennis());
+        footballCB.setSelected(user.getPreferences().getFootball());
+        padelCB.setSelected(user.getPreferences().getPadel());
+        basketCB.setSelected(user.getPreferences().getBasket());
+        tennisCB.setSelected(user.getPreferences().getTennis());
 
-       String[] addressArray = user.getPreferences().getUserAddress().split(", ");
-       addrText.setText(addressArray[0]);
-       cityText.setText(addressArray[1]);
-       capText.setText(addressArray[2]);
+        String[] addressArray = user.getPreferences().getUserAddress().split(", ");
+        addrText.setText(addressArray[0]);
+        cityText.setText(addressArray[1]);
+        capText.setText(addressArray[2]);
 
-       saveLabel.setTextFill(Color.rgb(33,37,41));
-       saveLabel.setText("Your current address is: " + user.getPreferences().getUserAddress());
-       successSaveLabel.setOpacity(0);
-
-
-
+        saveLabel.setTextFill(Color.rgb(33,37,41));
+        saveLabel.setText("Your current address is: " + user.getPreferences().getUserAddress());
+        successSaveLabel.setOpacity(0);
     }
 
     public void saveSettings() {
@@ -122,7 +125,9 @@ public class SettingsViewController {
             bean.validateInput();
             SettingsController controller = new SettingsController();
             controller.saveSettings(bean);
-            this.initialize(); //TODO valutare observer
+
+    //La view viene notificata del cambiamento di stato, e viene quindi aggiornata tramite il pattern Observer
+
             successSaveLabel.setOpacity(1);
         } catch (AddressNotValidException e) {
             saveLabel.setTextFill(Color.RED);
@@ -132,6 +137,17 @@ public class SettingsViewController {
             saveLabel.setText("Invalid CAP, try again!");
         }
 
+
+    }
+
+    @Override
+    public void update() {
+        /* Questo metodo implementa il metodo richiesto dall'interface Observer, per implementare il GoF Pattern
+         * Observer, per fare in modo che una volta che l'utente aggiorna le proprie preferenze dalla GUI, questa venga
+         * poi aggiornata per riflettere i cambiamenti.
+         */
+
+        this.updateGUI();
 
     }
 }

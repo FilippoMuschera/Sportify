@@ -34,4 +34,6 @@ module com.sportify.sportifyui {
     opens com.sportify.signup to javafx.fxml;
     exports com.sportify.settings;
     opens com.sportify.settings to javafx.fxml;
+    exports com.sportify.user.observer;
+    opens com.sportify.user.observer to javafx.fxml;
 }
