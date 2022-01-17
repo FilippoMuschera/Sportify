@@ -30,7 +30,7 @@ public class SignUpBean extends LogInBean {
         return isOwner;
     }
 
-    private void validate() throws EmailNotValidException, DifferentPasswordException {
+    public void validateSignUp() throws EmailNotValidException, DifferentPasswordException {
         if(!Objects.equals(firstPsw, secondPsw))
             throw new DifferentPasswordException();
         else
@@ -39,9 +39,6 @@ public class SignUpBean extends LogInBean {
 
     }
 
-    public void executeSignUp() throws DifferentPasswordException, EmailNotValidException, UserAlreadyExistsException {
-        this.validate();
-        SignUpController controller = new SignUpController();
-        controller.signUpUser(this);
-    }
+
+
 }

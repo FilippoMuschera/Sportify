@@ -1,5 +1,6 @@
 package com.sportify.signup;
 
+import com.sportify.cli.ViewControllerCLI;
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
 import com.sportify.user.UserPreferences;
 import com.sportify.user.UserPreferencesDAO;
@@ -29,9 +30,16 @@ public class SignUpController {
         user.setPreferences(preferences);
 
         //Se non vengono generate eccezioni allora viene eseguito il codice sottostante
-        UIController viewController = UIController.getUIControllerInstance();
-        viewController.setUser(user);
-        //Il controller viene quindi ritornato al viewController che aggiorna l'interfaccia
+
+        //Si usa la stessa logica del login per settare correttamente l'utente
+        StackWalker walker = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+        if (walker.getCallerClass().equals(SignUpView.class)) {
+            UIController viewController = UIController.getUIControllerInstance();
+            viewController.setUser(user);
+        }
+        else {
+            ViewControllerCLI.getInstance().setUser(user);
+        }
 
     }
 

@@ -23,6 +23,7 @@ module com.sportify.sportifyui {
     exports com.sportify.settings.exceptions;
     exports com.sportify.sportcenter.courts;
     exports com.sportify.sportcenter.exceptions;
+    exports com.sportify.geolocation;
     opens com.sportify.login to javafx.fxml;
     exports com.sportify.user;
     opens com.sportify.user to javafx.fxml;

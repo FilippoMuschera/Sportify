@@ -41,9 +41,10 @@ public class SignUpView {
                 bean.setFirstPsw(passwordField1.getText());
                 bean.setSecondPsw(passwordField2.getText());
                 bean.setOwner(isOwnerCheckBox.isSelected());
-                bean.executeSignUp();
-                UIController controller = UIController.getUIControllerInstance();
-                controller.showSettings();
+                bean.validateSignUp();
+                SignUpController controller = new SignUpController();
+                controller.signUpUser(bean);
+
             } catch (DifferentPasswordException e) {
                 statusLabel.setText("Passwords are not the same, check them and try again");
             } catch (EmailNotValidException e) {

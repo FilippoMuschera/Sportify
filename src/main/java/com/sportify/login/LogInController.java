@@ -1,5 +1,6 @@
 package com.sportify.login;
 
+import com.sportify.cli.ViewControllerCLI;
 import com.sportify.login.exceptions.IncorrectPasswordException;
 import com.sportify.login.exceptions.UserNotFoundException;
 import com.sportify.user.UserPreferences;
@@ -30,8 +31,14 @@ public class LogInController {
 
         if (!Objects.equals(decryptedPassword, bean.getPassword()))
             throw new IncorrectPasswordException();
-        UIController viewController = UIController.getUIControllerInstance();
-        viewController.setUser(user);
+        StackWalker s = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+        if (s.getCallerClass().equals(LogInView.class)) { // se viene chiamato dalla GUI interagisce con UIController
+            UIController viewController = UIController.getUIControllerInstance();
+            viewController.setUser(user);
+        }
+        else { //Se viene chiamato dalla CLI interagisce con ViewControllerCLI
+            ViewControllerCLI.getInstance().setUser(user);
+        }
 
     }
 
