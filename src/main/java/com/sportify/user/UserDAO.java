@@ -23,7 +23,7 @@ public class UserDAO {
 
     private UserDAO(){}
 
-    public UserEntity getUser(String email) throws UserNotFoundException {
+    public void getUser(String email) throws UserNotFoundException {
 
         try  {
             Connection con = getConnector();
@@ -35,19 +35,21 @@ public class UserDAO {
                 ResultSet rs = preparedStatement.executeQuery();
                 if (!rs.next())
                     throw new UserNotFoundException();
-                UserEntity user = new UserEntity(rs.getString("Email"), rs.getString("Password"), rs.getString("Type"));
+                UserEntity user = UserEntity.getInstance();
+                user.setEmail(rs.getString("Email"));
+                user.setPassword(rs.getString("Password"));
+                user.setType(rs.getString("Type"));
                 rs.close();
-                return user;
+
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
     }
 
-    public UserEntity addUser(String email, String password, String type) throws UserAlreadyExistsException {
+    public void addUser(String email, String password, String type) throws UserAlreadyExistsException {
         try (Connection con = getConnector()) {
             if (con == null)
                 throw new SQLException();
@@ -57,7 +59,10 @@ public class UserDAO {
                 preparedStatement.setString(2, password);
                 preparedStatement.setString(3, type);
                 preparedStatement.executeUpdate();
-                return new UserEntity(email, password, type);
+                UserEntity user = UserEntity.getInstance();
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setType(type);
 
             }
 
@@ -67,7 +72,6 @@ public class UserDAO {
             e.printStackTrace();
         }
 
-        return null;
 
     }
 

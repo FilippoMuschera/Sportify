@@ -3,14 +3,15 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
+import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 
 public class BookMatchController {
 
     UIController controller = UIController.getUIControllerInstance();
-    String userType = controller.getUser().getType();
+    String userType = UserEntity.getInstance().getType();
     String userSelectedSport;
-    Integer userSortingDistance = controller.getUser().getPreferences().getSortingDistance();
+    Integer userSortingDistance = UserEntity.getInstance().getPreferences().getSortingDistance();
     BMStateMachineImplementation stateMachine;
 
 

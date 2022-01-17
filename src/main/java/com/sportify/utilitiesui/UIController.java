@@ -1,8 +1,5 @@
 package com.sportify.utilitiesui;
 
-import com.sportify.addsportcenter.AddSportCenterBean;
-import com.sportify.addsportcenter.AddSportCenterController;
-import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.user.UserEntity;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -22,7 +20,6 @@ public class UIController{
 
     private static UIController singleUIControllerInstance = null;
 
-    private UserEntity user;
 
     private Stage stage;
 
@@ -130,14 +127,6 @@ public class UIController{
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("FaqStyle.css")).toExternalForm());
 
         newStage.show();
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
-    public UserEntity getUser() {
-         return this.user;
     }
 
     public void setStage(Stage stage){

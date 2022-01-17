@@ -72,12 +72,12 @@ public class SettingsViewController implements Observer {
     public void initialize(){
 
        this.updateGUI();
-       UIController.getUIControllerInstance().getUser().getPreferences().attach(this);
+       UserEntity.getInstance().getPreferences().attach(this);
 
     }
 
     private void updateGUI() {
-        UserEntity user = UIController.getUIControllerInstance().getUser();
+        UserEntity user = UserEntity.getInstance();
         int radius = user.getPreferences().getSortingDistance();
         switch (radius) {
             case 10 -> radius10.setSelected(true);

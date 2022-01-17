@@ -5,40 +5,42 @@ import com.sportify.login.LogInController;
 import com.sportify.login.exceptions.EmailNotValidException;
 import com.sportify.login.exceptions.IncorrectPasswordException;
 import com.sportify.login.exceptions.UserNotFoundException;
-import com.sportify.signup.SignUpBean;
-
-import java.io.Console;
 import java.util.Scanner;
 
 import static java.lang.System.*;
 
-public class LogInCLI {
+public class StartCLI {
+
+
+    private static boolean isLogged = false;
 
     public static void main(String[] args) {
 
 
-        while (logIn() > 0){
+
+        while (!isLogged){
             //Finchè non legge un valore negativo, continua ad eseguire il metodo per il login
+            logUser();
         }
         //Se non sono state generate eccezioni carica la HomeScreen della CLI
-        ViewControllerCLI viewControllerCLI = ViewControllerCLI.getInstance();
-        viewControllerCLI.showCLIHomeScreen();
-
-
+        CLIController cliController = CLIController.getIstance();
+        cliController.loadHomeScreen();
 
     }
 
-    private static int logIn() {
+    private static void logUser() {
         out.println("Insert your email to login, write \"signup\" to register, or \"exit\" to exit the program.");
         Scanner scanner = new Scanner(in);
         String email = scanner.nextLine();
 
 
         if ("exit".equals(email))
-            return -1;
+            System.exit(0); //Uscita dal programma su richiesta dell'utente
         if ("signup".equals(email)) {
-            SignUpCLI signup = new SignUpCLI();
-            signup.signUserUp();
+            CLIController c = CLIController.getIstance();
+            c.showSignUp();
+            isLogged = true;
+            return;
         }
 
         out.println("Now insert your password");
@@ -51,21 +53,27 @@ public class LogInCLI {
 
         try {
             controller.logInUser(bean);
+            isLogged = true;
         } catch (UserNotFoundException e) {
             err.println("User not found, type \"signup\" to register!");
-            return 1;
+            isLogged = false;
+            return;
         } catch (IncorrectPasswordException e) {
             err.println("Incorrect password, try again");
-            return 1;
+            isLogged = false;
+            return;
 
         }
         try {
             bean.validateInput();
         } catch (EmailNotValidException e) {
             err.println("Invalid email, try again");
-            return 1;
+            isLogged = false;
+
         }
 
-        return 0;
+
     }
+
+
 }

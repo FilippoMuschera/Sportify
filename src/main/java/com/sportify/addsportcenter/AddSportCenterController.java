@@ -22,7 +22,7 @@ public class AddSportCenterController {
         sportCenter.setCoordinates(coord);
 
         //Aggiungo le info al campo sportivo
-        UserEntity user = UIController.getUIControllerInstance().getUser();
+        UserEntity user = UserEntity.getInstance();
         SportCenterInfo info = new SportCenterInfo(user.getEmail(), bean.getSportCenterName(), bean.getSportCenterAddress());
         sportCenter.setInfo(info);
 

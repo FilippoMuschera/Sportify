@@ -32,7 +32,7 @@ public class BookMatchViewController {
     public void initialize() {
         UIController generalController = UIController.getUIControllerInstance();
         BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
-        UserEntity user = generalController.getUser();
+        UserEntity user = UserEntity.getInstance();
         int numOfSports = 0;
 
         if (user.getPreferences().getBasket()) {

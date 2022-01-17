@@ -16,7 +16,7 @@ public class SettingsController {
         if (Geolocator.getCoordinates(userAddress).length == 0)
             throw new AddressNotValidException();
 
-        UserEntity user = UIController.getUIControllerInstance().getUser();
+        UserEntity user = UserEntity.getInstance();
         UserPreferences preferences = user.getPreferences();
         preferences.setRadiusOfInterest(bean.getRadius());
         preferences.setNotifications(bean.isNotifications());

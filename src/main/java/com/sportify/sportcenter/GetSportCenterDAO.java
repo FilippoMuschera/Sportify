@@ -18,7 +18,7 @@ public class GetSportCenterDAO {
 
     private static GetSportCenterDAO singletonInstance = null;
 
-    private final UserEntity user = UIController.getUIControllerInstance().getUser();
+    private final UserEntity user = UserEntity.getInstance();
 
     private double lat = -1;
     private double lng = -1;

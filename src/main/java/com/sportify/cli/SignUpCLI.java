@@ -16,8 +16,6 @@ public class SignUpCLI {
         while (this.setUpSignUpBean() > 0) {
             //continua ad eseguire la funzione finchè l'utente non riesce a registrarsi correttamente
         }
-        ViewControllerCLI viewControllerCLI = ViewControllerCLI.getInstance();
-        viewControllerCLI.showCLIHomeScreen();
 
     }
 

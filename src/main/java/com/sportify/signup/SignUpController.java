@@ -1,10 +1,8 @@
 package com.sportify.signup;
 
-import com.sportify.cli.ViewControllerCLI;
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
 import com.sportify.user.UserPreferences;
 import com.sportify.user.UserPreferencesDAO;
-import com.sportify.utilitiesui.UIController;
 import com.sportify.user.UserDAO;
 import com.sportify.user.UserEntity;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
@@ -21,7 +19,8 @@ public class SignUpController {
         UserDAO dao = UserDAO.getInstance();
         String encryptedPassword = this.encryptPassword(bean.getPassword());
         String type = bean.isOwner() ? "Owner" : "Player";
-        UserEntity user = dao.addUser(bean.getEmail(), encryptedPassword, type);
+        dao.addUser(bean.getEmail(), encryptedPassword, type);
+        UserEntity user = UserEntity.getInstance();
         UserPreferences preferences = new UserPreferences(DEFAULT_RADIUS, DEFAULT_PREFERENCE, DEFAULT_PREFERENCE,
                 DEFAULT_PREFERENCE, DEFAULT_PREFERENCE, DEFAULT_PREFERENCE, DEFAULT_ADDRESS);
         UserPreferencesDAO daoPreferences = UserPreferencesDAO.getInstance();
@@ -29,17 +28,6 @@ public class SignUpController {
 
         user.setPreferences(preferences);
 
-        //Se non vengono generate eccezioni allora viene eseguito il codice sottostante
-
-        //Si usa la stessa logica del login per settare correttamente l'utente
-        StackWalker walker = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
-        if (walker.getCallerClass().equals(SignUpView.class)) {
-            UIController viewController = UIController.getUIControllerInstance();
-            viewController.setUser(user);
-        }
-        else {
-            ViewControllerCLI.getInstance().setUser(user);
-        }
 
     }
 

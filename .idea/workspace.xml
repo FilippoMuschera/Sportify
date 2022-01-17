@@ -47,9 +47,22 @@
       <recent name="com.sportify.login" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LogInCLI">
+  <component name="RunManager" selected="Application.StartCLI">
     <configuration name="LogInCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.cli.LogInCLI" />
+      <module name="Sportify" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sportify.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sportify.cli.StartCLI" />
       <module name="Sportify" />
       <extension name="coverage">
         <pattern>
@@ -94,16 +107,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntTest.timeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Sportify" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IntTest" />
-      <option name="METHOD_NAME" value="timeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestGeolocator.testGetCoordinates" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sportify" />
       <option name="PACKAGE_NAME" value="" />
@@ -116,11 +119,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StartCLI" />
         <item itemvalue="Application.LogInCLI" />
-        <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
         <item itemvalue="JUnit.IntTest.parseIntTest" />
-        <item itemvalue="JUnit.IntTest.timeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +162,7 @@
       <workItem from="1642150841793" duration="11962000" />
       <workItem from="1642242523565" duration="6535000" />
       <workItem from="1642361437738" duration="1268000" />
-      <workItem from="1642411217566" duration="7324000" />
+      <workItem from="1642411217566" duration="10375000" />
     </task>
     <servers />
   </component>

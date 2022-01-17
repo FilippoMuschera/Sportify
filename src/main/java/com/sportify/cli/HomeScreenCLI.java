@@ -6,24 +6,16 @@ import java.util.Scanner;
 
 import static java.lang.System.*;
 
-public class ViewControllerCLI {
-    private static ViewControllerCLI instance = null;
-    private UserEntity user;
+public class HomeScreenCLI {
+    private static HomeScreenCLI instance = null;
+    private final UserEntity user = UserEntity.getInstance();
 
-    private ViewControllerCLI(){}
+    private HomeScreenCLI(){}
 
-    public static ViewControllerCLI getInstance(){
-        if (ViewControllerCLI.instance == null)
-            instance = new ViewControllerCLI();
+    public static HomeScreenCLI getInstance(){
+        if (HomeScreenCLI.instance == null)
+            instance = new HomeScreenCLI();
         return instance;
-    }
-
-    public void setUser(UserEntity u){
-        user = u;
-    }
-
-    public UserEntity getUser() {
-        return user;
     }
 
     public void showCLIHomeScreen() {
@@ -32,8 +24,21 @@ public class ViewControllerCLI {
             //esegue showOptions finchè l'utente non sceglie un'opzione corretta o non termina il programma
         }
         switch (selectedOption){
-            case 5 -> System.exit(0); //Il programma termina su scelta dell'utente
-            default -> {/* Non è necessario gestire altri casi perchè sono già gestiti del ciclo while precedente */}
+            case 1 : {
+                if (user.getType().equals("Player")) {
+                    err.println("Your account is not of the \"Owner\" kind, you can't add a sport center");
+                    CLIController c = CLIController.getIstance();
+                    c.loadHomeScreen();
+
+                }
+                break;
+
+            }
+
+
+            case 5 : System.exit(0); //Il programma termina su scelta dell'utente
+                     break;
+            default : {/* Non è necessario gestire altri casi perchè sono già gestiti del ciclo while precedente */}
 
 
         }
