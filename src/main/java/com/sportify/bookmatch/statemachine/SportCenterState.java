@@ -1,31 +1,60 @@
 package com.sportify.bookmatch.statemachine;
 
-import com.sportify.bookmatch.BookMatchController;
 import com.sportify.bookmatch.BookMatchViewController;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
-
+import com.sportify.sportcenter.GetSportCenterDAO;
+import java.util.Map;
 
 
 public class SportCenterState implements BMStateInterface {
 
-    String userSelectedSport;
-    Integer userSortingDistance;
-    ObservableList sportCenterList;
+    private String userSelectedSport;
+    private String[] sportCenterList;
+    private Map<String, Double> nearSportCenters;
 
-    @Override
-    public void entry(String userSelectedSport){
-        //recupera gli hourslot con le dao
-        //disattiva bottoni
-        this.userSelectedSport = userSelectedSport;
-        //this.userSortingDistance = userSortingDistance;
+    private static SportCenterState singleSportCenterStateInstance = null;
+
+    protected SportCenterState(){
+        singleSportCenterStateInstance = this;
+    }
+
+    public static SportCenterState getSportCenterStateInstance(){
+        if (SportCenterState.singleSportCenterStateInstance == null){
+            SportCenterState.singleSportCenterStateInstance = new SportCenterState();
+        }
+        return SportCenterState.singleSportCenterStateInstance;
     }
 
     @Override
-    public ObservableList displayView(){
+    public void entry(String userSelectedSport){
+
+        this.userSelectedSport = userSelectedSport;
+
+        GetSportCenterDAO getSCDAO;
+        getSCDAO = GetSportCenterDAO.getInstance();
+        nearSportCenters = getSCDAO.getNearSportCenters(userSelectedSport);
+
+        int numeroSportCenters = nearSportCenters.size();
+        sportCenterList = new String[numeroSportCenters];
+
+        int i = 0;
+
+        for (String key : nearSportCenters.keySet()){
+            sportCenterList[i] = key;
+            i++;
+        }
+
         BookMatchViewController c = BookMatchViewController.getBookMatchViewControllerInstance();
-        ObservableList<String> list = FXCollections.observableArrayList("Item 1", "Item 2", "Item 3", "Item 4");
-        c.displaySportCenters(list);
-        return sportCenterList;
+        c.disableButtons();
+        c.enableScrollPane();
+    }
+
+    @Override
+    public void displayView(){
+        BookMatchViewController c = BookMatchViewController.getBookMatchViewControllerInstance();
+        c.displaySportCenters(sportCenterList);
+    }
+
+    public String getUserSelectedSport(){
+        return this.userSelectedSport;
     }
 }

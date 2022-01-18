@@ -7,15 +7,18 @@ import java.util.List;
 public class BasketCourt extends SportCourt{
 
     private static final String BASKET = "Basket";
-    private static final int BASKET_SPOTS = 10;
 
+    public static int getMaxSpots(){
+        return maxSpots;
+    }
 
     public BasketCourt(int id, List<LocalTime> timeSlots) {
+        this.setMaxSpots();
         super.courtID = id;
         super.sport = BASKET;
         super.bookingTable = new ArrayList<>();
         for (int i = 0; i < timeSlots.size(); i = i+2){
-            super.bookingTable.add(new TimeSlot(timeSlots.get(i), timeSlots.get(i + 1), BASKET_SPOTS));
+            super.bookingTable.add(new TimeSlot(timeSlots.get(i), timeSlots.get(i + 1), maxSpots));
 
         }
     }
@@ -29,6 +32,10 @@ public class BasketCourt extends SportCourt{
             super.bookingTable.add(t);
         }
 
+    }
+
+    private void setMaxSpots(){
+        maxSpots = 10;
     }
 
     @Override

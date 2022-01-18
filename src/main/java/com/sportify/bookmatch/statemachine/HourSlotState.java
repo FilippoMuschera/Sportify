@@ -6,11 +6,12 @@ import javafx.collections.ObservableList;
 
 public class HourSlotState implements BMStateInterface {
 
-    ObservableList hourSlotList;
+    String[] hourSlotList;
 
     @Override
-    public ObservableList displayView(){
-        return hourSlotList;
+    public void displayView(){
+
+        //return hourSlotList;
     }
     @Override
     public void entry(String court){

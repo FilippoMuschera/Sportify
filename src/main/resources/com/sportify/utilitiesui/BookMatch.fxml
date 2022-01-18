@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPaneBookMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
+<AnchorPane fx:id="anchorPaneBookMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
    <children>
        <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
           <children>
@@ -87,7 +88,39 @@
                </ImageView>
            </graphic>
        </Button>
-      <Label fx:id="welcomeMsgLabel" layoutX="17.0" layoutY="128.0" text="Do you want to create your match? Choose your sport!" />
+      <Button fx:id="basketButton" layoutX="200.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromBasket" prefHeight="75.0" prefWidth="150.0" text="Basket" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="footballButton" layoutX="350.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromFootball" prefHeight="75.0" prefWidth="150.0" text="Football" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="padelButton" layoutX="500.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromPadel" prefHeight="75.0" prefWidth="150.0" text="Padel" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="tennisButton" layoutX="650.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromTennis" prefHeight="75.0" prefWidth="150.0" text="Tennis" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ScrollPane fx:id="scrollPaneBookMatch" hbarPolicy="NEVER" layoutX="150.0" layoutY="150.0" prefHeight="400.0" prefWidth="1000.0" visible="false" />
+      <Button fx:id="goBackButton" layoutX="147.0" layoutY="99.0" mnemonicParsing="false" onAction="#goBack" prefHeight="79.0" prefWidth="80.0" text="back" visible="false">
+         <font>
+            <Font size="30.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/court.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 
 </AnchorPane>

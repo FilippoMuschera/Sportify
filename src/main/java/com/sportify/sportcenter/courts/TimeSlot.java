@@ -4,7 +4,6 @@ import java.time.LocalTime;
 
 public class TimeSlot {
     public static final int DEFAULT_SLOT_DURATION = 2; //in hour
-    private boolean isBooked;
     private LocalTime startTime;
     private LocalTime endTime;
     private int availableSpots;
@@ -12,19 +11,14 @@ public class TimeSlot {
     public TimeSlot(LocalTime startTime, LocalTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.isBooked = false;
     }
 
     public TimeSlot(LocalTime startTime, LocalTime endTime, int availableSpots) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.availableSpots = availableSpots;
-        this.isBooked = availableSpots > 0;
     }
 
-    public boolean isBooked() {
-        return isBooked;
-    }
 
     public LocalTime getStartTime() {
         return startTime;

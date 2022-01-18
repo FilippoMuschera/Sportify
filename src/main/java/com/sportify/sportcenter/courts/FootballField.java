@@ -7,7 +7,6 @@ import java.util.List;
 public class FootballField extends SportCourt{
 
     private static final String FOOTBALL = "Football";
-    private static final int FOOTBALL_SPOTS = 10;
 
     @Override
     public void bookTimeSlot() {
@@ -16,6 +15,7 @@ public class FootballField extends SportCourt{
     }
 
     public FootballField(List<TimeSlot> timeSlots, int id) {
+        this.setMaxSpots();
         super.courtID = id;
         super.sport = FOOTBALL;
         super.bookingTable = new ArrayList<>();
@@ -30,10 +30,15 @@ public class FootballField extends SportCourt{
         super.courtID = id;
         super.sport = FOOTBALL;
         super.bookingTable = new ArrayList<>();
-        for (int i = 0; i < timeSlots.size(); i = i+2){
-            super.bookingTable.add(new TimeSlot(timeSlots.get(i), timeSlots.get(i + 1), FOOTBALL_SPOTS));
+        for (int i = 0; i < timeSlots.size(); i = i + 2) {
+            super.bookingTable.add(new TimeSlot(timeSlots.get(i), timeSlots.get(i + 1), maxSpots));
 
         }
-
     }
+
+    private void setMaxSpots(){
+        maxSpots = 10;
+    }
+
+
 }

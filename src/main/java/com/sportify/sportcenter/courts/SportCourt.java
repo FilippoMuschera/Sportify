@@ -8,6 +8,11 @@ public abstract class SportCourt {
     int courtID;
     String sport;
     List<TimeSlot> bookingTable;
+    protected static int maxSpots;
+
+    public static int getMaxSpots() {
+        return maxSpots;
+    }
 
     public int getCourtID() {
         return courtID;

@@ -8,5 +8,4 @@ public interface BMStateMachineInterface {
 
     public void setState(BMStateInterface state);
 
-    public void goPrevState(BMStateInterface state);
 }

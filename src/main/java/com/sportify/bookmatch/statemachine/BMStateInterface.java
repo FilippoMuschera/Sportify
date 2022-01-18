@@ -5,7 +5,7 @@ import javafx.scene.control.ListView;
 
 public interface BMStateInterface {
 
-    public ObservableList displayView();
+    public void displayView();
 
     public void entry(String string);
 

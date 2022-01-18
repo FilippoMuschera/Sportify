@@ -3,10 +3,9 @@ package com.sportify.bookmatch.statemachine;
 
 public class BMStateMachineImplementation implements BMStateMachineInterface {
 
-    BMStateInterface currentState;
-    BMStateInterface prevState;
+    private BMStateInterface currentState;
+    private String selectedSport;
 
-    //"rendo" singleton BMStateMachineImpl, copiato sempre da te fili :) <3 io l'ho copiato dal De Angelis haha
     private static BMStateMachineImplementation singleBMSMInstance = null;
 
     protected BMStateMachineImplementation(){}
@@ -30,12 +29,15 @@ public class BMStateMachineImplementation implements BMStateMachineInterface {
 
     @Override
     public void setState(BMStateInterface state){
-        this.prevState = currentState;
         this.currentState = state;
     }
 
-    @Override
-    public void goPrevState(BMStateInterface state){
-        this.currentState = prevState;
+    public void setSelectedSport(String sportName){
+        this.selectedSport = sportName;
+    }
+
+    public String getSelectedSport(String sportName){
+        return this.selectedSport;
     }
 }
+
