@@ -1,22 +1,19 @@
 package com.sportify.bookmatch.statemachine;
 
-import com.sportify.bookmatch.BookMatchViewController;
+import com.sportify.bookmatch.BookMatchController;
 import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterCourts;
 import com.sportify.sportcenter.SportCenterEntity;
 import com.sportify.sportcenter.courts.SportCourt;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class CourtState implements BMStateInterface {
 
-    private List<Integer> courtArray;
-    private String selectedSportCenter;
-    private SportCenterEntity currentSC;
+    private String[] courtsList;
     private List<SportCourt> courtList;
     private String selectedSport;
+    private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
 
     private static CourtState singleCourtStateInstance = null;
 
@@ -32,21 +29,12 @@ public class CourtState implements BMStateInterface {
     }
 
     @Override
-    public void displayView(){
-        BookMatchViewController c = BookMatchViewController.getBookMatchViewControllerInstance();
-        c.displayCourts(courtArray);
-    }
-
-    @Override
     public void entry(String sportCenterName){
 
-        this.selectedSportCenter = sportCenterName;
-        this.selectedSport = SportCenterState.getSportCenterStateInstance().getUserSelectedSport();
+        this.selectedSport = bookMatchController.getSelectedSport();
 
-        currentSC = GetSportCenterDAO.getInstance().getSportCenter(sportCenterName,selectedSport);
+        SportCenterCourts allCourts = bookMatchController.getBMCourts();
 
-        SportCenterCourts allCourts;
-        allCourts = currentSC.getCourts();
         switch(selectedSport){
             case "Basket":
                 courtList = allCourts.getBasketCourts();
@@ -62,13 +50,22 @@ public class CourtState implements BMStateInterface {
                 break;
             default:
         }
-        courtArray = new ArrayList<>();
+
+        bookMatchController.setCourtList(courtList);
+
+        int numberOfCourts = courtList.size();
+        courtsList = new String[numberOfCourts];
+        int i = 0;
 
         for (SportCourt s: courtList) {
-            courtArray.add(s.getCourtID());
+            courtsList[i] = String.valueOf(s.getCourtID());
+            i++;
         }
+    }
 
-
+    @Override
+    public String[] getList(){
+        return courtsList;
     }
 
 

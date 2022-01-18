@@ -88,22 +88,22 @@
                </ImageView>
            </graphic>
        </Button>
-      <Button fx:id="basketButton" layoutX="200.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromBasket" prefHeight="75.0" prefWidth="150.0" text="Basket" visible="false">
+      <Button fx:id="basketButton" layoutX="200.0" layoutY="300.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Basket" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="footballButton" layoutX="350.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromFootball" prefHeight="75.0" prefWidth="150.0" text="Football" visible="false">
+      <Button fx:id="footballButton" layoutX="350.0" layoutY="300.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Football" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="padelButton" layoutX="500.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromPadel" prefHeight="75.0" prefWidth="150.0" text="Padel" visible="false">
+      <Button fx:id="padelButton" layoutX="500.0" layoutY="300.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Padel" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="tennisButton" layoutX="650.0" layoutY="300.0" mnemonicParsing="false" onAction="#startFromTennis" prefHeight="75.0" prefWidth="150.0" text="Tennis" visible="false">
+      <Button fx:id="tennisButton" layoutX="650.0" layoutY="300.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Tennis" visible="false">
          <font>
             <Font size="24.0" />
          </font>

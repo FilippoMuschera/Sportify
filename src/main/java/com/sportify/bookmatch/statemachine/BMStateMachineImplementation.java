@@ -4,7 +4,6 @@ package com.sportify.bookmatch.statemachine;
 public class BMStateMachineImplementation implements BMStateMachineInterface {
 
     private BMStateInterface currentState;
-    private String selectedSport;
 
     private static BMStateMachineImplementation singleBMSMInstance = null;
 
@@ -19,7 +18,7 @@ public class BMStateMachineImplementation implements BMStateMachineInterface {
 
     @Override
     public void initializeState(){
-        currentState = new SportCenterState();
+        currentState = SportCenterState.getSportCenterStateInstance();
     }
 
     @Override
@@ -30,14 +29,6 @@ public class BMStateMachineImplementation implements BMStateMachineInterface {
     @Override
     public void setState(BMStateInterface state){
         this.currentState = state;
-    }
-
-    public void setSelectedSport(String sportName){
-        this.selectedSport = sportName;
-    }
-
-    public String getSelectedSport(String sportName){
-        return this.selectedSport;
     }
 }
 

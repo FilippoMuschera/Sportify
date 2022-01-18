@@ -38,7 +38,7 @@ public class BookMatchViewController {
     @FXML
     private ScrollPane scrollPaneBookMatch;
 
-    BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
+    private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
 
     @FXML
     public void initialize() {
@@ -52,6 +52,8 @@ public class BookMatchViewController {
             numOfSports++;
             basketButton.setLayoutX(position);
             basketButton.setVisible(true);
+            basketButton.setOnAction(event->startBookMatch(basketButton.getText()));
+
         }
 
         if (user.getPreferences().getFootball()) {
@@ -60,6 +62,8 @@ public class BookMatchViewController {
             numOfSports++;
             footballButton.setLayoutX(position);
             footballButton.setVisible(true);
+            footballButton.setOnAction(event->startBookMatch(footballButton.getText()));
+
         }
         if (user.getPreferences().getTennis()) {
 
@@ -67,12 +71,15 @@ public class BookMatchViewController {
             numOfSports++;
             tennisButton.setLayoutX(position);
             tennisButton.setVisible(true);
+            tennisButton.setOnAction(event->startBookMatch(tennisButton.getText()));
+
         }
         if (user.getPreferences().getPadel()) {
 
             int position = 200 + numOfSports*150 + numOfSports*100;
             padelButton.setLayoutX(position);
             padelButton.setVisible(true);
+            padelButton.setOnAction(event->startBookMatch(padelButton.getText()));
         }
     }
 
@@ -102,20 +109,11 @@ public class BookMatchViewController {
         scrollPaneBookMatch.setVisible(true);
     }
 
-    public void startFromBasket(){
-        bookMatchController.startStateMachine("Basket");
-    }
-
-    public void startFromFootball(){
-        bookMatchController.startStateMachine("Football");
-    }
-
-    public void startFromPadel(){
-        bookMatchController.startStateMachine("Padel");
-    }
-
-    public void startFromTennis(){
-        bookMatchController.startStateMachine("Tennis");
+    public void startBookMatch(String selectedSport){
+        this.disableButtons();
+        this.enableScrollPane();
+        String[] sportCenterList = bookMatchController.startStateMachine(selectedSport);
+        this.displaySportCenters(sportCenterList);
     }
 
 
@@ -127,7 +125,6 @@ public class BookMatchViewController {
 
         TilePane myTilePane = new TilePane();
         myTilePane.setPrefColumns(2);
-        //myTilePane.setPrefWidth(985);
 
         for(String element:list){
 
@@ -146,12 +143,11 @@ public class BookMatchViewController {
             Text newText = new Text(element);
             newText.setFont(new Font(24));
             textHbox.getChildren().add(newText);
-            //newHbox.setAlignment(Pos.CENTER_RIGHT);
             buttonHbox.getChildren().add(newButton);
             buttonHbox.setAlignment(Pos.CENTER_RIGHT);
             HBox.setHgrow(scrollPaneBookMatch, Priority.ALWAYS);
 
-            newButton.setOnAction(event -> bookMatchController.pressedSportCenter(newText.getText()));
+            newButton.setOnAction(event -> selectedSportCenter(newText.getText()));
 
             myTilePane.getChildren().add(textHbox);
             myTilePane.getChildren().add(buttonHbox);
@@ -159,34 +155,87 @@ public class BookMatchViewController {
         scrollPaneBookMatch.setContent(myTilePane);
     }
 
-    public void displayCourts(List<Integer> list){
+    public void selectedSportCenter(String sportCenterName){
+        //goBack.setVisible(true);
+        String[] courtsList = bookMatchController.selectedSportCenter(sportCenterName);
+        this.displayCourts(courtsList);
+    }
+
+
+    public void displayCourts(String[] list){
         TilePane myTilePane = new TilePane();
-        myTilePane.setPrefColumns(1);
-        for(int element:list){
-            HBox newHbox = new HBox();
-            newHbox.setPrefHeight(75);
+        myTilePane.setPrefColumns(2);
+
+        for(String element:list){
+
+            HBox textHbox = new HBox();
+            HBox buttonHbox = new HBox();
+            textHbox.setPrefHeight(75);
+            textHbox.setPrefWidth(500);
+            buttonHbox.setPrefWidth(485);
+            buttonHbox.setPrefHeight(75);
 
             Button newButton = new Button("select");
             newButton.setPrefHeight(50);
-            newButton.setPrefSize(120,65);
+            newButton.setPrefSize(105,50);
             newButton.setFont(new Font(24));
 
-            Text newText = new Text(""+ element);
-            newText.setFont(new Font(36));
-            newHbox.getChildren().addAll(newText,newButton);
-            newButton.setLayoutX(400);
+            Text newText = new Text(element);
+            newText.setFont(new Font(24));
+            textHbox.getChildren().add(newText);
+            buttonHbox.getChildren().add(newButton);
+            buttonHbox.setAlignment(Pos.CENTER_RIGHT);
             HBox.setHgrow(scrollPaneBookMatch, Priority.ALWAYS);
 
-            newButton.setOnAction(event -> bookMatchController.pressedCourt(newText.getText()));
+            newButton.setOnAction(event -> selectedCourt(newText.getText()));
 
-            myTilePane.getChildren().add(newHbox);
+            myTilePane.getChildren().add(textHbox);
+            myTilePane.getChildren().add(buttonHbox);
         }
         scrollPaneBookMatch.setContent(myTilePane);
 
     }
 
-    public void displayHourSlots(ObservableList list){
+    public void selectedCourt(String ID){
+        String[] hourSlotList = bookMatchController.selectedCourt(ID);
+        this.displayHourSlots(hourSlotList);
+    }
 
+    public void displayHourSlots(String[] list){
+        TilePane myTilePane = new TilePane();
+        myTilePane.setPrefColumns(2);
+
+        for(String element:list){
+
+            HBox textHbox = new HBox();
+            HBox buttonHbox = new HBox();
+            textHbox.setPrefHeight(75);
+            textHbox.setPrefWidth(500);
+            buttonHbox.setPrefWidth(485);
+            buttonHbox.setPrefHeight(75);
+
+            Button newButton = new Button("book");
+            newButton.setPrefHeight(50);
+            newButton.setPrefSize(105,50);
+            newButton.setFont(new Font(24));
+
+            Text newText = new Text(element);
+            newText.setFont(new Font(24));
+            textHbox.getChildren().add(newText);
+            buttonHbox.getChildren().add(newButton);
+            buttonHbox.setAlignment(Pos.CENTER_RIGHT);
+            HBox.setHgrow(scrollPaneBookMatch, Priority.ALWAYS);
+
+            newButton.setOnAction(event -> selectedHourSlot(newText.getText()));
+
+            myTilePane.getChildren().add(textHbox);
+            myTilePane.getChildren().add(buttonHbox);
+        }
+        scrollPaneBookMatch.setContent(myTilePane);
+    }
+
+    public void selectedHourSlot(String hourSlot){
+        bookMatchController.selectedHourSlot(hourSlot);
     }
 
     public void goBack(){

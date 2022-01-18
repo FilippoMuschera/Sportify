@@ -27,6 +27,7 @@ public class FootballField extends SportCourt{
         }
 
     public FootballField(int id, List<LocalTime> timeSlots) {
+        this.setMaxSpots();
         super.courtID = id;
         super.sport = FOOTBALL;
         super.bookingTable = new ArrayList<>();

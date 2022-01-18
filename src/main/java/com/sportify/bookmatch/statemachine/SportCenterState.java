@@ -1,6 +1,5 @@
 package com.sportify.bookmatch.statemachine;
 
-import com.sportify.bookmatch.BookMatchViewController;
 import com.sportify.sportcenter.GetSportCenterDAO;
 import java.util.Map;
 
@@ -13,9 +12,7 @@ public class SportCenterState implements BMStateInterface {
 
     private static SportCenterState singleSportCenterStateInstance = null;
 
-    protected SportCenterState(){
-        singleSportCenterStateInstance = this;
-    }
+    protected SportCenterState(){}
 
     public static SportCenterState getSportCenterStateInstance(){
         if (SportCenterState.singleSportCenterStateInstance == null){
@@ -29,9 +26,7 @@ public class SportCenterState implements BMStateInterface {
 
         this.userSelectedSport = userSelectedSport;
 
-        GetSportCenterDAO getSCDAO;
-        getSCDAO = GetSportCenterDAO.getInstance();
-        nearSportCenters = getSCDAO.getNearSportCenters(userSelectedSport);
+        nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport);
 
         int numeroSportCenters = nearSportCenters.size();
         sportCenterList = new String[numeroSportCenters];
@@ -43,18 +38,14 @@ public class SportCenterState implements BMStateInterface {
             i++;
         }
 
-        BookMatchViewController c = BookMatchViewController.getBookMatchViewControllerInstance();
-        c.disableButtons();
-        c.enableScrollPane();
-    }
-
-    @Override
-    public void displayView(){
-        BookMatchViewController c = BookMatchViewController.getBookMatchViewControllerInstance();
-        c.displaySportCenters(sportCenterList);
     }
 
     public String getUserSelectedSport(){
         return this.userSelectedSport;
+    }
+
+    @Override
+    public String[] getList(){
+        return this.sportCenterList;
     }
 }

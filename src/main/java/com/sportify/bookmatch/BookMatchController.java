@@ -3,12 +3,25 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
-import com.sportify.utilitiesui.UIController;
+import com.sportify.sportcenter.GetSportCenterDAO;
+import com.sportify.sportcenter.SportCenterCourts;
+import com.sportify.sportcenter.SportCenterEntity;
+import com.sportify.sportcenter.courts.SportCourt;
+import com.sportify.sportcenter.courts.TimeSlot;
+
+import java.util.List;
+import java.util.Map;
+
+//TODO devi disaccoppiare gli stati dal controller view
 
 public class BookMatchController {
 
     private BMStateMachineImplementation stateMachine;
-
+    private SportCenterEntity entitySC;
+    private String selectedSport;
+    private List<SportCourt> courtList;
+    private int courtIndex;
+    private List<TimeSlot> timeTable;
 
     private static BookMatchController singleBookMatchControllerInstance = null;
 
@@ -22,31 +35,62 @@ public class BookMatchController {
     }
 
 
-    public void startStateMachine(String sport){
+    public String[] startStateMachine(String sport){
+
+        this.selectedSport = sport;
+
         stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
         stateMachine.initializeState();
         stateMachine.getState().entry(sport);
-        stateMachine.getState().displayView();
+
+        return stateMachine.getState().getList();
     }
 
-    public void pressedSportCenter(String sportCenterName){
-        stateMachine.setState(new CourtState());
+    public String[] selectedSportCenter(String sportCenterName){
+
+        entitySC = GetSportCenterDAO.getInstance().getSportCenter(sportCenterName,selectedSport);
+
+        stateMachine.setState(CourtState.getCourtStateInstance());
         stateMachine.getState().entry(sportCenterName);
-        stateMachine.getState().displayView();
+        return stateMachine.getState().getList();
     }
 
-    public void pressedCourt(String courtID){
+    public String[] selectedCourt(String courtID){
+
+        this.courtIndex = Integer.valueOf(courtID);
+        this.timeTable = courtList.get(courtIndex).getBookingTable();
+
         stateMachine.setState(new HourSlotState());
         stateMachine.getState().entry(courtID);
-        stateMachine.getState().displayView();
+        return stateMachine.getState().getList();
     }
 
-    public void pressedHourSlot(){
-        //occupati della prenotazione
+    public void selectedHourSlot(String hourSlot){
+        String[] orari = hourSlot.split("-");
+        int orarioInizio = Integer.parseInt(orari[0]);
+    }
+
+   public List<TimeSlot> getBMTimeSlot(){
+        return this.timeTable;
+    }
+
+    public SportCenterCourts getBMCourts(){
+        return entitySC.getCourts();
+    }
+
+    public void setCourtList(List<SportCourt> list){
+        this.courtList = list;
+    }
+
+    public List<SportCourt> getCourtList(){
+        return this.courtList;
+    }
+
+    public String getSelectedSport(){
+        return this.selectedSport;
     }
 
     public void goBack(){
 
     }
-
 }

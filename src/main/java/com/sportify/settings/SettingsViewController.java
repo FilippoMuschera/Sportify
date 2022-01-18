@@ -93,7 +93,7 @@ public class SettingsViewController implements Observer {
         basketCB.setSelected(user.getPreferences().getBasket());
         tennisCB.setSelected(user.getPreferences().getTennis());
 
-        String[] addressArray = user.getPreferences().getUserAddress().split(", ");
+        String[] addressArray = user.getPreferences().getUserAddress().split(", "); //TODO controllare spazio dopo la ,
         addrText.setText(addressArray[0]);
         cityText.setText(addressArray[1]);
         capText.setText(addressArray[2]);

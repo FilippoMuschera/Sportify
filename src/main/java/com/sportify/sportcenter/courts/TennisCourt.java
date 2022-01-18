@@ -20,6 +20,7 @@ public class TennisCourt extends SportCourt{
     }
 
     public TennisCourt(List<TimeSlot> timeSlots, int id) {
+        this.setMaxSpots();
         super.courtID = id;
         super.sport = TENNIS;
         super.bookingTable = new ArrayList<>();

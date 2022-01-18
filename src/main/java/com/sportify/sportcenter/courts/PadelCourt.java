@@ -19,6 +19,7 @@ public class PadelCourt extends SportCourt{
     }
 
     public PadelCourt(List<TimeSlot> timeSlots, int id) {
+        this.setMaxSpots();
         super.courtID = id;
         super.sport = PADEL;
         super.bookingTable = new ArrayList<>();

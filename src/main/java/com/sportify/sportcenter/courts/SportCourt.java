@@ -8,10 +8,10 @@ public abstract class SportCourt {
     int courtID;
     String sport;
     List<TimeSlot> bookingTable;
-    protected static int maxSpots;
+    protected int maxSpots;
 
-    public static int getMaxSpots() {
-        return maxSpots;
+    public int getMaxSpots() {
+        return this.maxSpots;
     }
 
     public int getCourtID() {

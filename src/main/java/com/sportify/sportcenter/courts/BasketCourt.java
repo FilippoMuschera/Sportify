@@ -8,9 +8,7 @@ public class BasketCourt extends SportCourt{
 
     private static final String BASKET = "Basket";
 
-    public static int getMaxSpots(){
-        return maxSpots;
-    }
+
 
     public BasketCourt(int id, List<LocalTime> timeSlots) {
         this.setMaxSpots();
@@ -24,6 +22,7 @@ public class BasketCourt extends SportCourt{
     }
 
     public BasketCourt(List<TimeSlot> timeSlots, int id) {
+        this.setMaxSpots();
         super.courtID = id;
         super.sport = BASKET;
         super.bookingTable = new ArrayList<>();
@@ -35,7 +34,7 @@ public class BasketCourt extends SportCourt{
     }
 
     private void setMaxSpots(){
-        maxSpots = 10;
+        this.maxSpots = 10;
     }
 
     @Override
