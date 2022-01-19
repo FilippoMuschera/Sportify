@@ -10,9 +10,7 @@ import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
 
 import java.util.List;
-import java.util.Map;
 
-//TODO devi disaccoppiare gli stati dal controller view
 
 public class BookMatchController {
 
@@ -22,6 +20,7 @@ public class BookMatchController {
     private List<SportCourt> courtList;
     private int courtIndex;
     private List<TimeSlot> timeTable;
+    private int maxCourtSpot;
 
     private static BookMatchController singleBookMatchControllerInstance = null;
 
@@ -57,6 +56,7 @@ public class BookMatchController {
 
     public String[] selectedCourt(String courtID){
 
+        maxCourtSpot = courtList.get(Integer.parseInt(courtID)).getMaxSpots();
         this.courtIndex = Integer.valueOf(courtID);
         this.timeTable = courtList.get(courtIndex).getBookingTable();
 
@@ -67,7 +67,16 @@ public class BookMatchController {
 
     public void selectedHourSlot(String hourSlot){
         String[] orari = hourSlot.split("-");
+
         int orarioInizio = Integer.parseInt(orari[0]);
+        for(TimeSlot t:timeTable){
+            if(t.getStartTime().getHour() == orarioInizio){
+                t.setAvailableSpots(maxCourtSpot-1);
+            }
+            //while(){}
+            //forse serve una eccezione
+
+        }
     }
 
    public List<TimeSlot> getBMTimeSlot(){
@@ -76,6 +85,10 @@ public class BookMatchController {
 
     public SportCenterCourts getBMCourts(){
         return entitySC.getCourts();
+    }
+
+    public int getMaxCourtSpot(){
+        return maxCourtSpot;
     }
 
     public void setCourtList(List<SportCourt> list){

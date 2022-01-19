@@ -1,10 +1,12 @@
 package com.sportify.bookmatch;
 
+import com.sportify.bookmatch.BookMatchController;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -119,40 +121,30 @@ public class BookMatchViewController {
 
     @FXML
     public void displaySportCenters(String[] list) {
-        //TODO risolvi il problema del bottone troppo attaccato a destra
-        //ho provato con un tilepane piu piccolo della scroll pane, ma non va
-        //il bottone viene posizionato sotto, idkw
+        //vecchio stile un po ridondante
+        //
+        /*TilePane tilePaneSC = new TilePane();
+        tilePaneSC.setPrefColumns(2);
 
-        TilePane myTilePane = new TilePane();
-        myTilePane.setPrefColumns(2);
+        for(String element:list) {
 
-        for(String element:list){
-
-            HBox textHbox = new HBox();
-            HBox buttonHbox = new HBox();
-            textHbox.setPrefHeight(75);
-            textHbox.setPrefWidth(500);
-            buttonHbox.setPrefWidth(485);
-            buttonHbox.setPrefHeight(75);
-
-            Button newButton = new Button("select");
-            newButton.setPrefHeight(50);
-            newButton.setPrefSize(105,50);
-            newButton.setFont(new Font(24));
-
-            Text newText = new Text(element);
-            newText.setFont(new Font(24));
-            textHbox.getChildren().add(newText);
-            buttonHbox.getChildren().add(newButton);
-            buttonHbox.setAlignment(Pos.CENTER_RIGHT);
-            HBox.setHgrow(scrollPaneBookMatch, Priority.ALWAYS);
-
-            newButton.setOnAction(event -> selectedSportCenter(newText.getText()));
-
-            myTilePane.getChildren().add(textHbox);
-            myTilePane.getChildren().add(buttonHbox);
+            Button selectButton = new Button("select");
+            Label textLabel = new Label(element);
+            selectButton.setOnAction(event->this.selectedSportCenter(textLabel.getText()));
+            tilePaneSC.getChildren().addAll(textLabel,selectButton);
         }
-        scrollPaneBookMatch.setContent(myTilePane);
+        scrollPaneBookMatch.setContent(tilePaneSC);*/
+
+        CustomTilePane customTilePaneSC = new CustomTilePane();
+        customTilePaneSC.createCustomTilePane();
+
+        for(String element:list) {
+            Button selectButton = new Button("select");
+            selectButton.setOnAction(event->selectedSportCenter(element));
+            customTilePaneSC.addElement(selectButton,element);
+        }
+        scrollPaneBookMatch.setContent(customTilePaneSC.getCustomTilePane());
+
     }
 
     public void selectedSportCenter(String sportCenterName){
@@ -163,36 +155,18 @@ public class BookMatchViewController {
 
 
     public void displayCourts(String[] list){
-        TilePane myTilePane = new TilePane();
-        myTilePane.setPrefColumns(2);
 
-        for(String element:list){
+        TilePane tilePaneC = new TilePane();
+        tilePaneC.setPrefColumns(2);
 
-            HBox textHbox = new HBox();
-            HBox buttonHbox = new HBox();
-            textHbox.setPrefHeight(75);
-            textHbox.setPrefWidth(500);
-            buttonHbox.setPrefWidth(485);
-            buttonHbox.setPrefHeight(75);
+        for(String element:list) {
 
-            Button newButton = new Button("select");
-            newButton.setPrefHeight(50);
-            newButton.setPrefSize(105,50);
-            newButton.setFont(new Font(24));
-
-            Text newText = new Text(element);
-            newText.setFont(new Font(24));
-            textHbox.getChildren().add(newText);
-            buttonHbox.getChildren().add(newButton);
-            buttonHbox.setAlignment(Pos.CENTER_RIGHT);
-            HBox.setHgrow(scrollPaneBookMatch, Priority.ALWAYS);
-
-            newButton.setOnAction(event -> selectedCourt(newText.getText()));
-
-            myTilePane.getChildren().add(textHbox);
-            myTilePane.getChildren().add(buttonHbox);
+            Button selectButton = new Button("select");
+            Label textLabel = new Label(element);
+            selectButton.setOnAction(event->selectedCourt(textLabel.getText()));
+            tilePaneC.getChildren().addAll(textLabel,selectButton);
         }
-        scrollPaneBookMatch.setContent(myTilePane);
+        scrollPaneBookMatch.setContent(tilePaneC);
 
     }
 
@@ -202,36 +176,17 @@ public class BookMatchViewController {
     }
 
     public void displayHourSlots(String[] list){
-        TilePane myTilePane = new TilePane();
-        myTilePane.setPrefColumns(2);
+        TilePane tilePaneHS = new TilePane();
+        tilePaneHS.setPrefColumns(2);
 
-        for(String element:list){
+        for(String element:list) {
 
-            HBox textHbox = new HBox();
-            HBox buttonHbox = new HBox();
-            textHbox.setPrefHeight(75);
-            textHbox.setPrefWidth(500);
-            buttonHbox.setPrefWidth(485);
-            buttonHbox.setPrefHeight(75);
-
-            Button newButton = new Button("book");
-            newButton.setPrefHeight(50);
-            newButton.setPrefSize(105,50);
-            newButton.setFont(new Font(24));
-
-            Text newText = new Text(element);
-            newText.setFont(new Font(24));
-            textHbox.getChildren().add(newText);
-            buttonHbox.getChildren().add(newButton);
-            buttonHbox.setAlignment(Pos.CENTER_RIGHT);
-            HBox.setHgrow(scrollPaneBookMatch, Priority.ALWAYS);
-
-            newButton.setOnAction(event -> selectedHourSlot(newText.getText()));
-
-            myTilePane.getChildren().add(textHbox);
-            myTilePane.getChildren().add(buttonHbox);
+            Button selectButton = new Button("select");
+            Label textLabel = new Label(element);
+            selectButton.setOnAction(event->selectedHourSlot(textLabel.getText()));
+            tilePaneHS.getChildren().addAll(textLabel,selectButton);
         }
-        scrollPaneBookMatch.setContent(myTilePane);
+        scrollPaneBookMatch.setContent(tilePaneHS);
     }
 
     public void selectedHourSlot(String hourSlot){
