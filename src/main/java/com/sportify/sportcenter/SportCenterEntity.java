@@ -8,8 +8,11 @@ public class SportCenterEntity {
     private double[] coordinates = new double[2];
 
 
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
+    public void setCoordinates(double lat, double lng) {
+        double[] coord = new double[2];
+        coord[0] = lat;
+        coord[1] = lng;
+        this.coordinates = coord;
     }
 
     public double getLat() {

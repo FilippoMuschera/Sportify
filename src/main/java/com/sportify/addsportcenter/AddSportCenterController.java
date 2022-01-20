@@ -17,9 +17,11 @@ public class AddSportCenterController {
 
 
         //Calcolo coordinate del campo dall'indirizzo
-        double[] coord = Geolocator.getCoordinates(bean.getSportCenterAddress());
+        Geolocator g = new Geolocator();
+        double lat = g.getLat(bean.getSportCenterAddress());
+        double lng = g.getLng(bean.getSportCenterAddress());
         SportCenterEntity sportCenter = new SportCenterEntity();
-        sportCenter.setCoordinates(coord);
+        sportCenter.setCoordinates(lat, lng);
 
         //Aggiungo le info al campo sportivo
         UserEntity user = UserEntity.getInstance();

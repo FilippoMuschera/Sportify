@@ -18,53 +18,70 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Geolocator {
-    private static final String GEOCODING_RESOURCE = "https://geocode.search.hereapi.com/v1/geocode";
-    private static final String API_KEY = Geolocator.getApiKey();
+    private final String apiKey = this.getApiKey();
+    private double lat = -1;
+    private double lng = -1;
 
-    public static double[] getCoordinates(String address) {
+
+    public double getLat(String address){
+        if (this.lat == -1 && this.setCoordinates(address) == -1)
+           return -1;
+        return this.lat;
+    }
+
+    public double getLng(String address){
+        if (this.lng == -1 && this.setCoordinates(address) == -1)
+            return -1;
+        return this.lng;
+    }
+
+
+    private int setCoordinates(String address) {
 
         HttpClient httpClient = HttpClient.newHttpClient();
 
         String encodedQuery = URLEncoder.encode(address, StandardCharsets.UTF_8);
-        String requestUri = GEOCODING_RESOURCE + "?apiKey=" + API_KEY + "&q=" + encodedQuery;
+        String geocodingResource = "https://geocode.search.hereapi.com/v1/geocode";
+        String requestUri = geocodingResource + "?apiKey=" + apiKey + "&q=" + encodedQuery;
 
         HttpRequest geocodingRequest = HttpRequest.newBuilder().GET().uri(URI.create(requestUri))
                 .timeout(Duration.ofMillis(2000)).build();
 
-        HttpResponse<String> geocodingResponse = null;
+        HttpResponse<String> geocodingResponse;
         try {
             geocodingResponse = httpClient.send(geocodingRequest,
                     HttpResponse.BodyHandlers.ofString());
-            return parseResponse(Objects.requireNonNull(geocodingResponse).body());
+            double[] response = this.parseResponse(Objects.requireNonNull(geocodingResponse).body());
+            if (response.length < 2) //se le due coordinate non vengono ottenute
+                return -1;
+            this.lat = response[0];
+            this.lng = response[1];
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             Thread.currentThread().interrupt();
         }
 
-
-        return new double[0]; //array vuoto
+        return 2; //due coordinate inizializzate correttamente
     }
 
-    private static double[] parseResponse(String response) throws JsonProcessingException {
+    private double[] parseResponse(String response) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode responseJsonNode = mapper.readTree(response);
 
         JsonNode items = responseJsonNode.get("items");
 
-
-
         JsonNode item = items.get(0);
         if (item == null)
             return new double[0];
         JsonNode position = item.get("position");
-        double lat = position.get("lat").asDouble();
-        double lng = position.get("lng").asDouble();
-        return new double[]{lat, lng};
+        double latitude = position.get("lat").asDouble();
+        double longitude = position.get("lng").asDouble();
+        return new double[]{latitude, longitude};
 
     }
 
 
-    private static String getApiKey(){
+    private String getApiKey(){
         try (InputStream input = new FileInputStream("src/main/resources/com.sportify.geolocation/ApiKey.properties")) {
 
             Properties prop = new Properties();
@@ -81,5 +98,5 @@ public class Geolocator {
         return null;
     }
 
-    private Geolocator(){}
+
 }

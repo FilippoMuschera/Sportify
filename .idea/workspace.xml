@@ -52,7 +52,7 @@
       <recent name="com.sportify.login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntTest.testUpdateTimeSlot">
+  <component name="RunManager" selected="Application.StartUI">
     <configuration name="LogInCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.cli.LogInCLI" />
       <module name="Sportify" />
@@ -124,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IntTest.testUpdateTimeSlot" />
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
+        <item itemvalue="JUnit.IntTest.testUpdateTimeSlot" />
         <item itemvalue="Application.StartCLI" />
         <item itemvalue="Application.LogInCLI" />
-        <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +171,8 @@
       <workItem from="1642496140374" duration="11342000" />
       <workItem from="1642518511862" duration="234000" />
       <workItem from="1642586838314" duration="196000" />
-      <workItem from="1642669404175" duration="1681000" />
+      <workItem from="1642669404175" duration="2077000" />
+      <workItem from="1642671528616" duration="2604000" />
     </task>
     <servers />
   </component>

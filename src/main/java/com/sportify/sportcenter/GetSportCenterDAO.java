@@ -101,7 +101,7 @@ public class GetSportCenterDAO {
                     throw new NullPointerException("Sport Center Not Found");
 
                 //assegna le coordinate allo sport center
-                sportCenter.setCoordinates(new double[]{rs.getDouble("Lat"), rs.getDouble("Lng")});
+                sportCenter.setCoordinates(rs.getDouble("Lat"), rs.getDouble("Lng"));
 
 
             }
@@ -160,7 +160,9 @@ public class GetSportCenterDAO {
 
     private double getUserLat() {
         if (this.lat == -1) {
-            this.lat = Geolocator.getCoordinates(user.getPreferences().getUserAddress())[0];
+            Geolocator g;
+            g = new Geolocator();
+            this.lat = g.getLat(user.getPreferences().getUserAddress());
         }
         return this.lat;
 
@@ -168,7 +170,10 @@ public class GetSportCenterDAO {
 
     private double getUserLng() {
         if (this.lng == -1) {
-            this.lng = Geolocator.getCoordinates(user.getPreferences().getUserAddress())[1];
+            Geolocator g;
+            g = new Geolocator();
+            this.lng = g.getLng(user.getPreferences().getUserAddress());
+
         }
         return this.lng;
     }
