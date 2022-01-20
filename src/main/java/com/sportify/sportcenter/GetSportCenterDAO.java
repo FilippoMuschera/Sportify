@@ -3,7 +3,7 @@ package com.sportify.sportcenter;
 import com.sportify.geolocation.Geolocator;
 import com.sportify.sportcenter.courts.*;
 import com.sportify.user.UserEntity;
-import com.sportify.utilitiesui.UIController;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

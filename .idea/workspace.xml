@@ -39,6 +39,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.22758621" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
@@ -47,7 +52,7 @@
       <recent name="com.sportify.login" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StartUI">
+  <component name="RunManager" selected="JUnit.IntTest.testUpdateTimeSlot">
     <configuration name="LogInCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.cli.LogInCLI" />
       <module name="Sportify" />
@@ -97,11 +102,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntTest.parseIntTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntTest.testUpdateTimeSlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sportify" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="IntTest" />
-      <option name="METHOD_NAME" value="parseIntTest" />
+      <option name="METHOD_NAME" value="testUpdateTimeSlot" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -119,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IntTest.testUpdateTimeSlot" />
         <item itemvalue="Application.StartUI" />
         <item itemvalue="Application.StartCLI" />
         <item itemvalue="Application.LogInCLI" />
         <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
-        <item itemvalue="JUnit.IntTest.parseIntTest" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +167,11 @@
       <workItem from="1642150841793" duration="11962000" />
       <workItem from="1642242523565" duration="6535000" />
       <workItem from="1642361437738" duration="1268000" />
-      <workItem from="1642411217566" duration="10375000" />
+      <workItem from="1642411217566" duration="10499000" />
+      <workItem from="1642496140374" duration="11342000" />
+      <workItem from="1642518511862" duration="234000" />
+      <workItem from="1642586838314" duration="196000" />
+      <workItem from="1642669404175" duration="1681000" />
     </task>
     <servers />
   </component>

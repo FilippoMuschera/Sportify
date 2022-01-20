@@ -29,14 +29,21 @@ public class HomeScreenCLI {
                     err.println("Your account is not of the \"Owner\" kind, you can't add a sport center");
                     CLIController c = CLIController.getIstance();
                     c.loadHomeScreen();
+                    //TODO add sport center se è utente corretto
 
                 }
                 break;
 
             }
 
+            case 2: {
+                CLIController c = CLIController.getIstance();
+                c.showSettings();
+                break;
+            }
 
-            case 5 : System.exit(0); //Il programma termina su scelta dell'utente
+
+            case 6 : System.exit(0); //Il programma termina su scelta dell'utente
                      break;
             default : {/* Non è necessario gestire altri casi perchè sono già gestiti del ciclo while precedente */}
 
@@ -53,11 +60,12 @@ public class HomeScreenCLI {
                 2. Change your Settings
                 3. Book a Match
                 4. Join a Match
-                5. Quit the application
+                5. show FAQs
+                6. Quit the application
                 """);
         Scanner scanner = new Scanner(in);
         int selectedOption = scanner.nextInt();
-        if (selectedOption > 5 || selectedOption < 1) {
+        if (selectedOption > 6 || selectedOption < 1) {
             err.println("Invalid option, try again!");
             return -1;
         }

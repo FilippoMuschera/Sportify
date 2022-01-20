@@ -24,12 +24,13 @@ module com.sportify.sportifyui {
     exports com.sportify.sportcenter.courts;
     exports com.sportify.sportcenter.exceptions;
     exports com.sportify.geolocation;
+    exports com.sportify.addsportcenter;
+    exports com.sportify.sportcenter;
     opens com.sportify.login to javafx.fxml;
     exports com.sportify.user;
     opens com.sportify.user to javafx.fxml;
     exports com.sportify.bookmatch;
     opens com.sportify.bookmatch to javafx.fxml;
-    exports com.sportify.addsportcenter;
     opens com.sportify.addsportcenter to javafx.fxml;
     exports com.sportify.signup;
     opens com.sportify.signup to javafx.fxml;

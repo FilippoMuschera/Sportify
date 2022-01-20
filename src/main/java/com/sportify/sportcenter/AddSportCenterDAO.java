@@ -22,7 +22,7 @@ public class AddSportCenterDAO {
         this.addSportCenterPosition(sportCenter);
         this.addCourts(sportCenter);
 
-        if (this.error){
+        if (this.error) {
             throw new SportCenterException();
         }
     }
@@ -43,7 +43,7 @@ public class AddSportCenterDAO {
         try (Connection con = getConnector()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(queryCourt);
-            PreparedStatement psTimeSlot = con.prepareStatement(queryTimeSlot)) {
+                 PreparedStatement psTimeSlot = con.prepareStatement(queryTimeSlot)) {
                 preparedStatement.setString(2, sportCenter.getInfo().getSportCenterName());
                 psTimeSlot.setString(2, sportCenter.getInfo().getSportCenterName());
                 for (List<SportCourt> courts : sportsList) { //elenco dei tipi di campo
@@ -51,11 +51,11 @@ public class AddSportCenterDAO {
                         preparedStatement.setInt(1, court.getCourtID());
                         preparedStatement.setString(3, court.getSport());
                         preparedStatement.executeUpdate();
-                        for (TimeSlot ts : court.getBookingTable()){ //per ogni time slot di un campo
+                        for (TimeSlot ts : court.getBookingTable()) { //per ogni time slot di un campo
                             psTimeSlot.setInt(1, court.getCourtID());
-                            psTimeSlot.setInt(3,ts.getStartTime().getHour());
-                            psTimeSlot.setInt(4,ts.getEndTime().getHour());
-                            psTimeSlot.setInt(5,ts.getAvailableSpots());
+                            psTimeSlot.setInt(3, ts.getStartTime().getHour());
+                            psTimeSlot.setInt(4, ts.getEndTime().getHour());
+                            psTimeSlot.setInt(5, ts.getAvailableSpots());
                             psTimeSlot.setString(6, court.getSport());
                             psTimeSlot.executeUpdate();
                         }
@@ -92,7 +92,7 @@ public class AddSportCenterDAO {
     }
 
 
-        private void addSportCenter(SportCenterEntity sportCenter){
+    private void addSportCenter(SportCenterEntity sportCenter) {
         try (Connection con = getConnector()) {
             if (con == null)
                 throw new SQLException();
@@ -115,4 +115,27 @@ public class AddSportCenterDAO {
         }
     }
 
+    public void updateTimeSlot(int availableSpots, int id, String sport, String nameSC, int startH, int finishH) {
+        try (Connection con = getConnector()) {
+            if (con == null)
+                throw new SQLException();
+            String query = "UPDATE `sportify_db`.`TimeSlot`SET`availableSpots` = ? " +
+                    "WHERE `idCampo` = ? AND `Sport` = ? AND `NameSC` = ? AND `startH` = ? AND `finishH` = ?;";
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setInt(1, availableSpots);
+                ps.setInt(2, id);
+                ps.setString(3, sport);
+                ps.setString(4, nameSC);
+                ps.setInt(5, startH);
+                ps.setInt(6, finishH);
+
+                ps.executeUpdate();
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

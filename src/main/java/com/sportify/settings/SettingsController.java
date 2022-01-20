@@ -5,11 +5,10 @@ import com.sportify.settings.exceptions.AddressNotValidException;
 import com.sportify.user.UserEntity;
 import com.sportify.user.UserPreferences;
 import com.sportify.user.UserPreferencesDAO;
-import com.sportify.utilitiesui.UIController;
 
 
-public class SettingsController {
-    public void saveSettings(SettingsBean bean) {
+public class SettingsController  {
+    public void saveSettings(SettingsBean bean) throws AddressNotValidException{
 
         String userAddress = bean.getAddress() + ", " + bean.getCity() + ", " + bean.getCap();
 

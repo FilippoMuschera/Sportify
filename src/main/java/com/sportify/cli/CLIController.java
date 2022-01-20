@@ -16,10 +16,18 @@ public class CLIController {
         HomeScreenCLI homeScreenCLI = HomeScreenCLI.getInstance();
         homeScreenCLI.showCLIHomeScreen();
 
+
     }
 
     public void showSignUp(){
         SignUpCLI signUpCLI = new SignUpCLI();
         signUpCLI.signUserUp();
+    }
+
+    public void showSettings(){
+        SettingsCLI settingsCLI = new SettingsCLI();
+        settingsCLI.showSettingsCLI();
+        HomeScreenCLI.getInstance().showCLIHomeScreen();
+
     }
 }

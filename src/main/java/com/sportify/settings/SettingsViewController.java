@@ -132,7 +132,7 @@ public class SettingsViewController implements Observer {
         } catch (AddressNotValidException e) {
             saveLabel.setTextFill(Color.RED);
             saveLabel.setText("Invalid address, try again");
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e){ //TODO CONTROLLARE SE SERVE
             saveLabel.setTextFill(Color.RED);
             saveLabel.setText("Invalid CAP, try again!");
         }
