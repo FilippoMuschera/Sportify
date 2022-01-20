@@ -1,31 +1,29 @@
 package com.sportify.bookmatch;
 
-import com.sportify.bookmatch.BookMatchController;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import com.sportify.sportcenter.GetSportCenterDAO;
-import com.sportify.sportcenter.SportCenterEntity;
+
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.io.IOException;
-import java.util.List;
 
 
 public class BookMatchViewController {
 
-    @FXML
-     private AnchorPane anchorPaneBookMatch;
+    private final String textButtons = "select";
 
+    @FXML
+    private AnchorPane anchorPaneBookMatch;
+    @FXML
+    private Label popUpLabel;
+    @FXML
+    private AnchorPane popUpAnchorPane;
+    @FXML
+    private Button createJoinMatchButton;
+    @FXML
+    private Button bookMatchButton;
     @FXML
     private Button basketButton;
     @FXML
@@ -34,18 +32,22 @@ public class BookMatchViewController {
     private Button padelButton;
     @FXML
     private Button tennisButton;
-    @FXML
-    private Button goBack;
+
+    private boolean basketButtonIsActive = false;
+    private boolean padelButtonIsActive = false;
+    private boolean tennisButtonIsActive = false;
+    private boolean footballButtonIsActive = false;
 
     @FXML
     private ScrollPane scrollPaneBookMatch;
 
     private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
+    private CustomTilePane customTilePane = new CustomTilePane();
 
     @FXML
     public void initialize() {
-        UIController generalController = UIController.getUIControllerInstance();
         UserEntity user = UserEntity.getInstance();
+
         int numOfSports = 0;
 
         if (user.getPreferences().getBasket()) {
@@ -54,6 +56,7 @@ public class BookMatchViewController {
             numOfSports++;
             basketButton.setLayoutX(position);
             basketButton.setVisible(true);
+            basketButtonIsActive = true;
             basketButton.setOnAction(event->startBookMatch(basketButton.getText()));
 
         }
@@ -64,6 +67,7 @@ public class BookMatchViewController {
             numOfSports++;
             footballButton.setLayoutX(position);
             footballButton.setVisible(true);
+            footballButtonIsActive = true;
             footballButton.setOnAction(event->startBookMatch(footballButton.getText()));
 
         }
@@ -73,6 +77,7 @@ public class BookMatchViewController {
             numOfSports++;
             tennisButton.setLayoutX(position);
             tennisButton.setVisible(true);
+            tennisButtonIsActive = true;
             tennisButton.setOnAction(event->startBookMatch(tennisButton.getText()));
 
         }
@@ -81,6 +86,7 @@ public class BookMatchViewController {
             int position = 200 + numOfSports*150 + numOfSports*100;
             padelButton.setLayoutX(position);
             padelButton.setVisible(true);
+            padelButtonIsActive = true;
             padelButton.setOnAction(event->startBookMatch(padelButton.getText()));
         }
     }
@@ -99,12 +105,26 @@ public class BookMatchViewController {
         return BookMatchViewController.singleBookMatchViewControllerInstance;
     }
 
-    public void disableButtons(){
+    public void hideButtons(){
         basketButton.setVisible(false);
         padelButton.setVisible(false);
         footballButton.setVisible(false);
         tennisButton.setVisible(false);
-        //goBack.setVisible(false);
+    }
+
+    public void enableButtons(){
+        if(basketButtonIsActive) {
+            basketButton.setVisible(true);
+        }
+        if(padelButtonIsActive){
+            padelButton.setVisible(true);
+        }
+        if(footballButtonIsActive){
+            footballButton.setVisible(true);
+        }
+        if(tennisButtonIsActive) {
+            tennisButton.setVisible(true);
+        }
     }
 
     public void enableScrollPane(){
@@ -112,7 +132,7 @@ public class BookMatchViewController {
     }
 
     public void startBookMatch(String selectedSport){
-        this.disableButtons();
+        this.hideButtons();
         this.enableScrollPane();
         String[] sportCenterList = bookMatchController.startStateMachine(selectedSport);
         this.displaySportCenters(sportCenterList);
@@ -121,29 +141,15 @@ public class BookMatchViewController {
 
     @FXML
     public void displaySportCenters(String[] list) {
-        //vecchio stile un po ridondante
-        //
-        /*TilePane tilePaneSC = new TilePane();
-        tilePaneSC.setPrefColumns(2);
+
+        customTilePane.createCustomTilePane();
 
         for(String element:list) {
-
-            Button selectButton = new Button("select");
-            Label textLabel = new Label(element);
-            selectButton.setOnAction(event->this.selectedSportCenter(textLabel.getText()));
-            tilePaneSC.getChildren().addAll(textLabel,selectButton);
-        }
-        scrollPaneBookMatch.setContent(tilePaneSC);*/
-
-        CustomTilePane customTilePaneSC = new CustomTilePane();
-        customTilePaneSC.createCustomTilePane();
-
-        for(String element:list) {
-            Button selectButton = new Button("select");
+            Button selectButton = new Button(textButtons);
             selectButton.setOnAction(event->selectedSportCenter(element));
-            customTilePaneSC.addElement(selectButton,element);
+            customTilePane.addElement(selectButton,element);
         }
-        scrollPaneBookMatch.setContent(customTilePaneSC.getCustomTilePane());
+        scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
 
     }
 
@@ -156,17 +162,14 @@ public class BookMatchViewController {
 
     public void displayCourts(String[] list){
 
-        TilePane tilePaneC = new TilePane();
-        tilePaneC.setPrefColumns(2);
+        customTilePane.createCustomTilePane();
 
         for(String element:list) {
-
-            Button selectButton = new Button("select");
-            Label textLabel = new Label(element);
-            selectButton.setOnAction(event->selectedCourt(textLabel.getText()));
-            tilePaneC.getChildren().addAll(textLabel,selectButton);
+            Button selectButton = new Button(textButtons);
+            selectButton.setOnAction(event->selectedCourt(element));
+            customTilePane.addElement(selectButton,element);
         }
-        scrollPaneBookMatch.setContent(tilePaneC);
+        scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
 
     }
 
@@ -176,25 +179,59 @@ public class BookMatchViewController {
     }
 
     public void displayHourSlots(String[] list){
-        TilePane tilePaneHS = new TilePane();
-        tilePaneHS.setPrefColumns(2);
+        customTilePane.createCustomTilePane();
 
         for(String element:list) {
-
-            Button selectButton = new Button("select");
-            Label textLabel = new Label(element);
-            selectButton.setOnAction(event->selectedHourSlot(textLabel.getText()));
-            tilePaneHS.getChildren().addAll(textLabel,selectButton);
+            Button selectButton = new Button(textButtons);
+            selectButton.setOnAction(event-> selectedHourSlot(element));
+            customTilePane.addElement(selectButton,element);
         }
-        scrollPaneBookMatch.setContent(tilePaneHS);
+        scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
     }
 
-    public void selectedHourSlot(String hourSlot){
-        bookMatchController.selectedHourSlot(hourSlot);
+    public void selectedHourSlot (String hourSlot){
+        bookMatchController.setHourSlot(hourSlot);
+
+        popUpLabel.setText("""
+                If you want to book a match, click Book Match.
+                
+                If you want to create a joinable match, click
+                Create Joinable Match.
+                
+                """);
+
+        showPopUpControls();
     }
 
-    public void goBack(){
-        bookMatchController.goBack();
+    public void createBookMatch(){
+        bookMatchController.bookMatch();
+        restartBookMatch();
+    }
+
+    public void createJoinMatch(){
+        bookMatchController.createJoinMatch();
+        restartBookMatch();
+    }
+
+    public void restartBookMatch(){
+
+        hidePopUpControls();
+        enableButtons();
+    }
+
+    public void showPopUpControls(){
+        createJoinMatchButton.setVisible(true);
+        bookMatchButton.setVisible(true);
+        popUpLabel.setVisible(true);
+        scrollPaneBookMatch.setVisible(false);
+        popUpAnchorPane.setVisible(true);
+    }
+
+    public void hidePopUpControls(){
+        createJoinMatchButton.setVisible(false);
+        bookMatchButton.setVisible(false);
+        popUpLabel.setVisible(false);
+        popUpAnchorPane.setVisible(false);
     }
 
     //Metodi per bottoni base della UI

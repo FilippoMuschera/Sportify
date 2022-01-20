@@ -32,7 +32,7 @@ public class CourtState implements BMStateInterface {
     public void entry(String sportCenterName){
 
         this.selectedSport = bookMatchController.getSelectedSport();
-
+        bookMatchController.setSelectedSportCenter(sportCenterName);
         SportCenterCourts allCourts = bookMatchController.getBMCourts();
 
         switch(selectedSport){

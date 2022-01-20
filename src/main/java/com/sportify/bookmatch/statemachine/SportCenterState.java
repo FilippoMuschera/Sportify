@@ -1,5 +1,6 @@
 package com.sportify.bookmatch.statemachine;
 
+import com.sportify.bookmatch.BookMatchController;
 import com.sportify.sportcenter.GetSportCenterDAO;
 import java.util.Map;
 
@@ -8,8 +9,7 @@ public class SportCenterState implements BMStateInterface {
 
     private String userSelectedSport;
     private String[] sportCenterList;
-    private Map<String, Double> nearSportCenters;
-
+    private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
     private static SportCenterState singleSportCenterStateInstance = null;
 
     protected SportCenterState(){}
@@ -25,8 +25,8 @@ public class SportCenterState implements BMStateInterface {
     public void entry(String userSelectedSport){
 
         this.userSelectedSport = userSelectedSport;
-
-        nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport);
+        bookMatchController.setSelectedSport(userSelectedSport);
+        Map<String, Double> nearSportCenters = bookMatchController.getNearSportCenters(userSelectedSport);
 
         int numeroSportCenters = nearSportCenters.size();
         sportCenterList = new String[numeroSportCenters];
@@ -38,10 +38,6 @@ public class SportCenterState implements BMStateInterface {
             i++;
         }
 
-    }
-
-    public String getUserSelectedSport(){
-        return this.userSelectedSport;
     }
 
     @Override

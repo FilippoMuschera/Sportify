@@ -9,7 +9,9 @@ import com.sportify.sportcenter.SportCenterEntity;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
 
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 
 public class BookMatchController {
@@ -18,9 +20,13 @@ public class BookMatchController {
     private SportCenterEntity entitySC;
     private String selectedSport;
     private List<SportCourt> courtList;
-    private int courtIndex;
+    private int selectedCourtID;
     private List<TimeSlot> timeTable;
     private int maxCourtSpot;
+    private String hourSlot;
+    private LocalTime selectedStartTime;
+    private LocalTime selectedFinishTime;
+    private String selectedSportCenter;
 
     private static BookMatchController singleBookMatchControllerInstance = null;
 
@@ -36,8 +42,6 @@ public class BookMatchController {
 
     public String[] startStateMachine(String sport){
 
-        this.selectedSport = sport;
-
         stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
         stateMachine.initializeState();
         stateMachine.getState().entry(sport);
@@ -48,7 +52,6 @@ public class BookMatchController {
     public String[] selectedSportCenter(String sportCenterName){
 
         entitySC = GetSportCenterDAO.getInstance().getSportCenter(sportCenterName,selectedSport);
-
         stateMachine.setState(CourtState.getCourtStateInstance());
         stateMachine.getState().entry(sportCenterName);
         return stateMachine.getState().getList();
@@ -57,20 +60,21 @@ public class BookMatchController {
     public String[] selectedCourt(String courtID){
 
         maxCourtSpot = courtList.get(Integer.parseInt(courtID)).getMaxSpots();
-        this.courtIndex = Integer.valueOf(courtID);
-        this.timeTable = courtList.get(courtIndex).getBookingTable();
+        this.selectedCourtID = Integer.valueOf(courtID);
+        this.timeTable = courtList.get(selectedCourtID).getBookingTable();
 
         stateMachine.setState(new HourSlotState());
         stateMachine.getState().entry(courtID);
         return stateMachine.getState().getList();
     }
 
-    public void selectedHourSlot(String hourSlot){
+    public void createJoinMatch( ){
         String[] orari = hourSlot.split("-");
-
         int orarioInizio = Integer.parseInt(orari[0]);
         for(TimeSlot t:timeTable){
             if(t.getStartTime().getHour() == orarioInizio){
+                selectedStartTime = t.getStartTime();
+                selectedFinishTime = t.getEndTime();
                 t.setAvailableSpots(maxCourtSpot-1);
             }
             //while(){}
@@ -79,7 +83,23 @@ public class BookMatchController {
         }
     }
 
-   public List<TimeSlot> getBMTimeSlot(){
+    public void bookMatch(){
+        String[] orari = hourSlot.split("-");
+        int orarioInizio = Integer.parseInt(orari[0]);
+        for(TimeSlot t:timeTable) {
+            if (t.getStartTime().getHour() == orarioInizio) {
+                selectedStartTime = t.getStartTime();
+                selectedFinishTime = t.getEndTime();
+                t.setAvailableSpots(0);
+            }
+        }
+    }
+
+    public Map<String, Double> getNearSportCenters(String userSelectedSport){
+        return GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport);
+    }
+
+    public List<TimeSlot> getBMTimeSlot(){
         return this.timeTable;
     }
 
@@ -103,7 +123,27 @@ public class BookMatchController {
         return this.selectedSport;
     }
 
-    public void goBack(){
+    public void setSelectedSport(String sport){
+        selectedSport = sport;
+    }
 
+    public void setHourSlot(String hourSlot){
+        this.hourSlot = hourSlot;
+    }
+
+    public LocalTime getSelectedStartTime(){
+        return selectedStartTime;
+    }
+
+    public LocalTime getSelectedFinishTime(){
+        return selectedFinishTime;
+    }
+
+    public String getSelectedSportCenter(){
+        return selectedSportCenter;
+    }
+
+    public void setSelectedSportCenter(String selectedSportCenter){
+        this.selectedSportCenter = selectedSportCenter;
     }
 }
