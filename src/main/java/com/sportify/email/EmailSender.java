@@ -1,8 +1,10 @@
 package com.sportify.email;
 
 import com.sportify.user.UserEntity;
-
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.FileInputStream;
@@ -10,33 +12,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static java.lang.System.*;
 
 public class EmailSender {
 
+    private String from;
+    private String pass;
+    private String host;
+    private Session session;
+    private MimeMessage message;
+
     public void sendPlayerEmail(String sport, int courtID, String sportCenterAddress, int startTime, int finishTime){
-        try (InputStream input = new FileInputStream("src/main/resources/com.sportify.email/email.properties")) {
 
-            Properties prop = new Properties();
-
-            // carica il file properties
-            prop.load(input);
-
-            String from = prop.getProperty("email.from");
-            String pass = prop.getProperty("email.psw");
-            String host = prop.getProperty("email.host");
-
-            Properties properties = this.setProperties(host, from, pass);
-
-            // Get the default Session object.
-            Session session = Session.getDefaultInstance(properties);
-
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
-
+        this.setEmailData();
+        try {
             // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(UserEntity.getInstance().getEmail()));
@@ -49,7 +37,7 @@ public class EmailSender {
                     Hello, this email is a confirmation and a reminder of the booking you made through Sportify!
                     
                     Details:
-                    You booked the %s field/court at %s, %s.
+                    You booked the %s field/court number %s, at the sport center in %s.
                     You booked this court/filed from %d to %d, don't be late!
                     
                     Thanks for using our service,
@@ -65,9 +53,8 @@ public class EmailSender {
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            out.println("Sent message successfully....");
 
-        } catch (IOException | MessagingException e) {
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
@@ -75,28 +62,11 @@ public class EmailSender {
     public void sendOwnerEmail(String ownerEmail, String sport, int courtID, int startTime, int finishTime) {
         //carica dal file properties le informazioni sulla email da utilizzare per il servizio di notifiche email
         //la relativa password e il server host
-        try (InputStream input = new FileInputStream("src/main/resources/com/sportify/email/email.properties")) {
 
-            Properties prop = new Properties();
+        this.setEmailData();
 
-            // carica il file properties
-            prop.load(input);
 
-            String from = prop.getProperty("email.from");
-            String pass = prop.getProperty("email.psw");
-            String host = prop.getProperty("email.host");
-
-            Properties properties = this.setProperties(host, from, pass);
-
-            // Get the default Session object.
-            Session session = Session.getDefaultInstance(properties);
-
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
-
+        try {
             // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(ownerEmail));
@@ -112,7 +82,7 @@ public class EmailSender {
                     Details of the booking:
                     %s court/field number %d is now booked from %d to %d!
                     
-                    Thanks for using our service,                    
+                    Thanks for using our service,
                     Sportify Team
                     """;
             messageBody =  String.format(messageBody, sport, courtID, startTime, finishTime);
@@ -125,9 +95,8 @@ public class EmailSender {
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            out.println("Sent message successfully....");
 
-        } catch (IOException | MessagingException e) {
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
@@ -144,5 +113,33 @@ public class EmailSender {
         properties.put("mail.smtp.auth", "true");
 
         return properties;
+    }
+
+    private void setEmailData() {
+        try (InputStream input = new FileInputStream("src/main/resources/com/sportify/email/email.properties")) {
+
+
+            Properties prop = new Properties();
+
+            // carica il file properties
+            prop.load(input);
+
+            this.from = prop.getProperty("email.from");
+            this.pass = prop.getProperty("email.psw");
+            this.host = prop.getProperty("email.host");
+
+            Properties properties = this.setProperties(host, from, pass);
+
+            // Get the default Session object.
+            this.session = Session.getDefaultInstance(properties);
+
+            // Create a default MimeMessage object.
+            this.message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+        } catch (IOException | MessagingException ex) {
+            ex.printStackTrace();
+        }
     }
 }

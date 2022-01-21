@@ -27,6 +27,7 @@ module com.sportify.sportifyui {
     exports com.sportify.geolocation;
     exports com.sportify.addsportcenter;
     exports com.sportify.sportcenter;
+    exports com.sportify.email;
     opens com.sportify.login to javafx.fxml;
     exports com.sportify.user;
     opens com.sportify.user to javafx.fxml;
