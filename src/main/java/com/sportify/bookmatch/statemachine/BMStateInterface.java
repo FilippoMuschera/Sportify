@@ -6,6 +6,4 @@ import javafx.scene.control.ListView;
 public interface BMStateInterface {
 
     public void entry(String string);
-
-    public String[] getList();
 }

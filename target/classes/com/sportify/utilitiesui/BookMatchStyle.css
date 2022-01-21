@@ -48,6 +48,12 @@
 
 }
 
+#meanLabel{
+    -fx-font-family: "Playball";
+    -fx-text-fill: rgba(0, 0, 0, 1);
+    -fx-font-size: 36;
+}
+
 #createMatchButton{
     -fx-border-radius: 50;
     -fx-border-color: #212529;

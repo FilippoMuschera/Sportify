@@ -1,5 +1,7 @@
 package com.sportify.bookmatch;
 
+import com.sportify.sportcenter.courts.SportCourt;
+import com.sportify.sportcenter.courts.TimeSlot;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 import javafx.fxml.FXML;
@@ -8,12 +10,16 @@ import javafx.scene.layout.*;
 
 import java.sql.SQLException;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Map;
 
 
 public class BookMatchViewController {
 
-    private final String textButtons = "select";
-
+    private final static String TEXT_BUTTON = "select";
+    @FXML
+    private Label meanLabel;
     @FXML
     private AnchorPane anchorPaneBookMatch;
     @FXML
@@ -133,64 +139,68 @@ public class BookMatchViewController {
 
     public void startBookMatch(String selectedSport){
         this.hideButtons();
+        meanLabel.setVisible(true);
+        meanLabel.setText("These are the nearest Sport Center, choose one.");
         this.enableScrollPane();
-        String[] sportCenterList = bookMatchController.startStateMachine(selectedSport);
+        Map<String, Double> sportCenterList = bookMatchController.startStateMachine(selectedSport);
         this.displaySportCenters(sportCenterList);
     }
 
 
     @FXML
-    public void displaySportCenters(String[] list) {
+    public void displaySportCenters(Map<String, Double> nearSportCenters) {
 
         customTilePane.createCustomTilePane();
 
-        for(String element:list) {
-            Button selectButton = new Button(textButtons);
-            selectButton.setOnAction(event->selectedSportCenter(element));
-            customTilePane.addElement(selectButton,element);
-        }
+        nearSportCenters.forEach((key, value) -> {
+            Button selectButton = new Button(TEXT_BUTTON);
+            selectButton.setOnAction(event -> selectedSportCenter(key));
+            customTilePane.addElement(selectButton, "Sport Center " + key + "   (" + new DecimalFormat("##.##").format(nearSportCenters.get(key))+ " kms away)");
+        });
         scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
 
     }
 
     public void selectedSportCenter(String sportCenterName){
-        //goBack.setVisible(true);
-        String[] courtsList = bookMatchController.selectedSportCenter(sportCenterName);
+        List<SportCourt> courtsList = bookMatchController.selectedSportCenter(sportCenterName);
         this.displayCourts(courtsList);
     }
 
 
-    public void displayCourts(String[] list){
+    public void displayCourts(List<SportCourt> courtList){
 
         customTilePane.createCustomTilePane();
 
-        for(String element:list) {
-            Button selectButton = new Button(textButtons);
-            selectButton.setOnAction(event->selectedCourt(element));
-            customTilePane.addElement(selectButton,element);
+        for(SportCourt element:courtList) {
+            Button selectButton = new Button(TEXT_BUTTON);
+            selectButton.setOnAction(event->selectedCourt(String.valueOf(element.getCourtID())));
+            customTilePane.addElement(selectButton,"Court number: "+String.valueOf(element.getCourtID()));
         }
         scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
 
     }
 
-    public void selectedCourt(String ID){
-        String[] hourSlotList = bookMatchController.selectedCourt(ID);
-        this.displayHourSlots(hourSlotList);
+    public void selectedCourt(String id){
+        List<TimeSlot> timeTable = bookMatchController.selectedCourt(id);
+        this.displayHourSlots(timeTable);
     }
 
-    public void displayHourSlots(String[] list){
+    public void displayHourSlots(List<TimeSlot> timeTable){
         customTilePane.createCustomTilePane();
 
-        for(String element:list) {
-            Button selectButton = new Button(textButtons);
+        for(TimeSlot element:timeTable) {
+            Button selectButton = new Button(TEXT_BUTTON);
             selectButton.setOnAction(event-> selectedHourSlot(element));
-            customTilePane.addElement(selectButton,element);
+            int start = element.getStartTime().getHour();
+            int finish = element.getEndTime().getHour();
+            int spots = element.getAvailableSpots();
+            customTilePane.addElement(selectButton,"Start time: "+start+ "   Finish time: "+finish+", available spots: "+spots);
         }
         scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
     }
 
-    public void selectedHourSlot (String hourSlot){
-        bookMatchController.setHourSlot(hourSlot);
+    public void selectedHourSlot (TimeSlot hourSlot){
+        bookMatchController.setSelectedTimeSlot(hourSlot);
 
         popUpLabel.setText("""
                 If you want to book a match, click Book Match.

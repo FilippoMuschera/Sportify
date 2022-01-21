@@ -10,10 +10,11 @@ import java.util.List;
 
 public class CourtState implements BMStateInterface {
 
-    private String[] courtsList;
     private List<SportCourt> courtList;
     private String selectedSport;
     private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
+    private SportCenterEntity entitySC;
+    private SportCenterCourts allCourts;
 
     private static CourtState singleCourtStateInstance = null;
 
@@ -31,9 +32,14 @@ public class CourtState implements BMStateInterface {
     @Override
     public void entry(String sportCenterName){
 
-        this.selectedSport = bookMatchController.getSelectedSport();
+        selectedSport = bookMatchController.getSelectedSport();
         bookMatchController.setSelectedSportCenter(sportCenterName);
-        SportCenterCourts allCourts = bookMatchController.getBMCourts();
+
+        entitySC = GetSportCenterDAO.getInstance().getSportCenter(sportCenterName,selectedSport);
+        bookMatchController.setEntitySC(entitySC);
+
+        allCourts = entitySC.getCourts();
+        bookMatchController.setAllCourts(allCourts);
 
         switch(selectedSport){
             case "Basket":
@@ -52,21 +58,5 @@ public class CourtState implements BMStateInterface {
         }
 
         bookMatchController.setCourtList(courtList);
-
-        int numberOfCourts = courtList.size();
-        courtsList = new String[numberOfCourts];
-        int i = 0;
-
-        for (SportCourt s: courtList) {
-            courtsList[i] = String.valueOf(s.getCourtID());
-            i++;
-        }
     }
-
-    @Override
-    public String[] getList(){
-        return courtsList;
-    }
-
-
 }

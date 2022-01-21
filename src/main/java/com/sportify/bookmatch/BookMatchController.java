@@ -3,7 +3,6 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
-import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterCourts;
 import com.sportify.sportcenter.SportCenterEntity;
 import com.sportify.sportcenter.courts.SportCourt;
@@ -23,10 +22,10 @@ public class BookMatchController {
     private int selectedCourtID;
     private List<TimeSlot> timeTable;
     private int maxCourtSpot;
-    private String hourSlot;
-    private LocalTime selectedStartTime;
-    private LocalTime selectedFinishTime;
+    private TimeSlot selectedTimeSlot;
     private String selectedSportCenter;
+    private Map<String, Double> nearSportCenters;
+    private SportCenterCourts allCourts;
 
     private static BookMatchController singleBookMatchControllerInstance = null;
 
@@ -40,75 +39,46 @@ public class BookMatchController {
     }
 
 
-    public String[] startStateMachine(String sport){
+    public Map<String, Double> startStateMachine(String sport){
 
         stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
         stateMachine.initializeState();
         stateMachine.getState().entry(sport);
-
-        return stateMachine.getState().getList();
+        return nearSportCenters;
     }
 
-    public String[] selectedSportCenter(String sportCenterName){
+    public List<SportCourt> selectedSportCenter(String sportCenterName){
 
-        entitySC = GetSportCenterDAO.getInstance().getSportCenter(sportCenterName,selectedSport);
         stateMachine.setState(CourtState.getCourtStateInstance());
         stateMachine.getState().entry(sportCenterName);
-        return stateMachine.getState().getList();
+        return courtList;
     }
 
-    public String[] selectedCourt(String courtID){
+    public List<TimeSlot> selectedCourt(String courtID){
 
-        maxCourtSpot = courtList.get(Integer.parseInt(courtID)).getMaxSpots();
-        this.selectedCourtID = Integer.valueOf(courtID);
         this.timeTable = courtList.get(selectedCourtID).getBookingTable();
 
         stateMachine.setState(new HourSlotState());
         stateMachine.getState().entry(courtID);
-        return stateMachine.getState().getList();
+        return timeTable;
     }
 
     public void createJoinMatch( ){
-        String[] orari = hourSlot.split("-");
-        int orarioInizio = Integer.parseInt(orari[0]);
+
         for(TimeSlot t:timeTable){
-            if(t.getStartTime().getHour() == orarioInizio){
-                selectedStartTime = t.getStartTime();
-                selectedFinishTime = t.getEndTime();
+            if(t == selectedTimeSlot){
                 t.setAvailableSpots(maxCourtSpot-1);
             }
-            //while(){}
-            //forse serve una eccezione
-
         }
     }
 
     public void bookMatch(){
-        String[] orari = hourSlot.split("-");
-        int orarioInizio = Integer.parseInt(orari[0]);
+
         for(TimeSlot t:timeTable) {
-            if (t.getStartTime().getHour() == orarioInizio) {
-                selectedStartTime = t.getStartTime();
-                selectedFinishTime = t.getEndTime();
+            if (t == selectedTimeSlot) {
                 t.setAvailableSpots(0);
             }
         }
-    }
-
-    public Map<String, Double> getNearSportCenters(String userSelectedSport){
-        return GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport);
-    }
-
-    public List<TimeSlot> getBMTimeSlot(){
-        return this.timeTable;
-    }
-
-    public SportCenterCourts getBMCourts(){
-        return entitySC.getCourts();
-    }
-
-    public int getMaxCourtSpot(){
-        return maxCourtSpot;
     }
 
     public void setCourtList(List<SportCourt> list){
@@ -127,23 +97,39 @@ public class BookMatchController {
         selectedSport = sport;
     }
 
-    public void setHourSlot(String hourSlot){
-        this.hourSlot = hourSlot;
-    }
-
-    public LocalTime getSelectedStartTime(){
-        return selectedStartTime;
-    }
-
-    public LocalTime getSelectedFinishTime(){
-        return selectedFinishTime;
-    }
-
-    public String getSelectedSportCenter(){
-        return selectedSportCenter;
+    public void setSelectedTimeSlot(TimeSlot hourSlot){
+        selectedTimeSlot = hourSlot;
     }
 
     public void setSelectedSportCenter(String selectedSportCenter){
         this.selectedSportCenter = selectedSportCenter;
     }
+
+    public void setNearSportCentersMap(Map<String, Double> nearSportCenters){
+        this.nearSportCenters = nearSportCenters;
+    }
+    public void setEntitySC(SportCenterEntity entitySC){
+        this.entitySC = entitySC;
+    }
+
+    public void setAllCourts(SportCenterCourts allCourts){
+        this.allCourts = allCourts;
+    }
+
+    public void setMaxCourtSpot(int maxCourtSpot){
+        this.maxCourtSpot = maxCourtSpot;
+    }
+
+    public int getSelectedCourtID(){
+        return selectedCourtID;
+    }
+
+    public void setSelectedCourtID(int selectedCourtID){
+        this.selectedCourtID = selectedCourtID;
+    }
+
+    public void setTimeTable(List<TimeSlot> timeTable){
+        this.timeTable = timeTable;
+    }
 }
+

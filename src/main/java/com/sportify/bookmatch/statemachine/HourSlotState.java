@@ -10,28 +10,18 @@ public class HourSlotState implements BMStateInterface {
 
     private String[] hourSlotList;
     private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
+    private List<TimeSlot> timeTable;
 
     @Override
     public void entry(String court){
 
-        List<TimeSlot> timeTable = bookMatchController.getBMTimeSlot();
+        int maxCourtSpot = bookMatchController.getCourtList().get(Integer.parseInt(court)).getMaxSpots();
+        bookMatchController.setMaxCourtSpot(maxCourtSpot);
+        bookMatchController.setSelectedCourtID(Integer.valueOf(court));
+
         List<SportCourt> courtList = bookMatchController.getCourtList();
-        int maxSpots = bookMatchController.getMaxCourtSpot();
 
-        int i = 0;
-        int numOfTimeSlot = timeTable.size();
-        hourSlotList = new String[numOfTimeSlot];
-
-        for(TimeSlot t: timeTable){
-            if (t.getAvailableSpots() == maxSpots) {
-                hourSlotList[i] = "" + t.getStartTime().getHour() + "-" + t.getEndTime().getHour();
-                i++;
-            }
-        }
-    }
-
-    @Override
-    public String[] getList(){
-        return hourSlotList;
+        timeTable = courtList.get(bookMatchController.getSelectedCourtID()).getBookingTable();
+        bookMatchController.setTimeTable(timeTable);
     }
 }
