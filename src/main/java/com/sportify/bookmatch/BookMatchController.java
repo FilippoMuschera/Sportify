@@ -44,7 +44,7 @@ public class BookMatchController {
 
     public List<SportCourt> selectedSportCenter(String sportCenterName){
 
-        stateMachine.setState(CourtState.getCourtStateInstance());
+        stateMachine.setState(new CourtState());
         stateMachine.getState().entry(sportCenterName);
         return courtList;
     }

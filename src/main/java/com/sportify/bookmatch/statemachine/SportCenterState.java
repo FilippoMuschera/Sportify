@@ -8,16 +8,8 @@ import java.util.Map;
 public class SportCenterState implements BMStateInterface {
 
     private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
-    private static SportCenterState singleSportCenterStateInstance = null;
 
     protected SportCenterState(){}
-
-    public static SportCenterState getSportCenterStateInstance(){
-        if (SportCenterState.singleSportCenterStateInstance == null){
-            SportCenterState.singleSportCenterStateInstance = new SportCenterState();
-        }
-        return SportCenterState.singleSportCenterStateInstance;
-    }
 
     @Override
     public void entry(String userSelectedSport){

@@ -18,7 +18,7 @@ public class BMStateMachineImplementation implements BMStateMachineInterface {
 
     @Override
     public void initializeState(){
-        currentState = SportCenterState.getSportCenterStateInstance();
+        currentState = new SportCenterState();
     }
 
     @Override
