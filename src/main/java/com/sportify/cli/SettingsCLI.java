@@ -18,6 +18,8 @@ public class SettingsCLI implements Observer {
         while (setUpSettingsBean() > 0){
             //esegue finchè l'utente non esce o non completa correttamente l'esecuzione
         }
+        HomeScreenCLI.getInstance().showCLIHomeScreen();
+
 
     }
 
@@ -36,7 +38,7 @@ public class SettingsCLI implements Observer {
         boolean notifications = notificationsString.equals("y");
         bean.setNotifications(notifications);
         String sportsMessage = ("""
-                Now you have to select what sports you want to add to your favourites: we currently support:
+                Now you have to select what sports you want to add to your favourites. We currently support:
                 
                 Football (currently = %s)
                 Padel (currently = %s)

@@ -27,7 +27,11 @@ public class CLIController {
     public void showSettings(){
         SettingsCLI settingsCLI = new SettingsCLI();
         settingsCLI.showSettingsCLI();
-        HomeScreenCLI.getInstance().showCLIHomeScreen();
 
+    }
+
+    public void showAddSportCenterCLI() {
+        AddSportCenterCLI addSportCenterCLI = new AddSportCenterCLI();
+        addSportCenterCLI.addSportCenterFromCLI();
     }
 }

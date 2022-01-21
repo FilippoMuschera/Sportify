@@ -38,4 +38,6 @@ module com.sportify.sportifyui {
     opens com.sportify.settings to javafx.fxml;
     exports com.sportify.user.observer;
     opens com.sportify.user.observer to javafx.fxml;
+    exports com.sportify.joinmatch;
+    opens com.sportify.joinmatch to javafx.fxml;
 }

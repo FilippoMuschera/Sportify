@@ -29,8 +29,10 @@ public class HomeScreenCLI {
                     err.println("Your account is not of the \"Owner\" kind, you can't add a sport center");
                     CLIController c = CLIController.getIstance();
                     c.loadHomeScreen();
-                    //TODO add sport center se è utente corretto
-
+                    }
+                else {
+                    CLIController c = CLIController.getIstance();
+                    c.showAddSportCenterCLI();
                 }
                 break;
 

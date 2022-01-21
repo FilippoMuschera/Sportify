@@ -43,12 +43,4 @@ public class DBConnector {
 
     private DBConnector(){} //La classe ha metodi statici, non deve essere istanziata
 
-    public static void closeConnection() {
-        try {
-            if(!DBConnector.con.isClosed())
-                DBConnector.con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }

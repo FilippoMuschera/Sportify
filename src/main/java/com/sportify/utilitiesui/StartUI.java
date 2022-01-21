@@ -24,9 +24,7 @@ public class StartUI extends Application {
         UIController viewController = UIController.getUIControllerInstance();
         viewController.setStage(stage);
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            DBConnector.closeConnection();
-        }));
+
 
         stage.show();
     }
