@@ -3,7 +3,6 @@ package com.sportify.signup;
 import com.sportify.login.LogInBean;
 import com.sportify.login.exceptions.EmailNotValidException;
 import com.sportify.signup.exceptions.DifferentPasswordException;
-import com.sportify.signup.exceptions.UserAlreadyExistsException;
 
 import java.util.Objects;
 

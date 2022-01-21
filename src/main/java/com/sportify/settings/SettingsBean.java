@@ -2,7 +2,6 @@ package com.sportify.settings;
 
 import com.sportify.settings.exceptions.AddressNotValidException;
 
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

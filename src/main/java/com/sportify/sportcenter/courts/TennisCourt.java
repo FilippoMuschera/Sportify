@@ -35,9 +35,5 @@ public class TennisCourt extends SportCourt{
         maxSpots = 4;
     }
 
-    @Override
-    public void bookTimeSlot() {
-        //TODO implementazione dei metodi della classe astratta
 
-    }
 }

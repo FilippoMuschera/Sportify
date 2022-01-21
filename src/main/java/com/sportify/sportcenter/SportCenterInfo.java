@@ -4,7 +4,7 @@ public class SportCenterInfo {
     private final String ownerEmail;
     private final String sportCenterName;
     private final String sportCenterAddress;
-    private final boolean notifications;
+    private boolean notifications;
 
 
     public SportCenterInfo(String ownerEmail, String sportCenterName, String sportCenterAddress, boolean notifications) {

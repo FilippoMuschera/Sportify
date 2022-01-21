@@ -31,7 +31,7 @@ public class SignUpView {
        controller.goToPreviousStage();
     }
 
-    public void signUserUp() throws IOException {
+    public void signUserUp() {
 
             try{
                 statusLabel.setOpacity(0);

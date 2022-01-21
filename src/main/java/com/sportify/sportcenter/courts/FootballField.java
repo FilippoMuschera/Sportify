@@ -8,11 +8,6 @@ public class FootballField extends SportCourt{
 
     private static final String FOOTBALL = "Football";
 
-    @Override
-    public void bookTimeSlot() {
-        //TODO implementazione dei metodi della classe astratta, forse si può implementare direttamente nella abstract class!
-
-    }
 
     public FootballField(List<TimeSlot> timeSlots, int id) {
         this.setMaxSpots();

@@ -62,7 +62,7 @@ public class BookMatchController {
 
         for(TimeSlot t:timeTable){
             if(t == selectedTimeSlot){
-                selectedTimeSlot.setAvailableSpots(maxCourtSpot-1);
+                selectedTimeSlot.setAvailableSpots(selectedTimeSlot.getAvailableSpots()-1);
                 break;
             }
         }

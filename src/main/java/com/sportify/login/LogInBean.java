@@ -1,11 +1,9 @@
 package com.sportify.login;
 
+import com.sportify.login.exceptions.EmailNotValidException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.sportify.login.exceptions.EmailNotValidException;
-import com.sportify.login.exceptions.IncorrectPasswordException;
-import com.sportify.login.exceptions.UserNotFoundException;
 
 public class LogInBean {
 

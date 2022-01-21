@@ -37,9 +37,5 @@ public class BasketCourt extends SportCourt{
         this.maxSpots = 10;
     }
 
-    @Override
-    public void bookTimeSlot() {
-        //TODO implementazione dei metodi della classe astratta
 
-    }
 }

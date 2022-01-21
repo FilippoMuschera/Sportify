@@ -26,7 +26,6 @@ public abstract class SportCourt {
         return bookingTable;
     }
 
-    public abstract void bookTimeSlot();
 
 
 
