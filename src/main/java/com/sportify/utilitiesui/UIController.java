@@ -1,6 +1,5 @@
 package com.sportify.utilitiesui;
 
-import com.sportify.user.UserEntity;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -13,6 +13,7 @@ module com.sportify.sportifyui {
     requires java.sql;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires java.mail;
 
 
     opens com.sportify.utilitiesui to javafx.fxml;

@@ -24,7 +24,7 @@ public class GetSportCenterDAO {
     private double lng = -1;
 
 
-    public Map<String, Double> getNearSportCenters(String sport) {
+    public Map<String, Double> getNearSportCenters(String sport) throws NullPointerException { //TODO rendere il numero di sport center ritornati variabile
         try {
             Connection con = getConnector();
             if (con == null)
@@ -78,14 +78,18 @@ public class GetSportCenterDAO {
             SportCenterCourts courts = new SportCenterCourts();
 
             //Richiede al DB Le info sullo sport center e sugli orari di apertura/chiusura
-            String querySc = "SELECT * FROM sportify_db.SportCenter WHERE Name = ?;";
+            String querySc = """
+                    SELECT Name, ownerEmail, openingH, closingH, SportCenter.Address, Notifications
+                     FROM sportify_db.SportCenter join sportify_db.UsersPreferences on Email = ownerEmail
+                     WHERE Name = ?;
+                    """;
             try (PreparedStatement ps = con.prepareStatement(querySc)){
                 ps.setString(1, scName);
                 ResultSet rs = ps.executeQuery();
                 if (!rs.next())
                     throw new NullPointerException("Sport Center Not Found");
                 info = new SportCenterInfo(rs.getString("ownerEmail"), rs.getString("Name"),
-                        rs.getString("Address"));
+                        rs.getString("Address"), rs.getBoolean("Notifications"));
                 time = new SportCenterTime(rs.getInt("openingH"), rs.getInt("closingH"));
 
                 //assegna le info recuperate dal db allo sport center

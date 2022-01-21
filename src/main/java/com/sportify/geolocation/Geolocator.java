@@ -82,7 +82,7 @@ public class Geolocator {
 
 
     private String getApiKey(){
-        try (InputStream input = new FileInputStream("src/main/resources/com.sportify.geolocation/ApiKey.properties")) {
+        try (InputStream input = new FileInputStream("src/main/resources/com/sportify/geolocation/ApiKey.properties")) {
 
             Properties prop = new Properties();
 

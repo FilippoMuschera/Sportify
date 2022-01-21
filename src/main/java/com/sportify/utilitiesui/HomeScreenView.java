@@ -2,7 +2,6 @@ package com.sportify.utilitiesui;
 
 
 import com.sportify.user.UserEntity;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

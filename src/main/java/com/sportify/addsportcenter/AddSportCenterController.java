@@ -5,7 +5,6 @@ import com.sportify.sportcenter.*;
 import com.sportify.sportcenter.courts.TimeSlot;
 import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.user.UserEntity;
-import com.sportify.utilitiesui.UIController;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class AddSportCenterController {
 
         //Aggiungo le info al campo sportivo
         UserEntity user = UserEntity.getInstance();
-        SportCenterInfo info = new SportCenterInfo(user.getEmail(), bean.getSportCenterName(), bean.getSportCenterAddress());
+        SportCenterInfo info = new SportCenterInfo(user.getEmail(), bean.getSportCenterName(), bean.getSportCenterAddress(), user.getPreferences().isNotifications());
         sportCenter.setInfo(info);
 
         //Aggiungo gli orari al campo sportivo

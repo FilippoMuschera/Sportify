@@ -1,6 +1,5 @@
 package com.sportify.utilitiesui;
 
-import com.sportify.utilitydb.DBConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

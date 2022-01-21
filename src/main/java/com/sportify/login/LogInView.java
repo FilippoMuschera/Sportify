@@ -4,7 +4,6 @@ import com.sportify.login.exceptions.EmailNotValidException;
 import com.sportify.login.exceptions.IncorrectPasswordException;
 import com.sportify.login.exceptions.UserNotFoundException;
 import com.sportify.utilitiesui.UIController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;

@@ -4,12 +4,14 @@ public class SportCenterInfo {
     private final String ownerEmail;
     private final String sportCenterName;
     private final String sportCenterAddress;
+    private final boolean notifications;
 
 
-    public SportCenterInfo(String ownerEmail, String sportCenterName, String sportCenterAddress) {
+    public SportCenterInfo(String ownerEmail, String sportCenterName, String sportCenterAddress, boolean notifications) {
         this.ownerEmail = ownerEmail;
         this.sportCenterName = sportCenterName;
         this.sportCenterAddress = sportCenterAddress;
+        this.notifications = notifications;
     }
 
 
@@ -25,5 +27,7 @@ public class SportCenterInfo {
         return sportCenterAddress;
     }
 
-
+    public boolean isNotifications() {
+        return notifications;
+    }
 }

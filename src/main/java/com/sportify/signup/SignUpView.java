@@ -4,7 +4,6 @@ import com.sportify.login.exceptions.EmailNotValidException;
 import com.sportify.signup.exceptions.DifferentPasswordException;
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
 import com.sportify.utilitiesui.UIController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
