@@ -3,12 +3,9 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
-import com.sportify.sportcenter.SportCenterCourts;
-import com.sportify.sportcenter.SportCenterEntity;
+import com.sportify.sportcenter.AddSportCenterDAO;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
-
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +13,6 @@ import java.util.Map;
 public class BookMatchController {
 
     private BMStateMachineImplementation stateMachine;
-    private SportCenterEntity entitySC;
     private String selectedSport;
     private List<SportCourt> courtList;
     private int selectedCourtID;
@@ -25,7 +21,6 @@ public class BookMatchController {
     private TimeSlot selectedTimeSlot;
     private String selectedSportCenter;
     private Map<String, Double> nearSportCenters;
-    private SportCenterCourts allCourts;
 
     private static BookMatchController singleBookMatchControllerInstance = null;
 
@@ -67,18 +62,30 @@ public class BookMatchController {
 
         for(TimeSlot t:timeTable){
             if(t == selectedTimeSlot){
-                t.setAvailableSpots(maxCourtSpot-1);
+                selectedTimeSlot.setAvailableSpots(maxCourtSpot-1);
+                break;
             }
         }
+        updateAvailableSpots();
     }
 
     public void bookMatch(){
 
         for(TimeSlot t:timeTable) {
             if (t == selectedTimeSlot) {
-                t.setAvailableSpots(0);
+                selectedTimeSlot.setAvailableSpots(0);
+                break;
             }
         }
+        updateAvailableSpots();
+    }
+
+    private void updateAvailableSpots(){
+        AddSportCenterDAO newAddSportCenterDAO = new AddSportCenterDAO();
+        int spots = selectedTimeSlot.getAvailableSpots();
+        int startTime = selectedTimeSlot.getStartTime().getHour();
+        int finishTime = selectedTimeSlot.getEndTime().getHour();
+        newAddSportCenterDAO.updateTimeSlot(spots, selectedCourtID, selectedSport, selectedSportCenter, startTime, finishTime);
     }
 
     public void setCourtList(List<SportCourt> list){
@@ -107,13 +114,6 @@ public class BookMatchController {
 
     public void setNearSportCentersMap(Map<String, Double> nearSportCenters){
         this.nearSportCenters = nearSportCenters;
-    }
-    public void setEntitySC(SportCenterEntity entitySC){
-        this.entitySC = entitySC;
-    }
-
-    public void setAllCourts(SportCenterCourts allCourts){
-        this.allCourts = allCourts;
     }
 
     public void setMaxCourtSpot(int maxCourtSpot){

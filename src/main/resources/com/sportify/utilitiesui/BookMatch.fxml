@@ -124,7 +124,7 @@
                 </Button>
             </children>
         </AnchorPane>
-        <Label fx:id="meanLabel" layoutX="155.0" layoutY="152.0" visible="false">
+        <Label fx:id="meanLabel" layoutX="50.0" layoutY="152.0" visible="false">
             <font>
                 <Font size="24.0" />
             </font>

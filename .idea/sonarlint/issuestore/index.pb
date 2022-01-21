@@ -17,8 +17,6 @@ Lsrc/main/java/com/sportify/settings/exceptions/AddressNotValidException.java,9
 Ksrc/main/java/com/sportify/sportcenter/exceptions/SportCenterException.java,6\c\6c5ccfd9a3259550353271b801b6d3432ffffc09
 g
 7src/main/java/com/sportify/user/UserPreferencesDAO.java,a\4\a44f114f0d856114d6f9e31be4818b4c311260ba
-~
-Nsrc/main/java/com/sportify/bookmatch/statemachine/BMStateMachineInterface.java,b\7\b7343070fa9433a55136763f87f3b119a9a63c2a
 k
 ;src/main/java/com/sportify/sportcenter/SportCenterInfo.java,5\3\53feb6838ecd4355eaa7f2a4709337065da4287d
 e
@@ -43,8 +41,6 @@ m
 =src/main/java/com/sportify/sportcenter/SportCenterCourts.java,d\c\dc1221b2be050190d1b0678b488a9199e29c9a68
 n
 >src/main/java/com/sportify/sportcenter/courts/TennisCourt.java,6\f\6fda0d3fabc1537da08e4d8141a8cf0831a78784
-ƒ
-Ssrc/main/java/com/sportify/bookmatch/statemachine/BMStateMachineImplementation.java,4\0\40b8b5e925284caa8b5b1ceea7c384be46d38605
 m
 =src/main/java/com/sportify/sportcenter/courts/PadelCourt.java,9\0\906aa171d5c25fe5231d04f380342940b53709c9
 p
@@ -53,9 +49,5 @@ n
 >src/main/java/com/sportify/sportcenter/courts/BasketCourt.java,9\c\9c8e66f7005581d95e63eef3585d98547aa1789f
 o
 ?src/main/java/com/sportify/settings/SettingsViewController.java,a\f\af77a3cc6547ebc8cec6a00cca7c5b59d29073f3
-h
-8src/main/java/com/sportify/bookmatch/CustomTilePane.java,2\5\2586488a55014c716cd81abd47b52a6ea2f7b863
-m
-=src/main/java/com/sportify/sportcenter/GetSportCenterDAO.java,9\f\9f8d9476ab81e5cdb2ec773d70d16cf998335dda
 h
 8src/main/java/com/sportify/utilitiesui/UIController.java,6\4\646ff5f6d24cfd68c8a744ea860f1dc16c12396c

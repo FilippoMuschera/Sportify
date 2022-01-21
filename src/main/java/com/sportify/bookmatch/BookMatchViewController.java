@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-import java.sql.SQLException;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.Map;
 
 public class BookMatchViewController {
 
-    private final static String TEXT_BUTTON = "select";
+    private static final String TEXT_BUTTON = "select";
     @FXML
     private Label meanLabel;
     @FXML
@@ -97,20 +96,6 @@ public class BookMatchViewController {
         }
     }
 
-
-    private static BookMatchViewController singleBookMatchViewControllerInstance = null;
-
-    public BookMatchViewController(){
-        singleBookMatchViewControllerInstance = this;
-    }
-
-    public static BookMatchViewController getBookMatchViewControllerInstance(){
-        if (BookMatchViewController.singleBookMatchViewControllerInstance == null){
-            BookMatchViewController.singleBookMatchViewControllerInstance = new BookMatchViewController();
-        }
-        return BookMatchViewController.singleBookMatchViewControllerInstance;
-    }
-
     public void hideButtons(){
         basketButton.setVisible(false);
         padelButton.setVisible(false);
@@ -139,8 +124,6 @@ public class BookMatchViewController {
 
     public void startBookMatch(String selectedSport){
         this.hideButtons();
-        meanLabel.setVisible(true);
-        meanLabel.setText("These are the nearest Sport Center, choose one.");
         this.enableScrollPane();
         Map<String, Double> sportCenterList = bookMatchController.startStateMachine(selectedSport);
         this.displaySportCenters(sportCenterList);
@@ -151,13 +134,15 @@ public class BookMatchViewController {
     public void displaySportCenters(Map<String, Double> nearSportCenters) {
 
         customTilePane.createCustomTilePane();
+        meanLabel.setVisible(true);
+        meanLabel.setText("These are the nearest Sport Center, choose one.");
 
         nearSportCenters.forEach((key, value) -> {
             Button selectButton = new Button(TEXT_BUTTON);
             selectButton.setOnAction(event -> selectedSportCenter(key));
             customTilePane.addElement(selectButton, "Sport Center " + key + "   (" + new DecimalFormat("##.##").format(nearSportCenters.get(key))+ " kms away)");
         });
-        scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
+        scrollPaneBookMatch.setContent(customTilePane.getCustomTP());
 
     }
 
@@ -170,13 +155,14 @@ public class BookMatchViewController {
     public void displayCourts(List<SportCourt> courtList){
 
         customTilePane.createCustomTilePane();
+        meanLabel.setText("Select which court you want.");
 
         for(SportCourt element:courtList) {
             Button selectButton = new Button(TEXT_BUTTON);
             selectButton.setOnAction(event->selectedCourt(String.valueOf(element.getCourtID())));
-            customTilePane.addElement(selectButton,"Court number: "+String.valueOf(element.getCourtID()));
+            customTilePane.addElement(selectButton,"Court number: "+element.getCourtID());
         }
-        scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
+        scrollPaneBookMatch.setContent(customTilePane.getCustomTP());
 
     }
 
@@ -187,6 +173,7 @@ public class BookMatchViewController {
 
     public void displayHourSlots(List<TimeSlot> timeTable){
         customTilePane.createCustomTilePane();
+        meanLabel.setText("Select which time slot you prefer.");
 
         for(TimeSlot element:timeTable) {
             Button selectButton = new Button(TEXT_BUTTON);
@@ -196,11 +183,12 @@ public class BookMatchViewController {
             int spots = element.getAvailableSpots();
             customTilePane.addElement(selectButton,"Start time: "+start+ "   Finish time: "+finish+", available spots: "+spots);
         }
-        scrollPaneBookMatch.setContent(customTilePane.getCustomTilePane());
+        scrollPaneBookMatch.setContent(customTilePane.getCustomTP());
     }
 
     public void selectedHourSlot (TimeSlot hourSlot){
         bookMatchController.setSelectedTimeSlot(hourSlot);
+        meanLabel.setVisible(false);
 
         popUpLabel.setText("""
                 If you want to book a match, click Book Match.
@@ -263,7 +251,7 @@ public class BookMatchViewController {
 
     }
 
-    public void launchFaq() throws IOException, SQLException {
+    public void launchFaq() throws IOException{
         UIController c = UIController.getUIControllerInstance();
         c.showFaqs();
     }

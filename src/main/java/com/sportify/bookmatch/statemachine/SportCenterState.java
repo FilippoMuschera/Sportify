@@ -7,10 +7,8 @@ import java.util.Map;
 
 public class SportCenterState implements BMStateInterface {
 
-    private String userSelectedSport;
     private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
     private static SportCenterState singleSportCenterStateInstance = null;
-    private Map<String, Double> nearSportCenters;
 
     protected SportCenterState(){}
 
@@ -24,10 +22,9 @@ public class SportCenterState implements BMStateInterface {
     @Override
     public void entry(String userSelectedSport){
 
-        this.userSelectedSport = userSelectedSport;
         bookMatchController.setSelectedSport(userSelectedSport);
 
-        nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport);
+        Map<String, Double> nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport);
 
         bookMatchController.setNearSportCentersMap(nearSportCenters);
     }

@@ -3,14 +3,14 @@ package com.sportify.bookmatch.statemachine;
 import com.sportify.bookmatch.BookMatchController;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class HourSlotState implements BMStateInterface {
 
-    private String[] hourSlotList;
     private BookMatchController bookMatchController = BookMatchController.getBookMatchControllerInstance();
-    private List<TimeSlot> timeTable;
 
     @Override
     public void entry(String court){
@@ -21,7 +21,13 @@ public class HourSlotState implements BMStateInterface {
 
         List<SportCourt> courtList = bookMatchController.getCourtList();
 
-        timeTable = courtList.get(bookMatchController.getSelectedCourtID()).getBookingTable();
+        List<TimeSlot> timeTable = new ArrayList<>();
+        List<TimeSlot> rawTimeTable = courtList.get(bookMatchController.getSelectedCourtID()).getBookingTable();
+        for(TimeSlot t:rawTimeTable){
+            if(t.getAvailableSpots() == maxCourtSpot){
+                timeTable.add(t);
+            }
+        }
         bookMatchController.setTimeTable(timeTable);
     }
 }
