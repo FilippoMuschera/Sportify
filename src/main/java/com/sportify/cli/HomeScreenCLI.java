@@ -50,6 +50,11 @@ public class HomeScreenCLI {
                 break;
             }
 
+            case 5: {
+                showFaq();
+                break;
+            }
+
             case 6 : System.exit(0); //Il programma termina su scelta dell'utente
                      break;
             default : {/* Non è necessario gestire altri casi perchè sono già gestiti del ciclo while precedente */}
@@ -81,6 +86,32 @@ public class HomeScreenCLI {
         return selectedOption;
         }
 
+    private void showFaq(){
+        out.println("""
+                • How is my address used?
+                                
+                Your address is the point from where is calculated your radius of interest. 
+                It can be your home address, your working-place address, or your current address. 
+                It's up to you!
+                                
+                • What is a "Joinable Match"?
+                                
+                A joinable match is a match of the selected sport, where the organizer is still looking 
+                for people to play with. If you'd like you can join the match to play with other people.
+                                
+                • What is my "Radius of Interest"?
+                                
+                Is the maximum distance you're willing to travel to reach a sports center. 
+                We will only suggest you sports centers that are within this radius.
+                                
+                • Can I add my sports center to the app?
+                                
+                Yes, if you are the owner of a sports center and you registered in the app as such, you 
+                can click on the "+" button on the bottom-left-hand side in the Home Screen, 
+                fill the form, and then your sports center will be added to our database.""");
+        
+        showCLIHomeScreen();
+    }
     }
 
 
