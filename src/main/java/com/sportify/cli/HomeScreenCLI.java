@@ -109,7 +109,7 @@ public class HomeScreenCLI {
                 Yes, if you are the owner of a sports center and you registered in the app as such, you 
                 can click on the "+" button on the bottom-left-hand side in the Home Screen, 
                 fill the form, and then your sports center will be added to our database.""");
-        
+
         showCLIHomeScreen();
     }
     }

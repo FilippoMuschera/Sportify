@@ -3,7 +3,10 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
+import com.sportify.email.EmailSender;
 import com.sportify.sportcenter.AddSportCenterDAO;
+import com.sportify.sportcenter.GetSportCenterDAO;
+import com.sportify.sportcenter.SportCenterInfo;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
 import java.util.List;
@@ -17,7 +20,6 @@ public class BookMatchController {
     private List<SportCourt> courtList;
     private int selectedCourtID;
     private List<TimeSlot> timeTable;
-    private int maxCourtSpot;
     private TimeSlot selectedTimeSlot;
     private String selectedSportCenter;
     private Map<String, Double> nearSportCenters;
@@ -67,6 +69,8 @@ public class BookMatchController {
             }
         }
         updateAvailableSpots();
+        BookMatchEmailThread emailSender = new BookMatchEmailThread();
+        emailSender.run();
     }
 
     public void bookMatch(){
@@ -78,6 +82,8 @@ public class BookMatchController {
             }
         }
         updateAvailableSpots();
+        BookMatchEmailThread emailSender = new BookMatchEmailThread();
+        emailSender.run();
     }
 
     private void updateAvailableSpots(){
@@ -86,6 +92,16 @@ public class BookMatchController {
         int startTime = selectedTimeSlot.getStartTime().getHour();
         int finishTime = selectedTimeSlot.getEndTime().getHour();
         newAddSportCenterDAO.updateTimeSlot(spots, selectedCourtID, selectedSport, selectedSportCenter, startTime, finishTime);
+    }
+
+    public void sendEmail(){
+        EmailSender bookedMatchEmails = new EmailSender();
+        int startTime = selectedTimeSlot.getStartTime().getHour();
+        int finishTime = selectedTimeSlot.getEndTime().getHour();
+        SportCenterInfo infoSportCenter = GetSportCenterDAO.getInstance().getSportCenter(selectedSportCenter,selectedSport).getInfo();
+
+        bookedMatchEmails.sendPlayerEmail(selectedSport,selectedCourtID, infoSportCenter.getSportCenterAddress(), startTime,finishTime);
+        bookedMatchEmails.sendOwnerEmail(infoSportCenter.getOwnerEmail(),selectedSport,selectedCourtID,startTime,finishTime);
     }
 
     public void setCourtList(List<SportCourt> list){
@@ -114,10 +130,6 @@ public class BookMatchController {
 
     public void setNearSportCentersMap(Map<String, Double> nearSportCenters){
         this.nearSportCenters = nearSportCenters;
-    }
-
-    public void setMaxCourtSpot(int maxCourtSpot){
-        this.maxCourtSpot = maxCourtSpot;
     }
 
     public int getSelectedCourtID(){
