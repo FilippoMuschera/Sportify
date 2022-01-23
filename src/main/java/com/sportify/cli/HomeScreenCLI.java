@@ -44,6 +44,11 @@ public class HomeScreenCLI {
                 break;
             }
 
+            case 3 :{
+                CLIController c = CLIController.getIstance();
+                c.showBookMatchCLI();
+                break;
+            }
 
             case 6 : System.exit(0); //Il programma termina su scelta dell'utente
                      break;

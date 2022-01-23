@@ -34,4 +34,9 @@ public class CLIController {
         AddSportCenterCLI addSportCenterCLI = new AddSportCenterCLI();
         addSportCenterCLI.addSportCenterFromCLI();
     }
+
+    public void showBookMatchCLI(){
+        BookMatchCLI bookMatchCLI = new BookMatchCLI();
+        bookMatchCLI.startBookMatch();
+    }
 }

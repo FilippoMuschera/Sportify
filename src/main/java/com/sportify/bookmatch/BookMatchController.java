@@ -58,7 +58,7 @@ public class BookMatchController {
         return timeTable;
     }
 
-    public void createJoinMatch( ){
+    public void createJoinMatch(){
 
         for(TimeSlot t:timeTable){
             if(t == selectedTimeSlot){
