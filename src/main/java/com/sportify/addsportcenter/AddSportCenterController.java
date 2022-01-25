@@ -19,6 +19,7 @@ public class AddSportCenterController {
         Geolocator g = Geolocator.getInstance();
         double lat = g.getLat(bean.getSportCenterAddress());
         double lng = g.getLng(bean.getSportCenterAddress());
+        //TODO aggiungere controllo se address non è corretto
         SportCenterEntity sportCenter = new SportCenterEntity();
         sportCenter.setCoordinates(lat, lng);
 

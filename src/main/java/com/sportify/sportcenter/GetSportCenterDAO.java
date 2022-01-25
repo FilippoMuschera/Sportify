@@ -45,7 +45,7 @@ public class GetSportCenterDAO {
 
                 ResultSet rs = ps.executeQuery();
                 if (!rs.next())
-                    throw new NullPointerException("The query didn't provide a result");
+                    throw new NullPointerException("The query didn't provide a result in finding nearest sport centers");
                 Map<String, Double> sportCentersMatrix = new HashMap<>();
 
                 do {

@@ -28,7 +28,7 @@ public class BookMatchCLI {
         switch(selectedSport){
             case 1:
                 if(!userPreferences.getBasket()){
-                    out.println("If you want to book a basket match, please selectthe sport in your settings.");
+                    err.println("If you want to book a basket match, please select the sport in your settings.");
                     CLIController c = CLIController.getIstance();
                     c.showSettings();
                 }
@@ -36,7 +36,7 @@ public class BookMatchCLI {
                 break;
             case 2:
                 if(!userPreferences.getFootball()){
-                    out.println("If you want to book a football match, please selectthe sport in your settings.");
+                    err.println("If you want to book a football match, please select the sport in your settings.");
                     CLIController c = CLIController.getIstance();
                     c.showSettings();
                 }
@@ -44,7 +44,7 @@ public class BookMatchCLI {
                 break;
             case 3:
                 if(!userPreferences.getPadel()){
-                    out.println("If you want to book a padel match, please selectthe sport in your settings.");
+                    err.println("If you want to book a padel match, please select the sport in your settings.");
                     CLIController c = CLIController.getIstance();
                     c.showSettings();
                 }
@@ -52,7 +52,7 @@ public class BookMatchCLI {
                 break;
             case 4:
                 if(!userPreferences.getTennis()){
-                    out.println("If you want to book a tennis match, please selectthe sport in your settings.");
+                    err.println("If you want to book a tennis match, please select the sport in your settings.");
                     CLIController c = CLIController.getIstance();
                     c.showSettings();
                 }

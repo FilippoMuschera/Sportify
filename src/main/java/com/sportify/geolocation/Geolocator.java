@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Geolocator {
+
     private final String apiKey = this.getApiKey();
     private double lat = -1;
     private double lng = -1;

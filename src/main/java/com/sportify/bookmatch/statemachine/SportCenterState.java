@@ -25,6 +25,8 @@ public class SportCenterState implements BMStateInterface {
         double lat = g.getLat(userAddress);
         double lng = g.getLng(userAddress);
 
+
+
         Map<String, Double> nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport, MAX_NUMBER_OF_RESULTS, lat, lng);
 
         bookMatchController.setNearSportCentersMap(nearSportCenters);

@@ -36,6 +36,7 @@ public class LogInView {
             errorLabel.setText("Invalid email! Try again!");
             errorLabel.setOpacity(1);
         } catch (UserNotFoundException e) {
+            //TODO portare utente al signup precompilato
             errorLabel.setText("User not found. Click on 'Sign Up' to register");
             errorLabel.setOpacity(1);
         } catch (IncorrectPasswordException e) {
