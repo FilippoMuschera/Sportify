@@ -24,7 +24,7 @@ public class GetSportCenterDAO {
     private double lng = -1;
 
 
-    public Map<String, Double> getNearSportCenters(String sport) throws NullPointerException { //TODO rendere il numero di sport center ritornati variabile
+    public Map<String, Double> getNearSportCenters(String sport, int maxNumberOfResults) throws NullPointerException {
         try {
             Connection con = getConnector();
             if (con == null)
@@ -36,13 +36,14 @@ public class GetSportCenterDAO {
                     FROM `sportify_db`.`SportCenterPosition` S
                     HAVING distance < ? AND exists(SELECT T.NameSC FROM `sportify_db`.`TimeSlot` as T where T.NameSC = S.NameSC and availableSpots > 0 and T.Sport = ?)
                     ORDER BY distance
-                    LIMIT 0 , 3;""";
+                    LIMIT 0 , ?;""";
             try (PreparedStatement ps = con.prepareStatement(query)) {
                 ps.setDouble(1, this.getUserLat());
                 ps.setDouble(2, this.getUserLat());
                 ps.setDouble(3, this.getUserLng());
                 ps.setInt(4, user.getPreferences().getSortingDistance());
                 ps.setString(5, sport);
+                ps.setInt(6, maxNumberOfResults);
 
                 ResultSet rs = ps.executeQuery();
                 if (!rs.next())

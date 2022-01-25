@@ -28,7 +28,7 @@ public class JoinMatchController {
         double userLng = g.getLng(UserEntity.getInstance().getPreferences().getUserAddress());
 
         GetSportCenterDAO dao = GetSportCenterDAO.getInstance();
-        Map<String, Double> sportCenters = dao.getNearSportCenters(sport);
+        Map<String, Double> sportCenters = dao.getNearSportCenters(sport, 3);
 
         ArrayList<SportCenterEntity> sportCenterList = new ArrayList<>();
         ArrayList<TimeSlot> timeSlotList = new ArrayList<>();
