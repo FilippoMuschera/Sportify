@@ -20,11 +20,9 @@ public class GetSportCenterDAO {
 
     private final UserEntity user = UserEntity.getInstance();
 
-    private double lat = -1;
-    private double lng = -1;
 
 
-    public Map<String, Double> getNearSportCenters(String sport, int maxNumberOfResults) throws NullPointerException {
+    public Map<String, Double> getNearSportCenters(String sport, int maxNumberOfResults, double userLat, double userLng) throws NullPointerException {
         try {
             Connection con = getConnector();
             if (con == null)
@@ -38,9 +36,9 @@ public class GetSportCenterDAO {
                     ORDER BY distance
                     LIMIT 0 , ?;""";
             try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setDouble(1, this.getUserLat());
-                ps.setDouble(2, this.getUserLat());
-                ps.setDouble(3, this.getUserLng());
+                ps.setDouble(1, userLat);
+                ps.setDouble(2, userLat);
+                ps.setDouble(3, userLng);
                 ps.setInt(4, user.getPreferences().getSortingDistance());
                 ps.setString(5, sport);
                 ps.setInt(6, maxNumberOfResults);
@@ -163,25 +161,7 @@ public class GetSportCenterDAO {
     }
 
 
-    private double getUserLat() {
-        if (this.lat == -1) {
-            Geolocator g;
-            g = new Geolocator();
-            this.lat = g.getLat(user.getPreferences().getUserAddress());
-        }
-        return this.lat;
 
-    }
-
-    private double getUserLng() {
-        if (this.lng == -1) {
-            Geolocator g;
-            g = new Geolocator();
-            this.lng = g.getLng(user.getPreferences().getUserAddress());
-
-        }
-        return this.lng;
-    }
 
     private GetSportCenterDAO(){}
 

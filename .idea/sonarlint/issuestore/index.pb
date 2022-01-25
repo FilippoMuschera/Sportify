@@ -7,8 +7,6 @@ Asrc/main/java/com/sportify/joinmatch/JoinMatchViewController.java,1\4\14e91f0c
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 q
 Asrc/main/java/com/sportify/addsportcenter/AddSportCenterBean.java,7\8\7893631a6620f0c368281d04a8342081745ad675
-w
-Gsrc/main/java/com/sportify/addsportcenter/AddSportCenterController.java,7\0\70ac34aced6e2acad8e699bc846d62c556ea2aa7
 q
 Asrc/main/java/com/sportify/addsportcenter/AddSportCenterView.java,a\5\a54063e12082bf0f6a53e2962313415542e3b102
 w
@@ -37,8 +35,6 @@ _
 -src/main/java/com/sportify/cli/SignUpCLI.java,6\2\62af16de2e10a096212bd1fec353ffc12d5da543
 \
 ,src/main/java/com/sportify/cli/StartCLI.java,9\d\9d14dc8730c543be104d123aa2c235f9b5fba246
-f
-6src/main/java/com/sportify/geolocation/Geolocator.java,b\f\bf8cb173d84931b26ffc52df04b7311388149466
 w
 Gsrc/main/java/com/sportify/login/exceptions/EmailNotValidException.java,1\d\1d7215788c889a87216df58d8a5bf92348b29f36
 {
@@ -53,10 +49,6 @@ _
 /src/main/java/com/sportify/login/LogInView.java,4\4\445b5e8a61eee7054b45bd12aaf3ab0db8ca32d4
 |
 Lsrc/main/java/com/sportify/settings/exceptions/AddressNotValidException.java,9\7\9706c82c882d91c34a0d29ddec1adce5ceded338
-e
-5src/main/java/com/sportify/settings/SettingsBean.java,8\2\82ef94dfba7ffd707da432f71cea4ae3745ec58f
-k
-;src/main/java/com/sportify/settings/SettingsController.java,8\f\8f3cb6181ab52ab57215412668fc4dac0ee8fb82
 o
 ?src/main/java/com/sportify/settings/SettingsViewController.java,a\f\af77a3cc6547ebc8cec6a00cca7c5b59d29073f3
 |

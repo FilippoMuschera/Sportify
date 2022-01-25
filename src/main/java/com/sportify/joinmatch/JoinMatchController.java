@@ -23,12 +23,12 @@ public class JoinMatchController {
          * tanti campi ognuno con poche prenotazioni.
          */
 
-        Geolocator g = new Geolocator();
+        Geolocator g = Geolocator.getInstance();
         double userLat = g.getLat(UserEntity.getInstance().getPreferences().getUserAddress());
         double userLng = g.getLng(UserEntity.getInstance().getPreferences().getUserAddress());
 
         GetSportCenterDAO dao = GetSportCenterDAO.getInstance();
-        Map<String, Double> sportCenters = dao.getNearSportCenters(sport, 3);
+        Map<String, Double> sportCenters = dao.getNearSportCenters(sport, 3, userLat, userLng);
 
         ArrayList<SportCenterEntity> sportCenterList = new ArrayList<>();
         ArrayList<TimeSlot> timeSlotList = new ArrayList<>();
@@ -38,6 +38,8 @@ public class JoinMatchController {
             sportCenterList.add(dao.getSportCenter(sc, sport));
             System.out.println("Sport Center: " + sc + ", distance: " + sportCenters.get(sc));
         });
+
+        //NON ANDREBBERO AGGIUNTI I TIMESLOT CON 0 POSTI DISPONIBILI, MA TANTO QUESTO METODO VA CAMBIATO
 
         switch (sport){
             case "Football":

@@ -1,7 +1,10 @@
 package com.sportify.bookmatch.statemachine;
 
 import com.sportify.bookmatch.BookMatchController;
+import com.sportify.geolocation.Geolocator;
 import com.sportify.sportcenter.GetSportCenterDAO;
+import com.sportify.user.UserEntity;
+
 import java.util.Map;
 
 
@@ -17,7 +20,12 @@ public class SportCenterState implements BMStateInterface {
 
         bookMatchController.setSelectedSport(userSelectedSport);
 
-        Map<String, Double> nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport, MAX_NUMBER_OF_RESULTS);
+        String userAddress = UserEntity.getInstance().getPreferences().getUserAddress();
+        Geolocator g = Geolocator.getInstance();
+        double lat = g.getLat(userAddress);
+        double lng = g.getLng(userAddress);
+
+        Map<String, Double> nearSportCenters = GetSportCenterDAO.getInstance().getNearSportCenters(userSelectedSport, MAX_NUMBER_OF_RESULTS, lat, lng);
 
         bookMatchController.setNearSportCentersMap(nearSportCenters);
     }

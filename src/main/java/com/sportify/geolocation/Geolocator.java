@@ -21,22 +21,32 @@ public class Geolocator {
     private final String apiKey = this.getApiKey();
     private double lat = -1;
     private double lng = -1;
+    private String lastAddress = "";
+    private static Geolocator geolocatorInstance = null;
 
 
     public double getLat(String address){
-        if (this.lat == -1 && this.setCoordinates(address) == -1)
-           return -1;
+        if (!address.equals(lastAddress)){ //controlla se la richiesta è gia stata fatta, se è così non ricalcola di nuovo le coordinate
+            this.lat = -1;
+        }
+        if (this.lat == -1)//Se la coordinata richiesta è ancora "-1" allora procede a ricalcolarla. Se dopo il calcolo sarà ancora
+            // uguale a -1 c'è stato un errore nel calcolo
+           this.setCoordinates(address);
         return this.lat;
     }
 
-    public double getLng(String address){
-        if (this.lng == -1 && this.setCoordinates(address) == -1)
-            return -1;
+    public double getLng(String address){ //controlla se la richiesta è gia stata fatta, se è così non ricalcola di nuovo le coordinate
+        if (!address.equals(lastAddress)){
+            this.lng = -1;
+        }
+        if (this.lng == -1)
+            this.setCoordinates(address); //Se la coordinata richiesta è ancora "-1" allora procede a ricalcolarla. Se dopo il calcolo sarà ancora
+        // uguale a -1 c'è stato un errore nel calcolo
         return this.lng;
     }
 
 
-    private int setCoordinates(String address) {
+    private void setCoordinates(String address) {
 
         HttpClient httpClient = HttpClient.newHttpClient();
 
@@ -52,16 +62,20 @@ public class Geolocator {
             geocodingResponse = httpClient.send(geocodingRequest,
                     HttpResponse.BodyHandlers.ofString());
             double[] response = this.parseResponse(Objects.requireNonNull(geocodingResponse).body());
-            if (response.length < 2) //se le due coordinate non vengono ottenute
-                return -1;
+            if (response.length < 2) { //se le due coordinate non vengono ottenute
+                this.lat = -1;
+                this.lng = -1;
+                return;
+            }
             this.lat = response[0];
             this.lng = response[1];
+            this.lastAddress = address;
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             Thread.currentThread().interrupt();
         }
 
-        return 2; //due coordinate inizializzate correttamente
+
     }
 
     private double[] parseResponse(String response) throws JsonProcessingException {
@@ -98,5 +112,12 @@ public class Geolocator {
         return null;
     }
 
+    private Geolocator(){}
+
+    public static Geolocator getInstance(){
+        if (geolocatorInstance == null)
+            geolocatorInstance = new Geolocator();
+        return geolocatorInstance;
+    }
 
 }
