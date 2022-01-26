@@ -72,7 +72,7 @@ public class SettingsViewController implements Observer {
     public void initialize(){
 
        this.updateGUI();
-       UserEntity.getInstance().getPreferences().attach(this);
+       UserEntity.getInstance().getPreferences().attach(this); //attach come observer al subject UserPreferences
 
     }
 
@@ -93,7 +93,8 @@ public class SettingsViewController implements Observer {
         basketCB.setSelected(user.getPreferences().getBasket());
         tennisCB.setSelected(user.getPreferences().getTennis());
 
-        String[] addressArray = user.getPreferences().getUserAddress().split(", "); //TODO controllare spazio dopo la ,
+        String[] addressArray = user.getPreferences().getUserAddress().split(", "); //Lo spazio dopo la virgola ci sarà sempre perché viene inserito
+        //ogni volta che viene prelevato l'address dalla GUI
         addrText.setText(addressArray[0]);
         cityText.setText(addressArray[1]);
         capText.setText(addressArray[2]);
@@ -132,7 +133,7 @@ public class SettingsViewController implements Observer {
         } catch (AddressNotValidException e) {
             saveLabel.setTextFill(Color.RED);
             saveLabel.setText("Invalid address, try again");
-        } catch (IllegalArgumentException e){ //TODO CONTROLLARE SE SERVE
+        } catch (IllegalArgumentException e){
             saveLabel.setTextFill(Color.RED);
             saveLabel.setText("Invalid CAP, try again!");
         }

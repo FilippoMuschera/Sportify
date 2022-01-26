@@ -28,10 +28,10 @@ public class SignUpView {
 
     public void goToLogIn() throws IOException {
        UIController controller = UIController.getUIControllerInstance();
-       controller.goToPreviousStage();
+       controller.showLogIn();
     }
 
-    public void signUserUp() {
+    public void signUserUp() throws IOException {
 
             try{
                 statusLabel.setOpacity(0);
@@ -54,7 +54,12 @@ public class SignUpView {
                 statusLabel.setOpacity(1);
             }
 
+        UIController.getUIControllerInstance().showSettings();
 
+    }
 
-        }
+    public void preCompile(String email, String password) {
+        this.emailTextField.setText(email);
+        this.passwordField1.setText(password);
+    }
 }

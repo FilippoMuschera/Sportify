@@ -12,14 +12,16 @@ import java.util.List;
 
 
 public class AddSportCenterController {
-    public void addSportCenter(AddSportCenterBean bean) throws SportCenterException {
+    public void addSportCenter(AddSportCenterBean bean) throws SportCenterException, IllegalArgumentException {
 
 
         //Calcolo coordinate del campo dall'indirizzo
         Geolocator g = Geolocator.getInstance();
         double lat = g.getLat(bean.getSportCenterAddress());
         double lng = g.getLng(bean.getSportCenterAddress());
-        //TODO aggiungere controllo se address non è corretto
+        if (lat == -1 || lng == -1){
+            throw new IllegalArgumentException("The address is incorrect, try again");
+        }
         SportCenterEntity sportCenter = new SportCenterEntity();
         sportCenter.setCoordinates(lat, lng);
 

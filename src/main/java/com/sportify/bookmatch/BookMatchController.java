@@ -4,6 +4,7 @@ import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
 import com.sportify.email.EmailSender;
+import com.sportify.email.EmailThread;
 import com.sportify.sportcenter.AddSportCenterDAO;
 import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterInfo;
@@ -69,8 +70,7 @@ public class BookMatchController {
             }
         }
         updateAvailableSpots();
-        BookMatchEmailThread emailSender = new BookMatchEmailThread();
-        emailSender.run();
+        this.sendEmail();
     }
 
     public void bookMatch(){
@@ -82,8 +82,7 @@ public class BookMatchController {
             }
         }
         updateAvailableSpots();
-        BookMatchEmailThread emailSender = new BookMatchEmailThread();
-        emailSender.run();
+        this.sendEmail();
     }
 
     private void updateAvailableSpots(){
@@ -95,13 +94,20 @@ public class BookMatchController {
     }
 
     public void sendEmail(){
-        EmailSender bookedMatchEmails = new EmailSender();
+
         int startTime = selectedTimeSlot.getStartTime().getHour();
         int finishTime = selectedTimeSlot.getEndTime().getHour();
         SportCenterInfo infoSportCenter = GetSportCenterDAO.getInstance().getSportCenter(selectedSportCenter,selectedSport).getInfo();
 
-        bookedMatchEmails.sendPlayerEmail(selectedSport,selectedCourtID, infoSportCenter.getSportCenterAddress(), startTime,finishTime);
-        bookedMatchEmails.sendOwnerEmail(infoSportCenter.getOwnerEmail(),selectedSport,selectedCourtID,startTime,finishTime);
+        EmailThread playerEmailThread = new EmailThread(selectedSport, selectedCourtID, startTime, finishTime, infoSportCenter.getSportCenterAddress());
+        playerEmailThread.setPlayer(true);
+        playerEmailThread.start();
+
+        EmailThread ownerEmailThread = new EmailThread(infoSportCenter.getOwnerEmail(), selectedSport, selectedCourtID, startTime, finishTime);
+        ownerEmailThread.setOwner(true);
+        ownerEmailThread.start();
+
+
     }
 
     public void setCourtList(List<SportCourt> list){

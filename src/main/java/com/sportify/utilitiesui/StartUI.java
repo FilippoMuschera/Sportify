@@ -3,6 +3,7 @@ package com.sportify.utilitiesui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -17,6 +18,7 @@ public class StartUI extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(UIController.class.getResource("LogIn.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Sportify");
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("icons/mainIcon.png"))));
         stage.setScene(scene);
         stage.setResizable(false);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("LogInStyle.css")).toExternalForm());

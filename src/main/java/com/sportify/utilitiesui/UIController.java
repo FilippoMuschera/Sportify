@@ -1,5 +1,6 @@
 package com.sportify.utilitiesui;
 
+import com.sportify.signup.SignUpView;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,11 +23,8 @@ public class UIController{
 
     private Stage stage;
 
+    private UIController(){} //Singleton GoF Pattern applied to UIController
 
-
-     protected UIController(){ //Singleton GoF Pattern applied to UIController
-
-    }
 
     public static UIController getUIControllerInstance(){
         if (UIController.singleUIControllerInstance == null){
@@ -43,7 +41,6 @@ public class UIController{
 
     public void showSignUp() throws IOException { //Mostra la schermata per il sign up di un nuovo utente
         this.loadStage("SignUp.fxml", "SignUpStyle.css");
-        setPreviousStageInfo("LogIn.fxml", "LogInStyle.css");
 
     }
     public void showCreateMatch() throws IOException { //Mostra la schermata create match
@@ -61,13 +58,10 @@ public class UIController{
 
     }
 
-    public void goToPreviousStage() throws IOException { //torna alla schermata conservata in previousStage e previousStageStyle
-        this.loadStage(getPreviousFxml(), getPreviousCss());
+    public void showLogIn() throws IOException { //Mostra la schermata di login (se c'è bisogno di tornarci, es.: dal signup
+        this.loadStage("LogIn.fxml", "LogInStyle.css");
     }
 
-    public static void setPreviousStageInfo(String fxml, String css){
-        previousStageStyles = new String[]{fxml, css};
-    } //scrive le variabili che conservano lo stage precedente
 
     public String getPreviousFxml(){
         return  previousStageStyles[0];
@@ -133,5 +127,17 @@ public class UIController{
     }
 
 
+    public void precompileSignUp(String email, String password) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+        Parent root1 = fxmlLoader.load();
+        root1.getStylesheets().add(Objects.requireNonNull(getClass().getResource("SignUpStyle.css")).toExternalForm());
+        SignUpView signUpView = fxmlLoader.getController();
+        signUpView.preCompile(email, password);
+
+        this.fadeAnimation(root1, this.stage.getScene().getRoot());
+
+        this.stage.setScene(new Scene(root1));
+
+    }
 }
 
