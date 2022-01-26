@@ -37,6 +37,8 @@ public class BookMatchViewController {
     private Button padelButton;
     @FXML
     private Button tennisButton;
+    @FXML
+    private Label successLabel;
 
     private boolean basketButtonIsActive = false;
     private boolean padelButtonIsActive = false;
@@ -51,6 +53,7 @@ public class BookMatchViewController {
 
     @FXML
     public void initialize() {
+        successLabel.setOpacity(0);
         UserEntity user = UserEntity.getInstance();
 
         int numOfSports = 0;
@@ -215,6 +218,7 @@ public class BookMatchViewController {
 
         hidePopUpControls();
         enableButtons();
+        successLabel.setOpacity(1);
     }
 
     public void showPopUpControls(){
