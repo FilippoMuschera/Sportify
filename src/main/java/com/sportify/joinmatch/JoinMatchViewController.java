@@ -6,6 +6,7 @@ import com.sportify.utilitiesui.UIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,15 +17,17 @@ import java.util.List;
 public class JoinMatchViewController {
 
     @FXML
-    private Button basketButton;
+    private ToggleButton basketToggleButton;
     @FXML
-    private Button footballButton;
+    private ToggleButton footballToggleButton;
     @FXML
-    private Button padelButton;
+    private ToggleButton padelToggleButton;
     @FXML
-    private Button tennisButton;
+    private ToggleButton tennisToggleButton;
 
     private ResultSetEntity resultSet;
+
+    private JoinMatchBean beanJoinMatch = new JoinMatchBean();
 
     public void initialize(){
 
@@ -34,38 +37,38 @@ public class JoinMatchViewController {
 
         if (user.getPreferences().getBasket()) {
 
-            int position = 200 + numOfSports*150 + numOfSports*100;
+            int position = 550 + numOfSports*100 + numOfSports*75;
             numOfSports++;
-            basketButton.setLayoutX(position);
-            basketButton.setVisible(true);
-            //basketButton.setOnAction(event->(basketButton.getText()));
+            basketToggleButton.setLayoutX(position);
+            basketToggleButton.setVisible(true);
+            basketToggleButton.setOnAction(event->beanJoinMatch.setSelectedSport("Basket"));
 
         }
 
         if (user.getPreferences().getFootball()) {
 
-            int position = 200 + numOfSports*150 + numOfSports*100;
+            int position = 550 + numOfSports*100 + numOfSports*75;
             numOfSports++;
-            footballButton.setLayoutX(position);
-            footballButton.setVisible(true);
-            //footballButton.setOnAction(event->startBookMatch(footballButton.getText()));
+            footballToggleButton.setLayoutX(position);
+            footballToggleButton.setVisible(true);
+            footballToggleButton.setOnAction(event->beanJoinMatch.setSelectedSport("Football"));
 
         }
         if (user.getPreferences().getTennis()) {
 
-            int position = 200 + numOfSports*150 + numOfSports*100;
+            int position = 550 + numOfSports*100 + numOfSports*75;
             numOfSports++;
-            tennisButton.setLayoutX(position);
-            tennisButton.setVisible(true);
-            //tennisButton.setOnAction(event->startBookMatch(tennisButton.getText()));
+            tennisToggleButton.setLayoutX(position);
+            tennisToggleButton.setVisible(true);
+            tennisToggleButton.setOnAction(event->beanJoinMatch.setSelectedSport("Tennis"));
 
         }
         if (user.getPreferences().getPadel()) {
 
-            int position = 200 + numOfSports*150 + numOfSports*100;
-            padelButton.setLayoutX(position);
-            padelButton.setVisible(true);
-            //padelButton.setOnAction(event->startBookMatch(padelButton.getText()));
+            int position = 550 + numOfSports*100 + numOfSports*75;
+            padelToggleButton.setLayoutX(position);
+            padelToggleButton.setVisible(true);
+            padelToggleButton.setOnAction(event->beanJoinMatch.setSelectedSport("Padel"));
         }
     }
 

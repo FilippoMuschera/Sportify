@@ -127,8 +127,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestGeolocator.testTime" />
         <item itemvalue="Application.StartUI" />
+        <item itemvalue="JUnit.TestGeolocator.testTime" />
         <item itemvalue="JUnit.TestGetSportCenterDAO.testGetNearSportCenter" />
         <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
         <item itemvalue="JUnit.TestAddSportCenterBean" />

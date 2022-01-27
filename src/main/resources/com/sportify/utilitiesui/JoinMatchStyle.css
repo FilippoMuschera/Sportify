@@ -1,9 +1,14 @@
 
+.label{
+    -fx-font-family: "Playball";
+    -fx-text-fill: rgba(0, 0, 0, 1);
+    -fx-font-size: 24;
+}
 
-.label {
+#sportifyLabel{
     -fx-font-family: "Playball";
     -fx-text-fill: rgba(208, 213, 214, 0.4);
-
+    -fx-font-size: 430;
 }
 
 .button{
@@ -11,7 +16,8 @@
     -fx-background-radius: 50;
     -fx-border-radius: 50;
     -fx-border-color: #212529;
-
+    -fx-font-family: "Playball";
+    -fx-font-size: 24;
 }
 
 .button:hover{
@@ -25,6 +31,36 @@
 
     -fx-rotate: 5;
 
+}
+
+.toggle-button{
+    -fx-font-family: "Playball";
+    -fx-background-color: #FAF9F9;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-font-size: 18;
+    -fx-border-color: #212529;
+    -fx-text-fill: #212529;
+}
+
+.toggle-button:hover{
+    -fx-background-color: rgb(208, 213, 214);
+    -fx-cursor: hand;
+}
+
+.toggle-button:selected{
+    -fx-background-color: #212529;
+    -fx-text-fill: #FAF9F9;
+}
+
+.toggle-switch{
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
+    -fx-scale-z: 1.5;
+}
+
+.toggle-switch:hover{
+    -fx-cursor: hand;
 }
 
 #joinMatchButton{
