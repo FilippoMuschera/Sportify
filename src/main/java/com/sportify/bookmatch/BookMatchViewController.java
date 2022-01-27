@@ -4,9 +4,12 @@ import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
+import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -135,7 +138,6 @@ public class BookMatchViewController {
 
     @FXML
     public void displaySportCenters(Map<String, Double> nearSportCenters) {
-
         customTilePane.createCustomTilePane();
         meanLabel.setVisible(true);
         meanLabel.setText("These are the nearest Sport Center, choose one.");
@@ -218,7 +220,36 @@ public class BookMatchViewController {
 
         hidePopUpControls();
         enableButtons();
-        successLabel.setOpacity(1);
+        displaySuccessLabel();
+    }
+
+    public void displaySuccessLabel(){
+
+        Timeline blinker = createBlinker(successLabel);
+        blinker.setOnFinished(event -> successLabel.setVisible(false));
+        FadeTransition fader = createFader(successLabel);
+        SequentialTransition blinkThenFade = new SequentialTransition(
+                successLabel,
+                blinker,
+                fader
+        );
+        blinkThenFade.play();
+    }
+
+    private Timeline createBlinker(Node node) {
+        Timeline blink = new Timeline(
+                new KeyFrame(Duration.seconds(3), new KeyValue(node.visibleProperty(), true, Interpolator.DISCRETE)));
+        blink.setCycleCount(1);
+
+        return blink;
+    }
+
+    private FadeTransition createFader(Node node) {
+        FadeTransition fade = new FadeTransition(Duration.seconds(1), node);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+
+        return fade;
     }
 
     public void showPopUpControls(){

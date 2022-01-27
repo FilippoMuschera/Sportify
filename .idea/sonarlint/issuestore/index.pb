@@ -1,6 +1,4 @@
 
-J
-src/test/java/IntTest.java,3\6\362d5dfaf658c30b6c909565f465ebb08d05f853
 q
 Asrc/main/java/com/sportify/joinmatch/JoinMatchViewController.java,1\4\14e91f0c79d08bf872776894accb1944a659d5b1
 7
@@ -63,22 +61,12 @@ f
 6src/main/java/com/sportify/user/observer/Observer.java,b\0\b02e5868ddc192a35895a108eb1eb38d2ff6a70e
 e
 5src/main/java/com/sportify/user/observer/Subject.java,0\6\06e7b8782035217d6b68bfdbd4cf9415e0bc9b0d
-\
-,src/main/java/com/sportify/user/UserDAO.java,b\1\b152a37622d75bc89363124ec3d105048faceb36
-_
-/src/main/java/com/sportify/user/UserEntity.java,c\a\cae413220997e69e40bfdbaceb2941b5280c4247
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-g
-7src/main/java/com/sportify/user/UserPreferencesDAO.java,a\4\a44f114f0d856114d6f9e31be4818b4c311260ba
 i
 9src/main/java/com/sportify/utilitiesui/FaqController.java,1\1\11a8df9b1c6f6c97055116142a6b97b802aa14d2
 j
 :src/main/java/com/sportify/utilitiesui/HomeScreenView.java,8\2\82f39bb28b714a128db9326ee56d2bfaef14058d
-L
-src/test/java/EmailTest.java,7\a\7ae0130a7c8acc956b126785753cae4d1af3be66
-f
-6src/main/java/com/sportify/geolocation/Geolocator.java,b\f\bf8cb173d84931b26ffc52df04b7311388149466
 m
 =src/main/java/com/sportify/joinmatch/JoinMatchController.java,a\c\ac9946baed03f990e58814295515e75490f0fd85
 q
@@ -93,8 +81,6 @@ Gsrc/main/java/com/sportify/bookmatch/statemachine/SportCenterState.java,7\2\72
 0src/main/java/com/sportify/cli/BookMatchCLI.java,5\1\51874ed60185fdf9e3e16bd76a472cfdc46fbcf2
 m
 =src/main/java/com/sportify/sportcenter/GetSportCenterDAO.java,9\f\9f8d9476ab81e5cdb2ec773d70d16cf998335dda
-{
-Ksrc/main/java/com/sportify/sportcenter/exceptions/SportCenterException.java,6\c\6c5ccfd9a3259550353271b801b6d3432ffffc09
 q
 Asrc/main/java/com/sportify/addsportcenter/AddSportCenterBean.java,7\8\7893631a6620f0c368281d04a8342081745ad675
 m
