@@ -138,6 +138,7 @@ public class BookMatchViewController {
 
     @FXML
     public void displaySportCenters(Map<String, Double> nearSportCenters) {
+
         customTilePane.createCustomTilePane();
         meanLabel.setVisible(true);
         meanLabel.setText("These are the nearest Sport Center, choose one.");
@@ -226,26 +227,27 @@ public class BookMatchViewController {
     public void displaySuccessLabel(){
 
         Timeline blinker = createBlinker(successLabel);
-        blinker.setOnFinished(event -> successLabel.setVisible(false));
+        //blinker.setOnFinished(event -> successLabel.setVisible(false));
         FadeTransition fader = createFader(successLabel);
         SequentialTransition blinkThenFade = new SequentialTransition(
                 successLabel,
                 blinker,
                 fader
         );
+        fader.setOnFinished(event -> successLabel.setVisible(false));
         blinkThenFade.play();
     }
 
     private Timeline createBlinker(Node node) {
         Timeline blink = new Timeline(
-                new KeyFrame(Duration.seconds(3), new KeyValue(node.visibleProperty(), true, Interpolator.DISCRETE)));
+                new KeyFrame(Duration.seconds(2), new KeyValue(node.visibleProperty(), true, Interpolator.DISCRETE)));
         blink.setCycleCount(1);
 
         return blink;
     }
 
     private FadeTransition createFader(Node node) {
-        FadeTransition fade = new FadeTransition(Duration.seconds(1), node);
+        FadeTransition fade = new FadeTransition(Duration.seconds(0.5), node);
         fade.setFromValue(1);
         fade.setToValue(0);
 
