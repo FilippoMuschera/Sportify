@@ -1,6 +1,5 @@
 package com.sportify.sportcenter;
 
-import com.sportify.geolocation.Geolocator;
 import com.sportify.sportcenter.courts.*;
 import com.sportify.user.UserEntity;
 
@@ -22,7 +21,7 @@ public class GetSportCenterDAO {
 
 
 
-    public Map<String, Double> getNearSportCenters(String sport, int maxNumberOfResults, double userLat, double userLng) throws NullPointerException {
+    public Map<String, Double> getNearSportCenters(String selectedSport, int maxNumberOfResults, double userLat, double userLng) throws NullPointerException {
         try {
             Connection con = getConnector();
             if (con == null)
@@ -40,7 +39,7 @@ public class GetSportCenterDAO {
                 ps.setDouble(2, userLat);
                 ps.setDouble(3, userLng);
                 ps.setInt(4, user.getPreferences().getSortingDistance());
-                ps.setString(5, sport);
+                ps.setString(5, selectedSport);
                 ps.setInt(6, maxNumberOfResults);
 
                 ResultSet rs = ps.executeQuery();

@@ -3,7 +3,7 @@ package com.sportify.login.exceptions;
 public class IncorrectPasswordException extends Exception{
 
     public IncorrectPasswordException(){
-        super("*** Password Errata ***");
+        super("Incorrect password. Try Again!");
     }
 
 }

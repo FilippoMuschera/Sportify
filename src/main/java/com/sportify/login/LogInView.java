@@ -32,10 +32,9 @@ public class LogInView {
             bean.validateInput();
             LogInController controller = new LogInController();
             controller.logInUser(bean);
-            UIController viewController = UIController.getUIControllerInstance();
-            viewController.showHomeScreen();
-        } catch (EmailNotValidException ee) {
-            errorLabel.setText("Invalid email! Try again!"); //TODO METTERE TESTO NELL'ECCEZIONE
+
+        } catch (EmailNotValidException | IncorrectPasswordException exception) {
+            errorLabel.setText(exception.getMessage());
             errorLabel.setOpacity(1);
         } catch (UserNotFoundException e) {
             /* In questo caso si sceglie di gestire l'eccezione. Se l'utente inserisce una email che non è nel DB
@@ -50,10 +49,10 @@ public class LogInView {
 
 
 
-        } catch (IncorrectPasswordException e) {
-            errorLabel.setText("Incorrect password. Try Again!"); //TODO METTERE TESTO NELL'ECCEZIONE
-            errorLabel.setOpacity(1);
         }
+
+        UIController viewController = UIController.getUIControllerInstance();
+        viewController.showHomeScreen();
 
     }
 

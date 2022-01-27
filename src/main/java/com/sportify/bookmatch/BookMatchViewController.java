@@ -56,7 +56,7 @@ public class BookMatchViewController {
 
     @FXML
     public void initialize() {
-        successLabel.setOpacity(0);
+
         UserEntity user = UserEntity.getInstance();
 
         int numOfSports = 0;
