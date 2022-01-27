@@ -1,17 +1,12 @@
 package com.sportify.joinmatch;
 
-import com.sportify.sportcenter.courts.TimeSlot;
+import com.sportify.bookmatch.CustomTilePane;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-
+import javafx.scene.control.*;
 import java.io.IOException;
-import java.util.List;
-
-
+import java.text.DecimalFormat;
 
 
 public class JoinMatchViewController {
@@ -24,10 +19,32 @@ public class JoinMatchViewController {
     private ToggleButton padelToggleButton;
     @FXML
     private ToggleButton tennisToggleButton;
+    @FXML
+    private Label startTimeLabel;
+    @FXML
+    private Label filterLabel;
+    @FXML
+    private Label sportLabel;
+    @FXML
+    private Label resultLabel;
+    @FXML
+    private Button startButton;
+    @FXML
+    private TextField resultTextField;
+    @FXML
+    private TextField hourTextField;
+    @FXML
+    private ToggleButton distanceToggle;
+    @FXML
+    private ToggleButton spotsToggle;
+    @FXML
+    private ScrollPane scrollPaneJoinMatch;
 
     private ResultSetEntity resultSet;
 
     private JoinMatchBean beanJoinMatch = new JoinMatchBean();
+
+    private JoinMatchController joinMatchController = new JoinMatchController();
 
     public void initialize(){
 
@@ -70,6 +87,68 @@ public class JoinMatchViewController {
             padelToggleButton.setVisible(true);
             padelToggleButton.setOnAction(event->beanJoinMatch.setSelectedSport("Padel"));
         }
+    }
+
+    public void setFilterDistance(){
+        beanJoinMatch.setDistanceIsImportant(true);
+    }
+
+    public void setFilterSpots(){
+        beanJoinMatch.setAvailableSpotIsImportant(true);
+    }
+
+    public void startJoinMatch(){
+        hideControls();
+        try{
+            beanJoinMatch.setMaxResults(resultTextField.getText());
+            beanJoinMatch.setPreferredStartingTime(startTimeLabel.getText());
+        }
+        catch(IllegalArgumentException e){
+
+        }
+        joinMatchController.findJoinableMatch(beanJoinMatch);
+        resultSet = beanJoinMatch.getResultSet();
+        scrollPaneJoinMatch.setVisible(true);
+
+        CustomTilePane customTilePane = new CustomTilePane();
+        customTilePane.createCustomTilePane();
+
+        for(ResultElement r: resultSet.getElements()){
+
+            Button newButton = new Button("select");
+            String sportCenter = r.getNameSC();
+            double dist = r.getDistance();
+            int courtId = r.getCourtID();
+            int start = r.getTimeSlot().getStartTime().getHour();
+            int finish = r.getTimeSlot().getEndTime().getHour();
+            newButton.setOnAction(event->selectedMatch(r));
+            customTilePane.addElement(newButton,sportCenter+" ("+
+                    new DecimalFormat("##.##").format(dist)+" kms away), court number: "+courtId+", "
+                    +start+":"+finish);
+
+        }
+
+        scrollPaneJoinMatch.setContent(customTilePane.getCustomTP());
+    }
+
+    private void hideControls(){
+        basketToggleButton.setVisible(false);
+        footballToggleButton.setVisible(false);
+        padelToggleButton.setVisible(false);
+        tennisToggleButton.setVisible(false);
+        startTimeLabel.setVisible(false);
+        filterLabel.setVisible(false);
+        sportLabel.setVisible(false);
+        resultLabel.setVisible(false);
+        startButton.setVisible(false);
+        resultTextField.setVisible(false);
+        hourTextField.setVisible(false);
+        distanceToggle.setVisible(false);
+        spotsToggle.setVisible(false);
+    }
+
+    private void selectedMatch(ResultElement selectedMatch){
+        joinMatchController.joinMatch(selectedMatch);
     }
 
     public void showSettings() throws IOException {
