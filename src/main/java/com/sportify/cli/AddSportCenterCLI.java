@@ -62,7 +62,6 @@ public class AddSportCenterCLI {
 
 
         try {
-            bean.validateInput();
             AddSportCenterController controller = new AddSportCenterController();
             controller.addSportCenter(bean);
             //Se non si verificano eccezioni, l'aggiunta del campo ha avuto successo

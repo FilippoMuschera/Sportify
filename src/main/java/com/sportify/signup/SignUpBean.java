@@ -18,10 +18,14 @@ public class SignUpBean extends LogInBean {
     }
 
     public void setFirstPsw(String firstPsw) {
+        if (firstPsw.isEmpty())
+            throw new IllegalArgumentException("Password cannot be empty");
         this.firstPsw = firstPsw;
     }
 
     public void setSecondPsw(String secondPsw) {
+        if (secondPsw.isEmpty())
+            throw new IllegalArgumentException("Password cannot be empty");
         this.secondPsw = secondPsw;
     }
 
@@ -29,15 +33,16 @@ public class SignUpBean extends LogInBean {
         return isOwner;
     }
 
-    public void validateSignUp() throws EmailNotValidException, DifferentPasswordException {
-        if(!Objects.equals(firstPsw, secondPsw))
-            throw new DifferentPasswordException();
-        else
-            this.password = this.firstPsw;
-        super.validateInput();
 
+    public String getFirstPsw() {
+        return firstPsw;
     }
 
-
-
+    public String getSecondPsw() {
+        return secondPsw;
+    }
 }
+
+
+
+

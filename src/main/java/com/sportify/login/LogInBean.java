@@ -15,11 +15,17 @@ public class LogInBean {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 
-    public void setEmail(String username) {
-        this.email = username;
+    public void setEmail(String email) throws EmailNotValidException {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        if (!matcher.find())
+            throw new EmailNotValidException();
+        this.email = email;
     }
 
     public void setPassword(String password) {
+        if (password.isEmpty())
+            throw new IllegalArgumentException("Password cannot be empty!");
+
         this.password = password;
     }
 
@@ -32,19 +38,4 @@ public class LogInBean {
     }
 
 
-    public void validateInput() throws IllegalArgumentException, EmailNotValidException{
-
-        if (this.email == null || this.password == null ) //controlla se i suoi attributi sono stati correttamente
-                                                          //inizializzati dalla LogInView
-            throw new IllegalArgumentException("LogInBean class was not properly initialized for login"); //forse aggiungerla al throws?
-
-        if (!validateEmailSyntax(this.email))
-            throw new EmailNotValidException();
-    }
-
-
-    private boolean validateEmailSyntax(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
-        return matcher.find();
-    }
 }

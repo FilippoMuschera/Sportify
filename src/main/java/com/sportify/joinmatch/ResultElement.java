@@ -10,6 +10,11 @@ public class ResultElement {
     private double indexValue;
     private double distance;
     private int maxSpots;
+    private String sport;
+
+    public String getSport() {
+        return sport;
+    }
 
     public int getMaxSpots() {
         return maxSpots;
@@ -57,5 +62,9 @@ public class ResultElement {
 
     public void setMaxSpots(int maxSpots) {
         this.maxSpots = maxSpots;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
     }
 }

@@ -72,12 +72,10 @@ public class AddSportCenterView {
             bean.setNumOfBasketCourts(Integer.parseInt(nBasket.getText()));
             bean.setNumOfTennisCourts(Integer.parseInt(nTennis.getText()));
 
-
-            bean.validateInput();
             AddSportCenterController controller = new AddSportCenterController();
             controller.addSportCenter(bean);
 
-            //Se non vengono generate eccezioni, printo sulla label l'outcome positivo del salvataggio dello sport center
+            //Se non vengono generate eccezioni, scrivo sulla label il risultato positivo del salvataggio dello sport center
 
             outputStateLabel.setText("Sport Center added successfully!");
             outputStateLabel.setTextFill(Color.GREEN);

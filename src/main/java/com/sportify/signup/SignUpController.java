@@ -1,5 +1,6 @@
 package com.sportify.signup;
 
+import com.sportify.signup.exceptions.DifferentPasswordException;
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
 import com.sportify.user.UserPreferences;
 import com.sportify.user.UserPreferencesDAO;
@@ -15,9 +16,13 @@ public class SignUpController {
     private static final int DEFAULT_RADIUS = 5;
     private static final boolean DEFAULT_PREFERENCE = true;
 
-    public void signUpUser(SignUpBean bean) throws UserAlreadyExistsException {
+    public void signUpUser(SignUpBean bean) throws UserAlreadyExistsException, DifferentPasswordException {
         UserDAO dao = UserDAO.getInstance();
-        String encryptedPassword = this.encryptPassword(bean.getPassword());
+        String checkedPassword;
+        if (!bean.getFirstPsw().equals(bean.getSecondPsw()))
+            throw new DifferentPasswordException();
+        checkedPassword = bean.getFirstPsw(); //Se sono uguali è indifferente scegliere la prima o la seconda
+        String encryptedPassword = this.encryptPassword(checkedPassword);
         String type = bean.isOwner() ? "Owner" : "Player";
         dao.addUser(bean.getEmail(), encryptedPassword, type);
         UserEntity user = UserEntity.getInstance();

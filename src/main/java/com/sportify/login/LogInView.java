@@ -25,18 +25,18 @@ public class LogInView {
         errorLabel.setTextFill(Color.RED);
 
         LogInBean bean = new LogInBean();
-        bean.setEmail(emailTextField.getText());
-        bean.setPassword(passwordField.getText());
+
 
         try {
 
-            bean.validateInput();
+            bean.setEmail(emailTextField.getText());
+            bean.setPassword(passwordField.getText());
             LogInController controller = new LogInController();
             controller.logInUser(bean);
             UIController viewController = UIController.getUIControllerInstance();
             viewController.showHomeScreen();
 
-        } catch (EmailNotValidException | IncorrectPasswordException exception) {
+        } catch (EmailNotValidException | IllegalArgumentException | IncorrectPasswordException exception) {
             errorLabel.setText(exception.getMessage());
             errorLabel.setOpacity(1);
         } catch (UserNotFoundException e) {

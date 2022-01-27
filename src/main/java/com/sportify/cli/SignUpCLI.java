@@ -36,26 +36,27 @@ public class SignUpCLI {
         isOwner = "y".equals(owner);
 
         SignUpBean bean = new SignUpBean();
-        bean.setEmail(email);
-        bean.setFirstPsw(password);
-        bean.setSecondPsw(password2);
-        bean.setOwner(isOwner);
+
         try {
-            bean.validateSignUp();
+            bean.setEmail(email);
+            bean.setFirstPsw(password);
+            bean.setSecondPsw(password2);
+            bean.setOwner(isOwner);
         } catch (EmailNotValidException e) {
             err.println("This email is not valid, try again with a different one");
-            return 1;
-        } catch (DifferentPasswordException e) {
-            err.println("Passwords were not the same, try again.");
             return 1;
         }
 
         SignUpController controller = new SignUpController();
         try {
             controller.signUpUser(bean);
+            return 0;
         } catch (UserAlreadyExistsException e) {
             err.println("User already exists, restart the program and log in");
             System.exit(10);
+        } catch (DifferentPasswordException e) {
+            err.println(e.getMessage());
+            return 1;
         }
         return 0;
     }

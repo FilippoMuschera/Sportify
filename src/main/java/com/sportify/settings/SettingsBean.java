@@ -16,6 +16,7 @@ public class SettingsBean {
     private String city;
     private String cap;
 
+    //TODO FARE BENE STA BEAN
 
     public void validateInput() throws AddressNotValidException {
         Pattern validCAP = Pattern.compile("^[0-9]{5}$"); //valida sintatticamente il CAP

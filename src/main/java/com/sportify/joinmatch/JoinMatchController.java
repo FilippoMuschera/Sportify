@@ -57,6 +57,7 @@ public class JoinMatchController {
                         resultElement.setTimeSlot(t);
                         resultElement.setDistance(entry.getValue());
                         resultElement.setMaxSpots(court.getMaxSpots());
+                        resultElement.setSport(bean.getSelectedSport());
 
                         //Si aggiunge il ResultElement al ResultSet
                         this.resultSet.addElement(resultElement);

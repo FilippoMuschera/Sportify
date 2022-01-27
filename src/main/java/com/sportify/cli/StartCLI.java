@@ -47,7 +47,13 @@ public class StartCLI {
         String password = scanner.nextLine();
 
         LogInBean bean = new LogInBean();
-        bean.setEmail(email);
+        try {
+            bean.setEmail(email);
+        } catch (EmailNotValidException e) {
+            err.println(e.getMessage());
+            isLogged = false;
+            return;
+        }
         bean.setPassword(password);
         LogInController controller = new LogInController();
 
@@ -57,20 +63,12 @@ public class StartCLI {
         } catch (UserNotFoundException e) {
             err.println("User not found, type \"signup\" to register!");
             isLogged = false;
-            return;
         } catch (IncorrectPasswordException e) {
             err.println("Incorrect password, try again");
             isLogged = false;
-            return;
 
         }
-        try {
-            bean.validateInput();
-        } catch (EmailNotValidException e) {
-            err.println("Invalid email, try again");
-            isLogged = false;
 
-        }
 
 
     }

@@ -40,7 +40,6 @@ public class SignUpView {
                 bean.setFirstPsw(passwordField1.getText());
                 bean.setSecondPsw(passwordField2.getText());
                 bean.setOwner(isOwnerCheckBox.isSelected());
-                bean.validateSignUp();
                 SignUpController controller = new SignUpController();
                 controller.signUpUser(bean);
 

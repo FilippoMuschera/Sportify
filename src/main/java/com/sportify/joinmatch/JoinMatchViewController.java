@@ -104,7 +104,7 @@ public class JoinMatchViewController {
             beanJoinMatch.setPreferredStartingTime(startTimeLabel.getText());
         }
         catch(IllegalArgumentException e){
-
+            //mettere e.getMessage() su una label
         }
         joinMatchController.findJoinableMatch(beanJoinMatch);
         resultSet = beanJoinMatch.getResultSet();
@@ -148,7 +148,7 @@ public class JoinMatchViewController {
     }
 
     private void selectedMatch(ResultElement selectedMatch){
-        joinMatchController.joinMatch(selectedMatch);
+        //TODO joinMatchController.joinMatch(selectedMatch);
     }
 
     public void showSettings() throws IOException {
