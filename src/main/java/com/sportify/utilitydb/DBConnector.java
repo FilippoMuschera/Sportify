@@ -24,7 +24,7 @@ public class DBConnector {
             }
         }
 
-        try (InputStream input = new FileInputStream("src/main/resources/com/sportify/database/DBOnline.properties")) {
+        try (InputStream input = new FileInputStream("src/main/resources/com/sportify/database/DB.properties")) {
 
             Properties prop = new Properties();
 

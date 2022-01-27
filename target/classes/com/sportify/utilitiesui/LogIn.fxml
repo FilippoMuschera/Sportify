@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@LogInStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.login.LogInView">
+
+    <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
+
+        <Label layoutX="14.0" layoutY="11.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Sportify">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <Label layoutX="628.0" layoutY="12.0" style="-fx-text-fill: #212529;" text="Home">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+    </Pane>
+    <Label layoutX="6.0" layoutY="32.0" prefHeight="551.0" prefWidth="1289.0" text="Sportify" textAlignment="CENTER" AnchorPane.bottomAnchor="148.0" AnchorPane.topAnchor="32.0">
+        <font>
+            <Font size="430.0" />
+        </font>
+    </Label>
+    <Pane layoutX="357.0" layoutY="102.0" prefHeight="528.0" prefWidth="587.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;">
+        <Line endX="351.0" layoutX="234.0" layoutY="46.0" startX="-232.0" strokeWidth="2.0" />
+        <Label layoutX="259.0" layoutY="2.0" style="-fx-text-fill: #212529;" text="Log In">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <Label layoutX="71.0" layoutY="130.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Email">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <TextField fx:id="emailTextField" layoutX="71.0" layoutY="180.0" prefHeight="31.0" prefWidth="446.0" promptText="email@example.com" />
+        <Label layoutX="71.0" layoutY="264.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Password">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <PasswordField fx:id="passwordField" layoutX="71.0" layoutY="314.0" prefHeight="31.0" prefWidth="446.0" promptText="********" />
+        <Button layoutX="71.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogIn" prefHeight="33.0" prefWidth="130.0" text="Log In">
+            <font>
+                <Font name="Playball Regular" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="387.0" layoutY="439.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="33.0" prefWidth="130.0" text="Sign Up">
+            <font>
+                <Font name="Playball Regular" size="18.0" />
+            </font>
+        </Button>
+        <Label fx:id="errorLabel" layoutX="71.0" layoutY="368.0" style="-fx-opacity: 0;" text="Prompt Message" />
+
+        <Pane fx:id="popUpPane" layoutX="1.0" prefHeight="528.0" prefWidth="585.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-radius: 25; -fx-background-radius: 25; -fx-border-width: 2;">
+            <Label fx:id="userNotFoundMainLabel" layoutX="38.0" layoutY="34.0" text="Oops... we couldn't find your email in our system" />
+            <TextArea layoutX="38.0" layoutY="98.0" prefHeight="246.0" prefWidth="515.0" text="It looks like we couldn't find your email in our &#10;system.&#10;Please check the spell of your email and try again.&#10;&#10;If you are not registered, please press the &#10;&quot;Go To Sign Up&quot; button below to open the &#10;registration page." />
+            <Button layoutX="199.0" layoutY="363.0" mnemonicParsing="false" onAction="#precompiledSignUp" text="Go To Sign Up" />
+            <Button layoutX="247.0" layoutY="428.0" mnemonicParsing="false" onAction="#closePopUp" text="Close" />
+        </Pane>
+
+    </Pane>
+</AnchorPane>

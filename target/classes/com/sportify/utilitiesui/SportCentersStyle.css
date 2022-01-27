@@ -1,0 +1,37 @@
+
+
+
+.label {
+    -fx-font-family: "Playball";
+    -fx-text-fill: rgba(208, 213, 214, 0.4);
+
+}
+
+.button{
+    -fx-background-color: #FAF9F9;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #212529;
+
+}
+
+.button:hover{
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
+.button:pressed{
+
+    -fx-rotate: 5;
+
+}
+
+#createMatchButton{
+    -fx-border-radius: 50;
+    -fx-border-color: #212529;
+    -fx-background-color: #212529;
+    -fx-background-radius: 50;
+    -fx-cursor: hand;
+}

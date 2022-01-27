@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.controlsfx.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@SettingsStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.settings.SettingsViewController">
+    <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
+        <Label fx:id="toolbarLabel" layoutX="14.0" layoutY="11.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Sportify">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <Label layoutX="628.0" layoutY="12.0" style="-fx-text-fill: #212529;" text="Settings">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <Button fx:id="faqButton" layoutX="1239.0" layoutY="6.0" mnemonicParsing="false" onAction="#launchFaq" prefHeight="49.0" prefWidth="22.0" style="-fx-border-color: #FAF9F9;">
+            <graphic>
+                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@icons/question.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="settingsButton" layoutX="1199.0" layoutY="6.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="22.0" style="-fx-border-color: #FAF9F9;">
+            <graphic>
+                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@icons/settingsFilledIcon.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+    </Pane>
+    <Label fx:id="sportifyLabel" layoutX="6.0" layoutY="32.0" prefHeight="551.0" prefWidth="1289.0" text="Sportify" textAlignment="CENTER" AnchorPane.bottomAnchor="148.0" AnchorPane.topAnchor="32.0">
+        <font>
+            <Font size="430.0" />
+        </font>
+    </Label>
+    <Button fx:id="homeButton" layoutX="610.0" layoutY="630.0" mnemonicParsing="false" onAction="#showHome" prefHeight="79.0" prefWidth="80.0">
+        <font>
+            <Font size="30.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <Image url="@icons/homeBlack.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="joinMatchButton" layoutX="841.0" layoutY="630.0" mnemonicParsing="false" onAction="#goToJoinScreen" prefHeight="79.0" prefWidth="80.0">
+        <font>
+            <Font size="30.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <Image url="@icons/teamBlack.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="createMatchButton" layoutX="377.0" layoutY="630.0" mnemonicParsing="false" onAction="#goToCreateScreen" prefHeight="79.0" prefWidth="80.0">
+        <font>
+            <Font size="30.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@icons/courtBlack.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Pane layoutX="149.0" layoutY="76.0" prefHeight="528.0" prefWidth="1003.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2; -fx-background-color: rgba(250, 249, 249, 0.8);">
+        <Line endX="900.0" layoutX="101.0" layoutY="46.0" startX="-100.0" strokeWidth="2.0" />
+        <Label layoutX="397.0" layoutY="7.0" style="-fx-text-fill: #212529;" text="Your Preferences">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <ToggleSwitch fx:id="notificationsSwitch" layoutX="797.0" layoutY="178.0" prefHeight="18.0" prefWidth="33.0" />
+        <Circle fill="#212529" layoutX="51.0" layoutY="90.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+        <Label layoutX="72.0" layoutY="71.0" prefHeight="38.0" prefWidth="343.0" style="-fx-text-fill: #212529;" text="Select your &quot;Radius of Interest&quot;">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <ToggleButton fx:id="radius5" layoutX="780.0" layoutY="78.0" mnemonicParsing="false" text="5 Km">
+            <toggleGroup>
+                <ToggleGroup fx:id="radius" />
+            </toggleGroup>
+        </ToggleButton>
+        <ToggleButton fx:id="radius10" layoutX="860.0" layoutY="78.0" mnemonicParsing="false" text="10 Km" toggleGroup="$radius" />
+        <ToggleButton fx:id="radius3" layoutX="700.0" layoutY="78.0" mnemonicParsing="false" text="3 Km" toggleGroup="$radius" />
+        <Circle fill="#212529" layoutX="51.0" layoutY="187.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+        <Label layoutX="72.0" layoutY="167.0" prefHeight="38.0" prefWidth="343.0" style="-fx-text-fill: #212529;" text="Notifications">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <Label layoutX="72.0" layoutY="263.0" prefHeight="38.0" prefWidth="343.0" style="-fx-text-fill: #212529;" text="Favourites sports">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+        <Circle fill="#212529" layoutX="51.0" layoutY="282.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+        <CheckBox fx:id="footballCB" layoutX="361.0" layoutY="272.0" mnemonicParsing="false" text="Football" />
+        <CheckBox fx:id="padelCB" layoutX="513.0" layoutY="272.0" mnemonicParsing="false" text="Padel" />
+        <CheckBox fx:id="basketCB" layoutX="665.0" layoutY="272.0" mnemonicParsing="false" text="Basket" />
+        <CheckBox fx:id="tennisCB" layoutX="817.0" layoutY="272.0" mnemonicParsing="false" text="Tennis" />
+        <Circle fill="#212529" layoutX="51.0" layoutY="406.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+        <Label layoutX="72.0" layoutY="386.0" prefHeight="38.0" prefWidth="343.0" style="-fx-text-fill: #212529;" text="Your Address">
+            <font>
+                <Font size="28.0" />
+            </font>
+        </Label>
+
+        <Button layoutX="838.0" layoutY="460.0" mnemonicParsing="false" onAction="#saveSettings" prefHeight="40.0" prefWidth="94.0" text="Save" />
+      <TextField fx:id="addrText" layoutX="361.0" layoutY="394.0" prefHeight="25.0" prefWidth="315.0" promptText="Via" />
+      <TextField fx:id="cityText" layoutX="685.0" layoutY="394.0" prefHeight="25.0" prefWidth="161.0" promptText="Città" />
+      <TextField fx:id="capText" layoutX="856.0" layoutY="394.0" prefHeight="25.0" prefWidth="85.0" promptText="CAP" />
+        <Button fx:id="faqButton2" layoutX="235.0" layoutY="361.0" mnemonicParsing="false" onAction="#launchFaq" prefHeight="25.0" prefWidth="24.0" style="-fx-border-color: #FAF9F9;">
+            <graphic>
+                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@icons/question.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+      <Label fx:id="saveLabel" layoutX="56.0" layoutY="469.0" prefHeight="35.0" prefWidth="772.0" text="Label" />
+      <Label fx:id="successSaveLabel" layoutX="939.0" layoutY="460.0" prefHeight="50.0" prefWidth="50.0" text="✓" />
+    </Pane>
+
+</AnchorPane>

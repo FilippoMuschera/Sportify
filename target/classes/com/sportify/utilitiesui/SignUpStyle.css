@@ -1,0 +1,40 @@
+
+
+.label {
+    -fx-font-family: "Playball";
+    -fx-text-fill: rgba(208, 213, 214, 0.4);
+
+}
+#statusLabel {
+    -fx-font-size: 24;
+    -fx-text-fill: red;
+    -fx-opacity: 0;
+}
+
+.button{
+    -fx-background-color: #FAF9F9;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-color: #212529;
+    -fx-font-family: "PLayball";
+    -fx-font-size: 24;
+
+}
+
+.button:hover{
+    -fx-cursor: hand;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-scale-z: 1.2;
+}
+
+.button:pressed{
+
+    -fx-rotate: 5;
+
+}
+
+.check-box{
+    -fx-font-family: "Playball";
+    -fx-font-size: 20;
+}

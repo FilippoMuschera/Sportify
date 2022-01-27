@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@AddSportCenterStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.addsportcenter.AddSportCenterView">
+   <children>
+       <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
+          <children>
+              <Label layoutX="14.0" layoutY="11.0" prefHeight="40.0" prefWidth="130.0" style="-fx-text-fill: #212529;" text="Sportify">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <Label layoutX="565.0" layoutY="12.0" style="-fx-text-fill: #212529;" text="Add Sport Center">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <Button fx:id="faqButton" layoutX="1239.0" layoutY="6.0" mnemonicParsing="false" onAction="#launchFaq" prefHeight="49.0" prefWidth="22.0" style="-fx-border-color: #FAF9F9;">
+                  <graphic>
+                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@icons/question.png" />
+                         </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+              <Button fx:id="settingsButton" layoutX="1197.0" layoutY="6.0" mnemonicParsing="false" onAction="#goToSettings" prefHeight="49.0" prefWidth="22.0" style="-fx-border-color: #FAF9F9;">
+                  <graphic>
+                      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@icons/settings.png" />
+                         </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+          </children>
+       </Pane>
+       <Label fx:id="sportifyLabel" layoutX="6.0" layoutY="32.0" prefHeight="551.0" prefWidth="1289.0" text="Sportify" textAlignment="CENTER" AnchorPane.bottomAnchor="148.0" AnchorPane.topAnchor="32.0">
+           <font>
+               <Font size="430.0" />
+           </font>
+       </Label>
+       <Button fx:id="homeButton" layoutX="609.0" layoutY="630.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="79.0" prefWidth="80.0">
+           <font>
+               <Font size="30.0" />
+           </font>
+           <graphic>
+               <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                   <cursor>
+                       <Cursor fx:constant="HAND" />
+                   </cursor>
+                  <image>
+                      <Image url="@icons/homeBlack.png" />
+                  </image>
+               </ImageView>
+           </graphic>
+       </Button>
+       <Button fx:id="joinMatchButton" layoutX="841.0" layoutY="630.0" mnemonicParsing="false" onAction="#goToJoinMatch" prefHeight="79.0" prefWidth="80.0">
+           <font>
+               <Font size="30.0" />
+           </font>
+           <graphic>
+               <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                   <cursor>
+                       <Cursor fx:constant="HAND" />
+                   </cursor>
+                  <image>
+                      <Image url="@icons/team_nero_su_bianco.png" />
+                  </image>
+               </ImageView>
+           </graphic>
+       </Button>
+       <Button fx:id="createMatchButton" layoutX="377.0" layoutY="630.0" mnemonicParsing="false" onAction="#goToCreateMatch" prefHeight="79.0" prefWidth="80.0">
+           <font>
+               <Font size="30.0" />
+           </font>
+           <graphic>
+               <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@icons/courtBlack.png" />
+                  </image>
+               </ImageView>
+           </graphic>
+       </Button>
+       <Pane layoutX="182.0" layoutY="85.0" prefHeight="528.0" prefWidth="930.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25 25 0 0; -fx-border-width: 2; -fx-background-color: rgba(250, 249, 249, 0.8);">
+          <children>
+              <Line endX="827.0" layoutX="101.0" layoutY="46.0" startX="-100.0" strokeWidth="2.0" />
+              <Label layoutX="14.0" layoutY="6.0" style="-fx-text-fill: #212529;" text="Add your Sport Center to the app">
+                  <font>
+                      <Font size="28.0" />
+                  </font>
+              </Label>
+              <ScrollPane hbarPolicy="NEVER" layoutX="2.0" layoutY="47.0" prefHeight="479.0" prefWidth="926.0" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                 <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="930.0">
+                        <children>
+                            <Label layoutX="65.0" layoutY="199.0" text="Sports that can be played in your sport center:" />
+                            <TextField fx:id="sportCenterAddress" layoutX="478.0" layoutY="70.0" prefHeight="25.0" prefWidth="388.0" promptText="Street, City, ZIP code (with commas, in this order)" />
+                            <Label layoutX="478.0" layoutY="41.0" text="Sport Center Address" />
+                            <TextField fx:id="sportCenterName" layoutX="65.0" layoutY="70.0" prefHeight="25.0" prefWidth="253.0" promptText="My Sport Center" />
+                            <Label layoutX="65.0" layoutY="41.0" text="Sport Center Name" />
+                            <Button layoutX="730.0" layoutY="518.0" mnemonicParsing="false" onAction="#addSportCenterToDB" prefHeight="46.0" prefWidth="98.0" text="Save" />
+                            <Label layoutX="65.0" layoutY="350.0" text="Select opening time" />
+                            <Label layoutX="65.0" layoutY="420.0" text="Select closing time" />
+                            <TextField fx:id="openingH" layoutX="510.0" layoutY="353.0" prefHeight="25.0" prefWidth="42.0" promptText="HH" />
+                            <Label layoutX="553.0" layoutY="349.0" prefHeight="30.0" prefWidth="10.0" text=":" />
+                            <Label layoutX="553.0" layoutY="418.0" prefHeight="30.0" prefWidth="10.0" text=":" />
+                            <TextField fx:id="closingH" layoutX="510.0" layoutY="420.0" prefHeight="25.0" prefWidth="42.0" promptText="HH" />
+                            <Label fx:id="outputStateLabel" layoutX="65.0" layoutY="518.0" text="Sport Center added successfully!" />
+                        <Label layoutX="563.0" layoutY="350.0" text="00" />
+                        <Label layoutX="563.0" layoutY="420.0" text="00" />
+                        <TextField fx:id="nFootball" layoutX="545.0" layoutY="153.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                        <Label layoutX="592.0" layoutY="152.0" prefHeight="32.0" prefWidth="130.0" text="Football" />
+                        <TextField fx:id="nPadel" layoutX="545.0" layoutY="186.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                        <Label layoutX="592.0" layoutY="183.0" prefHeight="32.0" prefWidth="130.0" text="Padel" />
+                        <Label layoutX="592.0" layoutY="218.0" prefHeight="32.0" prefWidth="130.0" text="Basket" />
+                        <TextField fx:id="nBasket" layoutX="545.0" layoutY="219.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                        <Label layoutX="592.0" layoutY="251.0" prefHeight="32.0" prefWidth="130.0" text="Tennis" />
+                        <TextField fx:id="nTennis" layoutX="545.0" layoutY="252.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                        </children>
+                     </AnchorPane>
+                 </content>
+              </ScrollPane>
+          </children>
+   
+       </Pane>
+   
+       <Button fx:id="addCourt" layoutX="22.0" layoutY="630.0" mnemonicParsing="false" onMouseEntered="#showInfoPopUp" onMouseExited="#hideInfoPopUp" prefHeight="80.0" prefWidth="80.0">
+           <graphic>
+               <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@icons/addWhite.png" />
+                  </image>
+               </ImageView>
+           </graphic>
+       </Button>
+   
+       <Label fx:id="addCourtPopupLabel" layoutX="102.0" layoutY="630.0" text="Add your sport center to the app" textAlignment="CENTER" />
+   </children>
+
+
+</AnchorPane>

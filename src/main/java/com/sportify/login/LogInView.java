@@ -29,9 +29,12 @@ public class LogInView {
         bean.setPassword(passwordField.getText());
 
         try {
+
             bean.validateInput();
             LogInController controller = new LogInController();
             controller.logInUser(bean);
+            UIController viewController = UIController.getUIControllerInstance();
+            viewController.showHomeScreen();
 
         } catch (EmailNotValidException | IncorrectPasswordException exception) {
             errorLabel.setText(exception.getMessage());
@@ -51,8 +54,7 @@ public class LogInView {
 
         }
 
-        UIController viewController = UIController.getUIControllerInstance();
-        viewController.showHomeScreen();
+
 
     }
 

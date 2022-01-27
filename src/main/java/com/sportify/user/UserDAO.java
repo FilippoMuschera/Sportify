@@ -36,6 +36,7 @@ public class UserDAO {
                 if (!rs.next())
                     throw new UserNotFoundException();
                 UserEntity user = UserEntity.getInstance();
+                System.out.println(rs.getString("Email"));
                 user.setEmail(rs.getString("Email"));
                 user.setPassword(rs.getString("Password"));
                 user.setType(rs.getString("Type"));
