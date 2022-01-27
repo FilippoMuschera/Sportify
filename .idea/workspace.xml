@@ -38,7 +38,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="22xTyzuuLUQiZqmRBPya8ETVGP4" />
   <component name="ProjectViewState">
@@ -56,9 +56,9 @@
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Workspace/TestDB/mysql-connector-java-8.0.27.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.22758621" />
+    <property name="project.structure.side.proportion" value="0.43793103" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
@@ -73,7 +73,20 @@
       <recent name="com.sportify.login" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StartUI">
+  <component name="RunManager" selected="Application.StartCLI">
+    <configuration name="StartCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sportify.cli.StartCLI" />
+      <module name="SportifyUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sportify.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StartUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sportify.utilitiesui.StartUI" />
       <module name="SportifyUI" />
@@ -93,15 +106,6 @@
       <option name="MAIN_CLASS_NAME" value="IntTest" />
       <option name="METHOD_NAME" value="IntTest" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestAddSportCenterBean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Sportify" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestAddSportCenterBean" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StartCLI" />
         <item itemvalue="Application.StartUI" />
         <item itemvalue="JUnit.TestGeolocator.testTime" />
         <item itemvalue="JUnit.TestGetSportCenterDAO.testGetNearSportCenter" />
         <item itemvalue="JUnit.TestGeolocator.testGetCoordinates" />
-        <item itemvalue="JUnit.TestAddSportCenterBean" />
       </list>
     </recent_temporary>
   </component>
@@ -208,6 +212,7 @@
       <workItem from="1643276254093" duration="19330000" />
       <workItem from="1643300514986" duration="484000" />
       <workItem from="1643302294902" duration="1117000" />
+      <workItem from="1643304039879" duration="4321000" />
     </task>
     <servers />
   </component>
