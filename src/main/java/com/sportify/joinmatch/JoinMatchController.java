@@ -20,7 +20,7 @@ public class JoinMatchController {
     private boolean isAvailableSpotsImportant;
 
 
-    public ResultSetEntity findJoinableMatch(JoinMatchBean bean) {
+    public void findJoinableMatch(JoinMatchBean bean) {
 
         //Settiamo gli attributi per ponderare il peso di distanza e posti disponibili
         this.isDistanceImportant = bean.isDistanceIsImportant();
@@ -59,7 +59,7 @@ public class JoinMatchController {
         //A questo punto il nostro ResultSetEntity aggrega tutti i ResultElement che ci servono, ora bisogna ordinarli
         //in base al loro indexValue
         this.evaluateIndexValues();
-        return this.resultSet;
+        bean.setResultSet(this.resultSet);
 
 
     }

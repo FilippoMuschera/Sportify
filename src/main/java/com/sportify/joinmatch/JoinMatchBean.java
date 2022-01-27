@@ -1,59 +1,24 @@
 package com.sportify.joinmatch;
 
+
+import java.util.Arrays;
+
 public class JoinMatchBean {
 
     private String selectedSport;
     private boolean distanceIsImportant = false;
     private boolean availableSpotIsImportant = false;
-    private String preferredStartingTimeString;
-    private String maxResultsString;
     private int preferredStartingTime;
     private int maxResults;
-
-    private boolean isValid = false;
-
+    private ResultSetEntity resultSet;
 
 
+   //Setters
 
-    public void validateInput() throws IllegalArgumentException {
-        if (this.preferredStartingTimeString.isEmpty() || this.maxResultsString.isEmpty())
-            throw new IllegalArgumentException("One or more fields are empty");
-        try {
-            this.maxResults = Integer.parseInt(maxResultsString);
-            this.preferredStartingTime = Integer.parseInt(preferredStartingTimeString);
-        } catch (NumberFormatException e){
-            //Se una delle due stringhe non rappresenta un intero allora uno degli argomenti passati alla bean è
-            //sintatticamente scorretto, e lanciamo un'eccezione così che la view possa notificarlo all'utente
-            throw new IllegalArgumentException("Starting Time and Results Number must be a number!");
-        }
-        if (this.preferredStartingTime < 0 || this.preferredStartingTime > 23)
-            throw new IllegalArgumentException("Starting time can't be negative or grater than 23!");
-        if (this.maxResults <= 0)
-            throw new IllegalArgumentException("Results number must be grater than zero!");
-        this.isValid = true;
-
-
-
-
-    }
-
-    public ResultSetEntity executeJoinMatch() {
-        //Se tutti i controlli sono superati si lancia l'esecuzione dello use case invocando il controller
-        if (this.isValid) {
-            JoinMatchController controller = new JoinMatchController();
-            return controller.findJoinableMatch(this);
-        }
-        else {
-            throw new IllegalCallerException("Non si può eseguire lo use case senza aver validato prima l'input sulla bean");
-        }
-    }
-
-
-
-
-    //Getter and Setters
-
-    public void setSelectedSport(String selectedSport) {
+    public void setSelectedSport(String selectedSport) throws IllegalArgumentException {
+        String[] sports = {"Football", "Padel", "Tennis", "Basket"};
+        if (!Arrays.asList(sports).contains(selectedSport) || selectedSport.isEmpty())
+            throw new IllegalArgumentException("Invalid Sport!");
         this.selectedSport = selectedSport;
     }
 
@@ -65,12 +30,44 @@ public class JoinMatchBean {
         this.availableSpotIsImportant = availableSpotIsImportant;
     }
 
-    public void setPreferredStartingTimeString(String preferredStartingTimeString) {
-        this.preferredStartingTimeString = preferredStartingTimeString;
+    public void setPreferredStartingTime(String preferredStartingTimeString) throws IllegalArgumentException {
+        if (preferredStartingTimeString.isEmpty())
+            throw new IllegalArgumentException("Starting time cannot be empty!");
+        int preferredTime;
+        try {
+            preferredTime = Integer.parseInt(preferredStartingTimeString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Starting time must be a number!");
+        }
+        if (preferredTime > 23 || preferredTime < 0)
+            throw new IllegalArgumentException("Starting time must be between 00 and 23");
+        this.preferredStartingTime = preferredTime;
+
     }
 
-    public void setMaxResultsString(String maxResultsString) {
-        this.maxResultsString = maxResultsString;
+    public void setMaxResults(String maxResultsString) {
+        if (maxResultsString.isEmpty())
+            throw new IllegalArgumentException("Max results number cannot be empty!");
+        int max;
+        try {
+            max = Integer.parseInt(maxResultsString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Max results number has a wrong format");
+        }
+        if (max <= 0)
+            throw new IllegalArgumentException("Results number must be greater than zero!");
+        this.maxResults = max;
+    }
+
+    public void setResultSet(ResultSetEntity resultSet) {
+        this.resultSet = resultSet;
+    }
+
+
+    //getters
+
+    public ResultSetEntity getResultSet() {
+        return resultSet;
     }
 
     public String getSelectedSport() {
