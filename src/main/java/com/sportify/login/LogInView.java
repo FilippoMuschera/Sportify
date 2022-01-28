@@ -1,7 +1,6 @@
 package com.sportify.login;
 
-import com.sportify.login.exceptions.EmailNotValidException;
-import com.sportify.login.exceptions.IncorrectPasswordException;
+import com.sportify.login.exceptions.LoginFailedException;
 import com.sportify.login.exceptions.UserNotFoundException;
 import com.sportify.utilitiesui.UIController;
 import javafx.fxml.FXML;
@@ -36,7 +35,7 @@ public class LogInView {
             UIController viewController = UIController.getUIControllerInstance();
             viewController.showHomeScreen();
 
-        } catch (EmailNotValidException | IllegalArgumentException | IncorrectPasswordException exception) {
+        } catch (IllegalArgumentException | LoginFailedException exception) {
             errorLabel.setText(exception.getMessage());
             errorLabel.setOpacity(1);
         } catch (UserNotFoundException e) {

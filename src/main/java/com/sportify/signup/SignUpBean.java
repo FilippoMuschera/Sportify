@@ -1,10 +1,6 @@
 package com.sportify.signup;
 
 import com.sportify.login.LogInBean;
-import com.sportify.login.exceptions.EmailNotValidException;
-import com.sportify.signup.exceptions.DifferentPasswordException;
-
-import java.util.Objects;
 
 public class SignUpBean extends LogInBean {
 

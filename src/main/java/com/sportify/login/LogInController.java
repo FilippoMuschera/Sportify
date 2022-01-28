@@ -1,6 +1,6 @@
 package com.sportify.login;
 
-import com.sportify.login.exceptions.IncorrectPasswordException;
+import com.sportify.login.exceptions.LoginFailedException;
 import com.sportify.login.exceptions.UserNotFoundException;
 import com.sportify.user.UserPreferences;
 import com.sportify.user.UserPreferencesDAO;
@@ -15,7 +15,7 @@ public class LogInController {
 
     private static final String ENCRYPTION_KEY = "ISPW_PROJECT_SPORTIFY_2022";
 
-    public void logInUser(LogInBean bean) throws UserNotFoundException, IncorrectPasswordException {
+    public void logInUser(LogInBean bean) throws UserNotFoundException, LoginFailedException {
 
 
         UserDAO dao = UserDAO.getInstance();
@@ -29,7 +29,7 @@ public class LogInController {
         String decryptedPassword = this.decryptPassword(user.getPassword());
 
         if (!Objects.equals(decryptedPassword, bean.getPassword()))
-            throw new IncorrectPasswordException();
+            throw new LoginFailedException("The password is incorrect");
 
     }
 

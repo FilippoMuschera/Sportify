@@ -1,6 +1,6 @@
 package com.sportify.login;
 
-import com.sportify.login.exceptions.EmailNotValidException;
+import com.sportify.login.exceptions.LoginFailedException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,10 +15,10 @@ public class LogInBean {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 
-    public void setEmail(String email) throws EmailNotValidException {
+    public void setEmail(String email) throws LoginFailedException {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
         if (!matcher.find())
-            throw new EmailNotValidException();
+            throw new LoginFailedException("Invalid email, try again!");
         this.email = email;
     }
 

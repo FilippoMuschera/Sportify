@@ -2,8 +2,7 @@ package com.sportify.cli;
 
 import com.sportify.login.LogInBean;
 import com.sportify.login.LogInController;
-import com.sportify.login.exceptions.EmailNotValidException;
-import com.sportify.login.exceptions.IncorrectPasswordException;
+import com.sportify.login.exceptions.LoginFailedException;
 import com.sportify.login.exceptions.UserNotFoundException;
 import java.util.Scanner;
 
@@ -49,7 +48,7 @@ public class StartCLI {
         LogInBean bean = new LogInBean();
         try {
             bean.setEmail(email);
-        } catch (EmailNotValidException e) {
+        } catch (LoginFailedException e) {
             err.println(e.getMessage());
             isLogged = false;
             return;
@@ -63,8 +62,8 @@ public class StartCLI {
         } catch (UserNotFoundException e) {
             err.println("User not found, type \"signup\" to register!");
             isLogged = false;
-        } catch (IncorrectPasswordException e) {
-            err.println("Incorrect password, try again");
+        } catch (LoginFailedException e) {
+            err.println(e.getMessage());
             isLogged = false;
 
         }

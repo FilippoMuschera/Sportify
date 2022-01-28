@@ -1,6 +1,6 @@
 package com.sportify.signup;
 
-import com.sportify.login.exceptions.EmailNotValidException;
+import com.sportify.login.exceptions.LoginFailedException;
 import com.sportify.signup.exceptions.DifferentPasswordException;
 import com.sportify.signup.exceptions.UserAlreadyExistsException;
 import com.sportify.utilitiesui.UIController;
@@ -45,7 +45,7 @@ public class SignUpView {
 
             } catch (DifferentPasswordException e) {
                 statusLabel.setText("Passwords are not the same, check them and try again");
-            } catch (EmailNotValidException e) {
+            } catch (LoginFailedException e) {
                 statusLabel.setText("The email is not valid");
             } catch (UserAlreadyExistsException e) {
                 statusLabel.setText("User already registered. Go to Log In!");

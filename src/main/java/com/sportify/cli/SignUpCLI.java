@@ -1,6 +1,6 @@
 package com.sportify.cli;
 
-import com.sportify.login.exceptions.EmailNotValidException;
+import com.sportify.login.exceptions.LoginFailedException;
 import com.sportify.signup.SignUpBean;
 import com.sportify.signup.SignUpController;
 import com.sportify.signup.exceptions.DifferentPasswordException;
@@ -42,7 +42,7 @@ public class SignUpCLI {
             bean.setFirstPsw(password);
             bean.setSecondPsw(password2);
             bean.setOwner(isOwner);
-        } catch (EmailNotValidException e) {
+        } catch (LoginFailedException e) {
             err.println("This email is not valid, try again with a different one");
             return 1;
         }
