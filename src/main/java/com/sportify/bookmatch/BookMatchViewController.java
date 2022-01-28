@@ -2,6 +2,7 @@ package com.sportify.bookmatch;
 
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
+import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.user.UserEntity;
 import com.sportify.utilitiesui.UIController;
 import javafx.animation.*;
@@ -42,6 +43,8 @@ public class BookMatchViewController {
     private Button tennisButton;
     @FXML
     private Label successLabel;
+    @FXML
+    private Label errorLabel;
 
     private boolean basketButtonIsActive = false;
     private boolean padelButtonIsActive = false;
@@ -55,7 +58,7 @@ public class BookMatchViewController {
     private CustomTilePane customTilePane = new CustomTilePane();
 
     @FXML
-    public void initialize() {
+    public void initialize(){
 
         successLabel.setOpacity(0);
         UserEntity user = UserEntity.getInstance();
@@ -103,14 +106,15 @@ public class BookMatchViewController {
         }
     }
 
-    public void hideButtons(){
+    private void hideButtons(){
         basketButton.setVisible(false);
         padelButton.setVisible(false);
         footballButton.setVisible(false);
         tennisButton.setVisible(false);
+        errorLabel.setVisible(false);
     }
 
-    public void enableButtons(){
+    private void enableButtons(){
         if(basketButtonIsActive) {
             basketButton.setVisible(true);
         }
@@ -125,20 +129,32 @@ public class BookMatchViewController {
         }
     }
 
-    public void enableScrollPane(){
+    private void enableScrollPane(){
         scrollPaneBookMatch.setVisible(true);
     }
 
-    public void startBookMatch(String selectedSport){
+    private void startBookMatch(String selectedSport){
         this.hideButtons();
-        this.enableScrollPane();
-        Map<String, Double> sportCenterList = bookMatchController.startStateMachine(selectedSport);
-        this.displaySportCenters(sportCenterList);
+        Map<String, Double> sportCenterList = null;
+        try {
+            sportCenterList = bookMatchController.startStateMachine(selectedSport);
+            enableScrollPane();
+            displaySportCenters(sportCenterList);
+        }
+        catch(SportCenterException e){
+            displayError();
+        }
     }
 
+    private void displayError(){
+        errorLabel.setVisible(true);
+        errorLabel.setText("""
+                    There are no Sport Centers in your area.
+                    Please change your address in Settings.""");
+    }
 
     @FXML
-    public void displaySportCenters(Map<String, Double> nearSportCenters) {
+    private void displaySportCenters(Map<String, Double> nearSportCenters) {
 
         customTilePane.createCustomTilePane();
         meanLabel.setVisible(true);
@@ -153,13 +169,13 @@ public class BookMatchViewController {
 
     }
 
-    public void selectedSportCenter(String sportCenterName){
+    private void selectedSportCenter(String sportCenterName){
         List<SportCourt> courtsList = bookMatchController.selectedSportCenter(sportCenterName);
         this.displayCourts(courtsList);
     }
 
 
-    public void displayCourts(List<SportCourt> courtList){
+    private void displayCourts(List<SportCourt> courtList){
 
         customTilePane.createCustomTilePane();
         meanLabel.setText("Select which court you want.");
@@ -173,12 +189,12 @@ public class BookMatchViewController {
 
     }
 
-    public void selectedCourt(String id){
+    private void selectedCourt(String id){
         List<TimeSlot> timeTable = bookMatchController.selectedCourt(id);
         this.displayHourSlots(timeTable);
     }
 
-    public void displayHourSlots(List<TimeSlot> timeTable){
+    private void displayHourSlots(List<TimeSlot> timeTable){
         customTilePane.createCustomTilePane();
         meanLabel.setText("Select which time slot you prefer.");
 
@@ -193,7 +209,7 @@ public class BookMatchViewController {
         scrollPaneBookMatch.setContent(customTilePane.getCustomTP());
     }
 
-    public void selectedHourSlot (TimeSlot hourSlot){
+    private void selectedHourSlot (TimeSlot hourSlot){
         bookMatchController.setSelectedTimeSlot(hourSlot);
         meanLabel.setVisible(false);
 
@@ -218,17 +234,16 @@ public class BookMatchViewController {
         restartBookMatch();
     }
 
-    public void restartBookMatch(){
+    private void restartBookMatch(){
 
         hidePopUpControls();
         enableButtons();
         displaySuccessLabel();
     }
 
-    public void displaySuccessLabel(){
+    private void displaySuccessLabel(){
 
         Timeline blinker = createBlinker(successLabel);
-        //blinker.setOnFinished(event -> successLabel.setVisible(false));
         FadeTransition fader = createFader(successLabel);
         SequentialTransition blinkThenFade = new SequentialTransition(
                 successLabel,
@@ -255,7 +270,7 @@ public class BookMatchViewController {
         return fade;
     }
 
-    public void showPopUpControls(){
+    private void showPopUpControls(){
         createJoinMatchButton.setVisible(true);
         bookMatchButton.setVisible(true);
         popUpLabel.setVisible(true);
@@ -263,7 +278,7 @@ public class BookMatchViewController {
         popUpAnchorPane.setVisible(true);
     }
 
-    public void hidePopUpControls(){
+    private void hidePopUpControls(){
         createJoinMatchButton.setVisible(false);
         bookMatchButton.setVisible(false);
         popUpLabel.setVisible(false);

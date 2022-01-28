@@ -42,12 +42,7 @@ public class BookMatchController {
 
         stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
         stateMachine.initializeState();
-        try {
-            stateMachine.getState().entry(sport);
-        }
-        catch(SportCenterException e){
-            ////SportCenterException
-        }
+        stateMachine.getState().entry(sport);
         return nearSportCenters;
     }
 

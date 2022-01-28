@@ -19,6 +19,11 @@
     -fx-font-size: 24;
 }
 
+#errorLabel{
+    -fx-font-family: "Playball";
+    -fx-text-fill: rgba(255,0,0,1);
+    -fx-font-size: 28;
+}
 
 #welcomeMsgLabel{
     -fx-text-fill: #212529;
