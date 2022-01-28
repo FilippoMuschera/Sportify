@@ -1,6 +1,7 @@
 package com.sportify.joinmatch;
 
 import com.sportify.geolocation.Geolocator;
+import com.sportify.sportcenter.AddSportCenterDAO;
 import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterEntity;
 import com.sportify.sportcenter.courts.SportCourt;
@@ -117,5 +118,18 @@ public class JoinMatchController {
             case "Basket" -> currentSportCenter.getCourts().getBasketCourts();
             default -> null;
         };
+    }
+
+    public void joinMatch(ResultElement selectedMatch){
+
+        AddSportCenterDAO newAddSportCenterDAO = new AddSportCenterDAO();
+        int spots = selectedMatch.getTimeSlot().getAvailableSpots();
+        int selectedCourtID = selectedMatch.getCourtID();
+        String selectedSport = selectedMatch.getSport();
+        String selectedSportCenter = selectedMatch.getNameSC();
+        int startTime = selectedMatch.getTimeSlot().getStartTime().getHour();
+        int finishTime = selectedMatch.getTimeSlot().getEndTime().getHour();
+
+        newAddSportCenterDAO.updateTimeSlot(spots-1, selectedCourtID, selectedSport, selectedSportCenter, startTime, finishTime);
     }
 }

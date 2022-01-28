@@ -148,7 +148,7 @@ public class JoinMatchViewController {
     }
 
     private void selectedMatch(ResultElement selectedMatch){
-        //TODO joinMatchController.joinMatch(selectedMatch);
+        joinMatchController.joinMatch(selectedMatch);
     }
 
     public void showSettings() throws IOException {
