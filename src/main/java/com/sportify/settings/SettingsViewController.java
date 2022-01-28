@@ -121,9 +121,8 @@ public class SettingsViewController implements Observer {
         bean.setPadel(padelCB.isSelected());
         bean.setAddress(addrText.getText());
         bean.setCity(cityText.getText());
-        bean.setCap(capText.getText());
         try {
-            bean.validateInput();
+            bean.setCap(capText.getText());
             SettingsController controller = new SettingsController();
             controller.saveSettings(bean);
 

@@ -32,7 +32,10 @@ public class SettingsCLI implements Observer {
         String radius = scanner.nextLine();
         if (radius.equals("exit"))
             return 0;
-        bean.setRadius(Integer.parseInt(radius));
+        int r = Integer.parseInt(radius);
+        if (r != 3 && r!= 5 && r!= 10)
+            r = 5; //se la scelta è scorretta si setta il default
+        bean.setRadius(r);
         out.println("Do you want to receive notifications from the app via email? (y/n)");
         String notificationsString = scanner.nextLine();
         boolean notifications = notificationsString.equals("y");
@@ -75,10 +78,9 @@ public class SettingsCLI implements Observer {
         out.println("Now tell us your city");
         bean.setCity(scanner.nextLine());
         out.println("And now your ZIP code (es.: 00133)");
-        bean.setCap(scanner.nextLine());
 
         try {
-            bean.validateInput();
+            bean.setCap(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             err.println(e.getMessage());
             return 1;

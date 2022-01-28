@@ -53,6 +53,8 @@ public class JoinMatchViewController {
 
     private JoinMatchController joinMatchController = new JoinMatchController();
 
+    //TODO FONT DIMENSIONE LABEL SCHERMATA INIZIALE
+
     public void initialize(){
 
         outcomeLabel.setOpacity(0);

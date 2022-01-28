@@ -1,6 +1,5 @@
 package com.sportify.settings;
 
-import com.sportify.settings.exceptions.AddressNotValidException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,21 +15,6 @@ public class SettingsBean {
     private String city;
     private String cap;
 
-    //TODO FARE BENE STA BEAN
-
-    public void validateInput() throws AddressNotValidException {
-        Pattern validCAP = Pattern.compile("^[0-9]{5}$"); //valida sintatticamente il CAP
-        Matcher m = validCAP.matcher(this.cap);
-        if (!m.find()){
-            throw new IllegalArgumentException("Invalid ZIP code!");
-        }
-        /*
-        Se il raggio non ha un valore valido (lo forza al valore di default)
-         */
-        if (this.radius != 3 && this.radius != 5 && this.radius != 10)
-            radius = 5;
-
-    }
 
     public int getRadius() {
         return radius;
@@ -101,6 +85,11 @@ public class SettingsBean {
     }
 
     public void setCap(String cap) {
+        Pattern validCAP = Pattern.compile("^[0-9]{5}$"); //valida sintatticamente il CAP
+        Matcher m = validCAP.matcher(cap);
+        if (!m.find()){
+            throw new IllegalArgumentException("Invalid ZIP code!");
+        }
         this.cap = cap;
     }
 }
