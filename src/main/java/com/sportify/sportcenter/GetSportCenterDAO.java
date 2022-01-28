@@ -1,6 +1,7 @@
 package com.sportify.sportcenter;
 
 import com.sportify.sportcenter.courts.*;
+import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.user.UserEntity;
 
 
@@ -44,7 +45,7 @@ public class GetSportCenterDAO {
 
                 ResultSet rs = ps.executeQuery();
                 if (!rs.next())
-                    throw new NullPointerException("The query didn't provide a result in finding nearest sport centers");
+                    throw new SportCenterException("The query didn't provide a result in finding nearest sport centers");
                 Map<String, Double> sportCentersMatrix = new HashMap<>();
 
                 do {

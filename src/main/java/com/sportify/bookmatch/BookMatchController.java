@@ -3,7 +3,6 @@ package com.sportify.bookmatch;
 import com.sportify.bookmatch.statemachine.BMStateMachineImplementation;
 import com.sportify.bookmatch.statemachine.CourtState;
 import com.sportify.bookmatch.statemachine.HourSlotState;
-import com.sportify.email.EmailSender;
 import com.sportify.email.EmailThread;
 import com.sportify.sportcenter.AddSportCenterDAO;
 import com.sportify.sportcenter.GetSportCenterDAO;
@@ -11,7 +10,6 @@ import com.sportify.sportcenter.SportCenterInfo;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
 import com.sportify.user.UserEntity;
-
 import java.util.List;
 import java.util.Map;
 

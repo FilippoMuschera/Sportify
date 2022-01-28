@@ -23,7 +23,7 @@ public class AddSportCenterDAO {
         this.addCourts(sportCenter);
 
         if (this.error) {
-            throw new SportCenterException();
+            throw new SportCenterException("errore nell'aggiunta dello sport center al database");
         }
     }
 
