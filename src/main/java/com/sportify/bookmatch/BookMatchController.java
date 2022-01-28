@@ -9,6 +9,7 @@ import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterInfo;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
+import com.sportify.sportcenter.exceptions.SportCenterException;
 import com.sportify.user.UserEntity;
 import java.util.List;
 import java.util.Map;
@@ -37,11 +38,16 @@ public class BookMatchController {
     }
 
 
-    public Map<String, Double> startStateMachine(String sport){
+    public Map<String, Double> startStateMachine(String sport) throws SportCenterException{
 
         stateMachine = BMStateMachineImplementation.getBMStateMachineImplementation();
         stateMachine.initializeState();
-        stateMachine.getState().entry(sport);
+        try {
+            stateMachine.getState().entry(sport);
+        }
+        catch(SportCenterException e){
+            ////SportCenterException
+        }
         return nearSportCenters;
     }
 

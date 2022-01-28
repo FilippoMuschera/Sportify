@@ -13,4 +13,8 @@ public class ResultSetEntity {
     public ArrayList<ResultElement> getElements() {
         return this.elementsList;
     }
+
+    public void setElementsList(ArrayList<ResultElement> elementsList) {
+        this.elementsList = elementsList;
+    }
 }

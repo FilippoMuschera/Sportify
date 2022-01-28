@@ -12,6 +12,7 @@ import com.sportify.user.UserEntity;
 import com.sportify.user.UserPreferences;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -50,8 +51,9 @@ public class JoinMatchController {
                 for (TimeSlot t : court.getBookingTable()){
 
                     //Il primo TimeSlot che inizia dopo l'orario scelto (o esattamente all'orario scelto) viene selezionato
-                    if (t.getStartTime().isAfter(LocalTime.of(bean.getPreferredStartingTime(), 0)) ||
-                            t.getStartTime().getHour() == bean.getPreferredStartingTime()){
+                    if ((t.getStartTime().isAfter(LocalTime.of(bean.getPreferredStartingTime(), 0)) ||
+                            t.getStartTime().getHour() == bean.getPreferredStartingTime()) &&
+                    t.getAvailableSpots() < court.getMaxSpots()){
 
                         //Si costruisce il ResultElement
                         ResultElement resultElement = new ResultElement();
@@ -71,9 +73,17 @@ public class JoinMatchController {
         }
         //A questo punto il nostro ResultSetEntity aggrega tutti i ResultElement che ci servono, ora bisogna ordinarli
         //in base al loro indexValue
+        //TODO CASO CON 0 RISULTATI
         this.evaluateIndexValues();
         int min = Math.min(this.resultSet.getElements().size(), bean.getMaxResults());
-        this.resultSet.getElements().subList(0, min).clear();
+        System.out.println(bean.getMaxResults());
+        ArrayList<ResultElement> shrunkList = new ArrayList<>();
+
+        for (int i = 0; i< min; i++){
+            shrunkList.add(this.resultSet.getElements().get(i));
+        }
+
+        resultSet.setElementsList(shrunkList);
         bean.setResultSet(this.resultSet);
 
 
@@ -136,7 +146,6 @@ public class JoinMatchController {
                 selectedSportCenter, startTime, finishTime);
 
     }
-    //TODO logica email
 
 
     public void sendEmails(ResultElement selectedMatch) {
@@ -159,7 +168,6 @@ public class JoinMatchController {
         }
 
         //Se l'owner del campo ha le notifiche attive, e il match è al completo => inviamo la mail all'owner per avvisarlo
-        //Che il match è al completo
         if (infoSportCenter.isNotifications() && selectedMatch.getTimeSlot().getAvailableSpots() == 0){
             EmailThread ownerEmailThread = new EmailThread(infoSportCenter.getOwnerEmail(),
                     selectedMatch.getSport(), selectedMatch.getCourtID(), startTime, finishTime);

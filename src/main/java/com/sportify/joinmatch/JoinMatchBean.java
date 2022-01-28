@@ -35,6 +35,7 @@ public class JoinMatchBean {
             throw new IllegalArgumentException("Starting time cannot be empty!");
         int preferredTime;
         try {
+            preferredStartingTimeString = preferredStartingTimeString.trim();
             preferredTime = Integer.parseInt(preferredStartingTimeString);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Starting time must be a number!");

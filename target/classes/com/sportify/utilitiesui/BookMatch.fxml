@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPaneBookMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
+<AnchorPane fx:id="anchorPaneBookMatch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@BookMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.bookmatch.BookMatchViewController">
     <children>
         <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
             <children>
@@ -107,7 +108,7 @@
                 <Font size="24.0" />
             </font>
         </Button>
-        <ScrollPane fx:id="scrollPaneBookMatch" hbarPolicy="NEVER" layoutX="50.0" layoutY="200.0" prefHeight="400.0" prefWidth="1200.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 2; -fx-background-radius: 25;" visible="false" />
+        <ScrollPane fx:id="scrollPaneBookMatch" layoutX="50.0" layoutY="200.0" prefHeight="400.0" prefWidth="1200.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 2; -fx-background-radius: 25;" visible="false" />
         <AnchorPane fx:id="popUpAnchorPane" layoutX="400.0" layoutY="200.0" prefHeight="325.0" prefWidth="500.0" style="-fx-border-color: #212529; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 1; -fx-background-color: #ffffff;" visible="false">
             <children>
                 <Label fx:id="popUpLabel" layoutX="25.0" layoutY="25.0" prefHeight="210.0" prefWidth="450.0" visible="false" />

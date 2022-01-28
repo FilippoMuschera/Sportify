@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@JoinMatchStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.joinmatch.JoinMatchViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1300.0" style="-fx-background-color: #FAF9F9;" stylesheets="@JoinMatchStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sportify.joinmatch.JoinMatchViewController">
    <children>
        <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="61.0" prefWidth="1316.0" style="-fx-background-color: #FAF9F9; -fx-border-color: #212529; -fx-border-width: 2;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="-8.0">
           <children>
@@ -87,7 +88,7 @@
                </ImageView>
            </graphic>
        </Button>
-      <ScrollPane fx:id="scrollPaneJoinMatch" hbarPolicy="NEVER" layoutX="100.0" layoutY="210.0" prefHeight="400.0" prefWidth="1100.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 2; -fx-background-radius: 25;" vbarPolicy="ALWAYS" visible="false" />
+      <ScrollPane fx:id="scrollPaneJoinMatch" layoutX="100.0" layoutY="210.0" prefHeight="400.0" prefWidth="1100.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 2; -fx-background-radius: 25;" vbarPolicy="ALWAYS" visible="false" />
       <TextField fx:id="hourTextField" layoutX="550.0" layoutY="275.0" />
       <TextField fx:id="resultTextField" layoutX="550.0" layoutY="360.0" />
       <Button fx:id="startButton" layoutX="540.0" layoutY="516.0" mnemonicParsing="false" onAction="#startJoinMatch" prefHeight="60.0" prefWidth="210.0" text="Search Matches" />
@@ -113,6 +114,7 @@
       <Label fx:id="resultLabel" layoutX="205.0" layoutY="355.0" text="Number of results" />
       <Label fx:id="startTimeLabel" layoutX="205.0" layoutY="270.0" text="Insert start time" />
       <Label fx:id="filterLabel" layoutX="205.0" layoutY="440.0" text="Select your filter" />
+      <Label fx:id="outcomeLabel" layoutX="512.0" layoutY="87.0" style="-fx-text-fill: green;" text="Match Joined Successfully" />
    </children>
 
 </AnchorPane>

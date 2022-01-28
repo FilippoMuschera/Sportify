@@ -22,7 +22,7 @@ public class GetSportCenterDAO {
 
 
 
-    public Map<String, Double> getNearSportCenters(String selectedSport, int maxNumberOfResults, double userLat, double userLng) throws NullPointerException {
+    public Map<String, Double> getNearSportCenters(String selectedSport, int maxNumberOfResults, double userLat, double userLng) throws NullPointerException, SportCenterException {
         try {
             Connection con = getConnector();
             if (con == null)
