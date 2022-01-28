@@ -10,6 +10,8 @@ import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterInfo;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
+import com.sportify.user.UserEntity;
+
 import java.util.List;
 import java.util.Map;
 
@@ -95,18 +97,21 @@ public class BookMatchController {
 
     public void sendEmail(){
 
+        UserEntity user = UserEntity.getInstance();
+        SportCenterInfo sportCenterInfo = GetSportCenterDAO.getInstance().getSportCenter(selectedSportCenter,selectedSport).getInfo();
         int startTime = selectedTimeSlot.getStartTime().getHour();
         int finishTime = selectedTimeSlot.getEndTime().getHour();
         SportCenterInfo infoSportCenter = GetSportCenterDAO.getInstance().getSportCenter(selectedSportCenter,selectedSport).getInfo();
-
-        EmailThread playerEmailThread = new EmailThread(selectedSport, selectedCourtID, startTime, finishTime, infoSportCenter.getSportCenterAddress());
-        playerEmailThread.setPlayer(true);
-        playerEmailThread.start();
-
-        EmailThread ownerEmailThread = new EmailThread(infoSportCenter.getOwnerEmail(), selectedSport, selectedCourtID, startTime, finishTime);
-        ownerEmailThread.setOwner(true);
-        ownerEmailThread.start();
-
+        if(user.getPreferences().isNotifications()) {
+            EmailThread playerEmailThread = new EmailThread(selectedSport, selectedCourtID, startTime, finishTime, infoSportCenter.getSportCenterAddress());
+            playerEmailThread.setPlayer(true);
+            playerEmailThread.start();
+        }
+        if(sportCenterInfo.isNotifications()) {
+            EmailThread ownerEmailThread = new EmailThread(infoSportCenter.getOwnerEmail(), selectedSport, selectedCourtID, startTime, finishTime);
+            ownerEmailThread.setOwner(true);
+            ownerEmailThread.start();
+        }
 
     }
 
