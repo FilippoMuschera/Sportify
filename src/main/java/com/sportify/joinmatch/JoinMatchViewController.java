@@ -54,7 +54,7 @@ public class JoinMatchViewController {
 
         if (user.getPreferences().getBasket()) {
 
-            int position = 550 + numOfSports*100 + numOfSports*75;
+            int position = 550;
             numOfSports++;
             basketToggleButton.setLayoutX(position);
             basketToggleButton.setVisible(true);
@@ -89,22 +89,17 @@ public class JoinMatchViewController {
         }
     }
 
-    public void setFilterDistance(){
-        beanJoinMatch.setDistanceIsImportant(true);
-    }
-
-    public void setFilterSpots(){
-        beanJoinMatch.setAvailableSpotIsImportant(true);
-    }
 
     public void startJoinMatch(){
         hideControls();
         try{
             beanJoinMatch.setMaxResults(resultTextField.getText());
             beanJoinMatch.setPreferredStartingTime(startTimeLabel.getText());
+            beanJoinMatch.setDistanceIsImportant(distanceToggle.isSelected());
+            beanJoinMatch.setAvailableSpotIsImportant(spotsToggle.isSelected());
         }
         catch(IllegalArgumentException e){
-            //mettere e.getMessage() su una label
+            //TODO mettere e.getMessage() su una label
         }
         joinMatchController.findJoinableMatch(beanJoinMatch);
         resultSet = beanJoinMatch.getResultSet();
@@ -149,6 +144,7 @@ public class JoinMatchViewController {
 
     private void selectedMatch(ResultElement selectedMatch){
         joinMatchController.joinMatch(selectedMatch);
+        joinMatchController.sendEmails(selectedMatch);
     }
 
     public void showSettings() throws IOException {

@@ -1,9 +1,11 @@
 package com.sportify.joinmatch;
 
+import com.sportify.email.EmailThread;
 import com.sportify.geolocation.Geolocator;
 import com.sportify.sportcenter.AddSportCenterDAO;
 import com.sportify.sportcenter.GetSportCenterDAO;
 import com.sportify.sportcenter.SportCenterEntity;
+import com.sportify.sportcenter.SportCenterInfo;
 import com.sportify.sportcenter.courts.SportCourt;
 import com.sportify.sportcenter.courts.TimeSlot;
 import com.sportify.user.UserEntity;
@@ -89,7 +91,7 @@ public class JoinMatchController {
         // Il comparatore compara gli index value dei ResultElement
 
 
-        this.resultSet.getElements().sort(indexValueComparator); //ordiniamo gli elementi in ordine crescente di indexValue
+        this.resultSet.getElements().sort(indexValueComparator); //ordiniamo gli elementi in ordine crescente d'indexValue
 
 
     }
@@ -130,6 +132,44 @@ public class JoinMatchController {
         int startTime = selectedMatch.getTimeSlot().getStartTime().getHour();
         int finishTime = selectedMatch.getTimeSlot().getEndTime().getHour();
 
-        newAddSportCenterDAO.updateTimeSlot(spots-1, selectedCourtID, selectedSport, selectedSportCenter, startTime, finishTime);
+        newAddSportCenterDAO.updateTimeSlot(spots-1, selectedCourtID, selectedSport,
+                selectedSportCenter, startTime, finishTime);
+
     }
+    //TODO logica email
+
+
+    public void sendEmails(ResultElement selectedMatch) {
+
+        UserPreferences preferences = UserEntity.getInstance().getPreferences();
+        SportCenterInfo infoSportCenter = GetSportCenterDAO.getInstance().getSportCenter(selectedMatch.getNameSC(),
+                selectedMatch.getSport()).getInfo();
+        int startTime = selectedMatch.getTimeSlot().getStartTime().getHour();
+        int finishTime = selectedMatch.getTimeSlot().getEndTime().getHour();
+
+        //Se l'utente che sta usando l'app ha le notifiche attive si invia la mail promemoria del match
+        if (preferences.isNotifications()){
+
+
+
+            EmailThread playerEmailThread = new EmailThread(selectedMatch.getSport(), selectedMatch.getCourtID(),
+                    startTime, finishTime, infoSportCenter.getSportCenterAddress());
+            playerEmailThread.setPlayer(true);
+            playerEmailThread.start();
+        }
+
+        //Se l'owner del campo ha le notifiche attive, e il match è al completo => inviamo la mail all'owner per avvisarlo
+        //Che il match è al completo
+        if (infoSportCenter.isNotifications() && selectedMatch.getTimeSlot().getAvailableSpots() == 0){
+            EmailThread ownerEmailThread = new EmailThread(infoSportCenter.getOwnerEmail(),
+                    selectedMatch.getSport(), selectedMatch.getCourtID(), startTime, finishTime);
+            ownerEmailThread.setOwner(true);
+            ownerEmailThread.start();
+        }
+
+
+
+    }
+
+
 }
